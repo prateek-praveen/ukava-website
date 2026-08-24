@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-c1cb5aca-9857-4246-8810-aa4607a40ecc/styles.css">
+<script src="_ds/modernist-c1cb5aca-9857-4246-8810-aa4607a40ecc/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&amp;display=swap">
+<style>
+  :root { --font-heading: "DM Sans", system-ui, sans-serif; --font-body: "DM Sans", system-ui, sans-serif;
+    --radius-sm: 6px; --radius-md: 10px; --radius-lg: 14px;
+    --color-accent: #FC5013; --color-accent-500: #FC5013;
+    --color-accent-100: #FFEDE5; --color-accent-200: #FFD5C4; --color-accent-300: #FEB194;
+    --color-accent-400: #FD7A46; --color-accent-600: #E03F06; --color-accent-700: #B93304;
+    --color-accent-800: #8E2703; --color-accent-900: #661B02;
+    --color-accent-2: #FC5013; --color-accent-2-500: #FC5013; }
+  body { margin: 0; background: var(--color-bg); font-family: "DM Sans", system-ui, sans-serif; }
+  h1, h2, h3, h4, h5, h6, button, input, select, textarea { font-family: "DM Sans", system-ui, sans-serif; }
+  a { color: var(--color-accent); }
+  a:hover { color: var(--color-accent-700); }
+  .hscroll { scrollbar-width: none; }
+  .hscroll::-webkit-scrollbar { display: none; }
+  @keyframes panelIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-body);color:var(--color-text);background:var(--color-bg)">
+
+  <header style="position:sticky;top:0;z-index:60;background:{{ headerBg }};color:{{ headerFg }};box-shadow:{{ headerShadow }};backdrop-filter:{{ headerBlur }};-webkit-backdrop-filter:{{ headerBlur }};transition:background .3s ease,color .3s ease,box-shadow .3s ease">
+    <div style="max-width:1440px;margin-inline:auto;padding:0 clamp(20px,4.5vw,64px);height:84px;display:flex;align-items:center;gap:clamp(24px,4vw,56px)">
+      <a href="UKAVA%20Homepage.dc.html" aria-label="UKAVA home" style="text-decoration:none;display:flex;align-items:center;margin-right:auto">
+        <span style="position:relative;display:block;width:200px;height:48px;overflow:hidden">
+          <img src="ukava-logo.jpg" alt="UKAVA — EV &amp; Lithium Battery" style="display:{{ logoDarkDisplay }};position:absolute;left:-44px;top:-118px;width:288px;max-width:none;height:auto;mix-blend-mode:multiply">
+          <img src="ukava-logo-white.png" alt="" aria-hidden="true" style="display:{{ logoLightDisplay }};position:absolute;left:-8px;top:-12px;width:214px;max-width:none;height:auto">
+        </span>
+      </a>
+      <nav style="display:{{ navDisplay }};align-items:center;gap:clamp(28px,3.4vw,48px)">
+        <a href="#top" style="color:inherit;text-decoration:none;font-size:15px;font-weight:600;letter-spacing:0em;padding:6px 0;border-bottom:2px solid var(--color-accent)" style-hover="color:{{ headerLinkHover }}">Home</a>
+        <a href="Product%20Listing.dc.html" style="color:inherit;text-decoration:none;font-size:15px;font-weight:500;letter-spacing:0em;padding:6px 0;border-bottom:2px solid transparent" style-hover="color:{{ headerLinkHover }}">Products</a>
+        <a href="About%20UKAVA.dc.html" style="color:inherit;text-decoration:none;font-size:15px;font-weight:500;letter-spacing:0em;padding:6px 0;border-bottom:2px solid transparent" style-hover="color:{{ headerLinkHover }}">About Us</a>
+        <a href="tel:18001204502" style="display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none;font-size:16px;font-weight:600;letter-spacing:0em" style-hover="color:{{ headerLinkHover }}">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="{{ headerPhoneIcon }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span>1800 120 4502</span>
+        </a>
+      </nav>
+      <a href="tel:18001204502" aria-label="Call UKAVA on 1800 120 4502" style="display:{{ burgerDisplay }};align-items:center;justify-content:center;width:46px;height:46px;border-radius:8px;background:var(--color-accent);color:#fff;text-decoration:none">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      </a>
+      <button onClick="{{ toggleMenu }}" aria-label="Menu" style="display:{{ burgerDisplay }};width:46px;height:46px;align-items:center;justify-content:center;background:transparent;border:1px solid {{ headerBurgerBorder }};border-radius:8px;cursor:pointer;flex-direction:column;gap:5px">
+        <span style="display:block;width:20px;height:2px;background:currentColor"></span>
+        <span style="display:block;width:20px;height:2px;background:currentColor"></span>
+        <span style="display:block;width:20px;height:2px;background:currentColor"></span>
+      </button>
+    </div>
+    <div style="display:{{ menuDisplay }};border-top:1px solid var(--color-neutral-300);padding:8px clamp(20px,5vw,64px) 24px;background:#fff;color:var(--color-text)">
+      <a href="#top" onClick="{{ closeMenu }}" style="display:block;color:inherit;text-decoration:none;padding:18px 0;border-bottom:1px solid var(--color-neutral-300);font-weight:600;font-size:18px">Home</a>
+      <a href="Product%20Listing.dc.html" onClick="{{ closeMenu }}" style="display:block;color:inherit;text-decoration:none;padding:18px 0;border-bottom:1px solid var(--color-neutral-300);font-weight:600;font-size:18px">Products</a>
+      <a href="About%20UKAVA.dc.html" onClick="{{ closeMenu }}" style="display:block;color:inherit;text-decoration:none;padding:18px 0;font-weight:600;font-size:18px">About Us</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <section data-screen-label="Hero" style="position:relative;overflow:hidden;margin-top:-84px">
+      <div style="position:relative;width:100%;height:{{ heroHeight }};min-height:520px">
+        <div style="position:absolute;inset:0;opacity:{{ heroOp1 }};transition:opacity 1s cubic-bezier(.22,.61,.36,1)">
+          <image-slot id="ukava-hero-1" shape="rect" radius="0" src="hero-1.png" placeholder="Hero image 1"></image-slot>
+        </div>
+        <div style="{{ heroLayer2 }}">
+          <image-slot id="ukava-hero-2" shape="rect" radius="0" placeholder="Drop hero image 2"></image-slot>
+        </div>
+        <div style="{{ heroLayer3 }}">
+          <image-slot id="ukava-hero-3" shape="rect" radius="0" placeholder="Drop hero image 3"></image-slot>
+        </div>
+        <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg,rgba(16,14,13,.88) 0%,rgba(16,14,13,.72) 38%,rgba(16,14,13,.18) 70%,rgba(16,14,13,0) 100%)"></div>
+
+        <div style="position: relative; height: 100%; max-width: 1440px; margin-inline: auto; padding: clamp(124px,11vw,164px) clamp(20px,4.5vw,64px) clamp(48px,7vw,96px); display: flex; flex-direction: column; justify-content: center; pointer-events: none">
+          <h1 style="font-size: 68px; line-height: 1; letter-spacing: -0.01em; font-weight: 600; color: #fff; margin: 0 0 26px; max-width: 16ch">Powering everyday life.<br><span style="color:var(--color-accent-400)">Moving India forward.</span></h1>
+          <p style="max-width:44ch;font-size:clamp(15px,1.2vw,18px);line-height:1.55;margin:0 0 36px;color:rgba(255,255,255,.82)">Lithium-powered energy and electric mobility solutions for homes, businesses and roads.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:16px;pointer-events:auto">
+            <a class="btn btn-primary" href="#offerings" style="font-size: 16px; letter-spacing: 0em; text-transform: none; padding: 18px 26px; font-weight: 600; transition: transform .18s ease,background .18s ease" style-hover="transform:translateY(-2px)">Explore Products</a>
+            <button class="btn" onClick="{{ openCallback }}" style="background: #fff; color: var(--color-text); font-size: 16px; letter-spacing: 0em; text-transform: none; padding: 18px 26px; font-weight: 600; transition: transform .18s ease,background .18s ease" style-hover="transform:translateY(-2px);background:var(--color-neutral-200)">Request a Callback</button>
+          </div>
+        </div>
+
+        
+      </div>
+
+      <div style="margin-top:clamp(32px,4vw,64px);background:var(--color-text);color:#fff">
+        <div style="max-width:1440px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
+          
+          
+          
+          
+        </div>
+      </div>
+    </section>
+
+    <section id="offerings" data-screen-label="Offerings" style="padding-block:clamp(64px,7.5vw,116px)">
+      <div style="max-width: 1440px; margin-inline: auto; padding-inline: clamp(20px,4.5vw,64px); background-color: var(--color-bg)">
+        <div data-reveal="" style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:44px">
+          <div>
+            
+            <h2 style="font-size: 42px; letter-spacing: 0em; margin: 0 0 14px">Featured products</h2>
+            
+          </div>
+          <a href="Product%20Listing.dc.html" style="font-family: var(--font-heading); font-weight: 800; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; padding-bottom: 6px; border-bottom: 2px solid var(--color-accent)">View all products →</a>
+        </div>
+
+        <div class="hscroll" role="tablist" style="display: flex; gap: 36px; overflow-x: auto; border-bottom: 2px solid var(--color-text); margin-bottom: 44px; border-color: #DCDCDC">
+          <button role="tab" onClick="{{ tab_mobility }}" style="flex: 0 0 auto; background: transparent; border: 0; border-bottom: 4px solid {{ line_mobility }}; color: {{ color_mobility }}; cursor: pointer; padding: 0 0 16px; margin-bottom: -2px; font-family: var(--font-heading); font-weight: {{ weight_mobility }}; font-size: 16px; letter-spacing: 0em; transition: color .2s ease, font-weight .2s ease">Electric Scooters</button>
+          <button role="tab" onClick="{{ tab_batteries }}" style="flex: 0 0 auto; background: transparent; border: 0; border-bottom: 4px solid {{ line_batteries }}; color: {{ color_batteries }}; cursor: pointer; padding: 0 0 16px; margin-bottom: -2px; font-family: var(--font-heading); font-weight: {{ weight_batteries }}; font-size: 16px; letter-spacing: 0em; transition: color .2s ease, font-weight .2s ease">Lithium Batteries</button>
+          <button role="tab" onClick="{{ tab_inverter }}" style="flex: 0 0 auto; background: transparent; border: 0; border-bottom: 4px solid {{ line_inverter }}; color: {{ color_inverter }}; cursor: pointer; padding: 0 0 16px; margin-bottom: -2px; font-family: var(--font-heading); font-weight: {{ weight_inverter }}; font-size: 16px; letter-spacing: 0em; transition: color .2s ease, font-weight .2s ease">Inverter &amp; Battery</button>
+          <button role="tab" onClick="{{ tab_solar }}" style="flex: 0 0 auto; background: transparent; border: 0; border-bottom: 4px solid {{ line_solar }}; color: {{ color_solar }}; cursor: pointer; padding: 0 0 16px; margin-bottom: -2px; font-family: var(--font-heading); font-weight: {{ weight_solar }}; font-size: 16px; letter-spacing: 0em; transition: color .2s ease, font-weight .2s ease">Solar Solutions</button>
+        </div>
+
+        <div hidden="{{ hide_mobility }}" style="animation:panelIn .4s cubic-bezier(.22,.61,.36,1)">
+          <div style="display:grid;grid-template-columns:{{ productCols }};gap:clamp(20px,2.2vw,32px)">
+            <article onClick="{{ pdp.ukavaStrom }}" style="display:flex;flex-direction:column;background:#fff;box-shadow:var(--shadow-sm);border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .25s ease,transform .25s ease" style-hover="box-shadow:var(--shadow-lg);transform:translateY(-4px)">
+              <div style="position:relative;background:var(--color-surface);background-image:linear-gradient(var(--color-neutral-300) 1px,transparent 1px),linear-gradient(90deg,var(--color-neutral-300) 1px,transparent 1px);background-size:100% 36px,36px 100%;color:var(--color-neutral-600);aspect-ratio:4/3;overflow:hidden">
+                <div style="width:100%;height:100%;transition:transform .5s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-p-ukava-strom-0" shape="rect" radius="0" placeholder="UKAVA Strom · 4:3"></image-slot></div>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;padding:28px 30px 30px">
+                <h3 style="font-size:24px;letter-spacing:-.03em;margin:0 0 4px;line-height:1.15">UKAVA Strom</h3>
+                <p style="margin:0 0 20px;font-size:14px;color:var(--color-neutral-600)">Electric scooter</p>
+                <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:26px">
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">55 KMPH</b> top speed</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">1000 WATT</b> motor power</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">Lithium</b> battery</span></span>
+                </div>
+                <div style="margin-top:auto;display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:700;font-size:16px;letter-spacing:0.01em;color:var(--color-accent-700)">View product <span aria-hidden="true">→</span></div>
+              </div>
+            </article>
+            <article onClick="{{ pdp.ukavaRapid }}" style="display:flex;flex-direction:column;background:#fff;box-shadow:var(--shadow-sm);border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .25s ease,transform .25s ease" style-hover="box-shadow:var(--shadow-lg);transform:translateY(-4px)">
+              <div style="position:relative;background:var(--color-surface);background-image:linear-gradient(var(--color-neutral-300) 1px,transparent 1px),linear-gradient(90deg,var(--color-neutral-300) 1px,transparent 1px);background-size:100% 36px,36px 100%;color:var(--color-neutral-600);aspect-ratio:4/3;overflow:hidden">
+                <div style="width:100%;height:100%;transition:transform .5s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-p-ukava-rapid-0" shape="rect" radius="0" placeholder="UKAVA Rapid · 4:3"></image-slot></div>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;padding:28px 30px 30px">
+                <h3 style="font-size:24px;letter-spacing:-.03em;margin:0 0 4px;line-height:1.15">UKAVA Rapid</h3>
+                <p style="margin:0 0 20px;font-size:14px;color:var(--color-neutral-600)">Electric scooter</p>
+                <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:26px">
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">55 KMPH</b> top speed</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">1000 WATT</b> motor power</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">Lithium</b> battery</span></span>
+                </div>
+                <div style="margin-top:auto;display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:700;font-size:16px;letter-spacing:0.01em;color:var(--color-accent-700)">View product <span aria-hidden="true">→</span></div>
+              </div>
+            </article>
+            <article onClick="{{ pdp.ukavaRaya }}" style="display:flex;flex-direction:column;background:#fff;box-shadow:var(--shadow-sm);border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .25s ease,transform .25s ease" style-hover="box-shadow:var(--shadow-lg);transform:translateY(-4px)">
+              <div style="position:relative;background:var(--color-surface);background-image:linear-gradient(var(--color-neutral-300) 1px,transparent 1px),linear-gradient(90deg,var(--color-neutral-300) 1px,transparent 1px);background-size:100% 36px,36px 100%;color:var(--color-neutral-600);aspect-ratio:4/3;overflow:hidden">
+                <div style="width:100%;height:100%;transition:transform .5s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-p-ukava-raya-0" shape="rect" radius="0" placeholder="UKAVA Raya · 4:3"></image-slot></div>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;padding:28px 30px 30px">
+                <h3 style="font-size:24px;letter-spacing:-.03em;margin:0 0 4px;line-height:1.15">UKAVA Raya</h3>
+                <p style="margin:0 0 20px;font-size:14px;color:var(--color-neutral-600)">Electric scooter</p>
+                <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:26px">
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">55 KMPH</b> top speed</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">1500 WATT</b> motor power</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">Lithium</b> battery</span></span>
+                </div>
+                <div style="margin-top:auto;display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:700;font-size:16px;letter-spacing:0.01em;color:var(--color-accent-700)">View product <span aria-hidden="true">→</span></div>
+              </div>
+            </article>
+            <article onClick="{{ pdp.ukavaVega }}" style="display:flex;flex-direction:column;background:#fff;box-shadow:var(--shadow-sm);border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .25s ease,transform .25s ease" style-hover="box-shadow:var(--shadow-lg);transform:translateY(-4px)">
+              <div style="position:relative;background:var(--color-surface);background-image:linear-gradient(var(--color-neutral-300) 1px,transparent 1px),linear-gradient(90deg,var(--color-neutral-300) 1px,transparent 1px);background-size:100% 36px,36px 100%;color:var(--color-neutral-600);aspect-ratio:4/3;overflow:hidden">
+                <div style="width:100%;height:100%;transition:transform .5s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-p-ukava-vega-0" shape="rect" radius="0" placeholder="UKAVA Vega · 4:3"></image-slot></div>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;padding:28px 30px 30px">
+                <h3 style="font-size:24px;letter-spacing:-.03em;margin:0 0 4px;line-height:1.15">UKAVA Vega</h3>
+                <p style="margin:0 0 20px;font-size:14px;color:var(--color-neutral-600)">Electric scooter</p>
+                <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:26px">
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">55 KMPH</b> top speed</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">1500 WATT</b> motor power</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">Lithium</b> battery</span></span>
+                </div>
+                <div style="margin-top:auto;display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:700;font-size:16px;letter-spacing:0.01em;color:var(--color-accent-700)">View product <span aria-hidden="true">→</span></div>
+              </div>
+            </article>
+            <article onClick="{{ pdp.ukavaAura }}" style="display:flex;flex-direction:column;background:#fff;box-shadow:var(--shadow-sm);border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .25s ease,transform .25s ease" style-hover="box-shadow:var(--shadow-lg);transform:translateY(-4px)">
+              <div style="position:relative;background:var(--color-surface);background-image:linear-gradient(var(--color-neutral-300) 1px,transparent 1px),linear-gradient(90deg,var(--color-neutral-300) 1px,transparent 1px);background-size:100% 36px,36px 100%;color:var(--color-neutral-600);aspect-ratio:4/3;overflow:hidden">
+                <div style="width:100%;height:100%;transition:transform .5s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-p-ukava-aura-0" shape="rect" radius="0" placeholder="UKAVA Aura · 4:3"></image-slot></div>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;padding:28px 30px 30px">
+                <h3 style="font-size:24px;letter-spacing:-.03em;margin:0 0 4px;line-height:1.15">UKAVA Aura</h3>
+                <p style="margin:0 0 20px;font-size:14px;color:var(--color-neutral-600)">Electric scooter</p>
+                <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:26px">
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">55 KMPH</b> top speed</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">1500 WATT</b> motor power</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">Lithium</b> battery</span></span>
+                </div>
+                <div style="margin-top:auto;display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:700;font-size:16px;letter-spacing:0.01em;color:var(--color-accent-700)">View product <span aria-hidden="true">→</span></div>
+              </div>
+            </article>
+            <article onClick="{{ pdp.ukavaZyro }}" style="display:flex;flex-direction:column;background:#fff;box-shadow:var(--shadow-sm);border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .25s ease,transform .25s ease" style-hover="box-shadow:var(--shadow-lg);transform:translateY(-4px)">
+              <div style="position:relative;background:var(--color-surface);background-image:linear-gradient(var(--color-neutral-300) 1px,transparent 1px),linear-gradient(90deg,var(--color-neutral-300) 1px,transparent 1px);background-size:100% 36px,36px 100%;color:var(--color-neutral-600);aspect-ratio:4/3;overflow:hidden">
+                <div style="width:100%;height:100%;transition:transform .5s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-p-ukava-zyro-0" shape="rect" radius="0" placeholder="UKAVA Zyro · 4:3"></image-slot></div>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;padding:28px 30px 30px">
+                <h3 style="font-size:24px;letter-spacing:-.03em;margin:0 0 4px;line-height:1.15">UKAVA Zyro</h3>
+                <p style="margin:0 0 20px;font-size:14px;color:var(--color-neutral-600)">Electric scooter</p>
+                <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:26px">
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">55 KMPH</b> top speed</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">1500 WATT</b> motor power</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">Lithium</b> battery</span></span>
+                </div>
+                <div style="margin-top:auto;display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:700;font-size:16px;letter-spacing:0.01em;color:var(--color-accent-700)">View product <span aria-hidden="true">→</span></div>
+              </div>
+            </article>
+          </div>
+          <div style="display:flex;margin-top:clamp(32px,3.6vw,52px)">
+            <a class="btn btn-primary" href="Product%20Listing.dc.html#electric-scooters" style="font-weight:700;font-size:16px;letter-spacing:0.01em;text-transform:none;padding:16px 24px;text-decoration:none;transition:transform .18s ease,background .18s ease" style-hover="transform:translateY(-2px)">See all Electric Scooters →</a>
+          </div>
+        </div>
+
+        <div hidden="{{ hide_batteries }}" style="animation:panelIn .4s cubic-bezier(.22,.61,.36,1)">
+          <div style="display:grid;grid-template-columns:{{ productCols }};gap:clamp(20px,2.2vw,32px)">
+            <article onClick="{{ pdp.lithiumInverterBatteries }}" style="display:flex;flex-direction:column;background:#fff;box-shadow:var(--shadow-sm);border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .25s ease,transform .25s ease" style-hover="box-shadow:var(--shadow-lg);transform:translateY(-4px)">
+              <div style="position:relative;background:var(--color-surface);background-image:linear-gradient(var(--color-neutral-300) 1px,transparent 1px),linear-gradient(90deg,var(--color-neutral-300) 1px,transparent 1px);background-size:100% 36px,36px 100%;color:var(--color-neutral-600);aspect-ratio:4/3;overflow:hidden">
+                <div style="width:100%;height:100%;transition:transform .5s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-p-lithium-inverter-batteries-0" shape="rect" radius="0" placeholder="Lithium Inverter Batteries · 4:3"></image-slot></div>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;padding:28px 30px 30px">
+                <h3 style="font-size:24px;letter-spacing:-.03em;margin:0 0 4px;line-height:1.15">Lithium Inverter Batteries</h3>
+                <p style="margin:0 0 20px;font-size:14px;color:var(--color-neutral-600)">Inverter battery</p>
+                <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:26px">
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">12.8V – 48V</b> models available</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">10 Years</b> warranty shown</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">LFP</b> technology</span></span>
+                </div>
+                <div style="margin-top:auto;display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:700;font-size:16px;letter-spacing:0.01em;color:var(--color-accent-700)">View product <span aria-hidden="true">→</span></div>
+              </div>
+            </article>
+            <article onClick="{{ pdp.electricTwoWheelerLithiumBattery }}" style="display:flex;flex-direction:column;background:#fff;box-shadow:var(--shadow-sm);border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .25s ease,transform .25s ease" style-hover="box-shadow:var(--shadow-lg);transform:translateY(-4px)">
+              <div style="position:relative;background:var(--color-surface);background-image:linear-gradient(var(--color-neutral-300) 1px,transparent 1px),linear-gradient(90deg,var(--color-neutral-300) 1px,transparent 1px);background-size:100% 36px,36px 100%;color:var(--color-neutral-600);aspect-ratio:4/3;overflow:hidden">
+                <div style="width:100%;height:100%;transition:transform .5s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-p-electric-two-wheeler-lithium-battery-0" shape="rect" radius="0" placeholder="Electric Two-Wheeler Lithium Batteries · 4:3"></image-slot></div>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;padding:28px 30px 30px">
+                <h3 style="font-size:24px;letter-spacing:-.03em;margin:0 0 4px;line-height:1.15">Electric Two-Wheeler Lithium Battery</h3>
+                <p style="margin:0 0 20px;font-size:14px;color:var(--color-neutral-600)">Two-wheeler battery</p>
+                <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:26px">
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">48V / 60V</b> system voltage</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">3 Years</b> warranty shown</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">LFP</b> technology</span></span>
+                </div>
+                <div style="margin-top:auto;display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:700;font-size:16px;letter-spacing:0.01em;color:var(--color-accent-700)">View product <span aria-hidden="true">→</span></div>
+              </div>
+            </article>
+            <article onClick="{{ pdp.electricThreeWheelerLithiumBattery }}" style="display:flex;flex-direction:column;background:#fff;box-shadow:var(--shadow-sm);border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .25s ease,transform .25s ease" style-hover="box-shadow:var(--shadow-lg);transform:translateY(-4px)">
+              <div style="position:relative;background:var(--color-surface);background-image:linear-gradient(var(--color-neutral-300) 1px,transparent 1px),linear-gradient(90deg,var(--color-neutral-300) 1px,transparent 1px);background-size:100% 36px,36px 100%;color:var(--color-neutral-600);aspect-ratio:4/3;overflow:hidden">
+                <div style="width:100%;height:100%;transition:transform .5s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-p-electric-three-wheeler-lithium-battery-0" shape="rect" radius="0" placeholder="Electric Three-Wheeler Lithium Batteries · 4:3"></image-slot></div>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;padding:28px 30px 30px">
+                <h3 style="font-size:24px;letter-spacing:-.03em;margin:0 0 4px;line-height:1.15">Electric Three-Wheeler Lithium Battery</h3>
+                <p style="margin:0 0 20px;font-size:14px;color:var(--color-neutral-600)">Three-wheeler battery</p>
+                <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:26px">
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">51.2V / 60.8V</b> system voltage</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">3 Years</b> warranty shown</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">LFP</b> technology</span></span>
+                </div>
+                <div style="margin-top:auto;display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:700;font-size:16px;letter-spacing:0.01em;color:var(--color-accent-700)">View product <span aria-hidden="true">→</span></div>
+              </div>
+            </article>
+            <article onClick="{{ pdp.rechargeableLfpBattery }}" style="display:flex;flex-direction:column;background:#fff;box-shadow:var(--shadow-sm);border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .25s ease,transform .25s ease" style-hover="box-shadow:var(--shadow-lg);transform:translateY(-4px)">
+              <div style="position:relative;background:var(--color-surface);background-image:linear-gradient(var(--color-neutral-300) 1px,transparent 1px),linear-gradient(90deg,var(--color-neutral-300) 1px,transparent 1px);background-size:100% 36px,36px 100%;color:var(--color-neutral-600);aspect-ratio:4/3;overflow:hidden">
+                <div style="width:100%;height:100%;transition:transform .5s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-p-rechargeable-lfp-battery-0" shape="rect" radius="0" placeholder="Rechargeable LFP Batteries · 4:3"></image-slot></div>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;padding:28px 30px 30px">
+                <h3 style="font-size:24px;letter-spacing:-.03em;margin:0 0 4px;line-height:1.15">Rechargeable LFP Battery</h3>
+                <p style="margin:0 0 20px;font-size:14px;color:var(--color-neutral-600)">LFP battery</p>
+                <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:26px">
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">12.8V – 25.6V</b> models available</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">3 Years</b> warranty shown</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">LFP</b> technology</span></span>
+                </div>
+                <div style="margin-top:auto;display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:700;font-size:16px;letter-spacing:0.01em;color:var(--color-accent-700)">View product <span aria-hidden="true">→</span></div>
+              </div>
+            </article>
+            <article onClick="{{ pdp.essEnergyStorageSystem }}" style="display:flex;flex-direction:column;background:#fff;box-shadow:var(--shadow-sm);border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .25s ease,transform .25s ease" style-hover="box-shadow:var(--shadow-lg);transform:translateY(-4px)">
+              <div style="position:relative;background:var(--color-surface);background-image:linear-gradient(var(--color-neutral-300) 1px,transparent 1px),linear-gradient(90deg,var(--color-neutral-300) 1px,transparent 1px);background-size:100% 36px,36px 100%;color:var(--color-neutral-600);aspect-ratio:4/3;overflow:hidden">
+                <div style="width:100%;height:100%;transition:transform .5s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-p-ess-energy-storage-system-0" shape="rect" radius="0" placeholder="Energy Storage System (ESS) · 4:3"></image-slot></div>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;padding:28px 30px 30px">
+                <h3 style="font-size:24px;letter-spacing:-.03em;margin:0 0 4px;line-height:1.15">ESS (Energy Storage System)</h3>
+                <p style="margin:0 0 20px;font-size:14px;color:var(--color-neutral-600)">Energy storage system</p>
+                <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:26px">
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">48V to 360V</b> range</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">10 Years</b> warranty shown</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">LFP</b> technology</span></span>
+                </div>
+                <div style="margin-top:auto;display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:700;font-size:16px;letter-spacing:0.01em;color:var(--color-accent-700)">View product <span aria-hidden="true">→</span></div>
+              </div>
+            </article>
+          </div>
+          <div style="display:flex;margin-top:clamp(32px,3.6vw,52px)">
+            <a class="btn btn-primary" href="Product%20Listing.dc.html#lithium-batteries" style="font-weight:700;font-size:16px;letter-spacing:0.01em;text-transform:none;padding:16px 24px;text-decoration:none;transition:transform .18s ease,background .18s ease" style-hover="transform:translateY(-2px)">See all Lithium Batteries →</a>
+          </div>
+        </div>
+
+        <div hidden="{{ hide_inverter }}" style="animation:panelIn .4s cubic-bezier(.22,.61,.36,1)">
+          <div style="display:grid;grid-template-columns:{{ productCols }};gap:clamp(20px,2.2vw,32px)">
+            <article onClick="{{ pdp.linva1000 }}" style="display:flex;flex-direction:column;background:#fff;box-shadow:var(--shadow-sm);border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .25s ease,transform .25s ease" style-hover="box-shadow:var(--shadow-lg);transform:translateY(-4px)">
+              <div style="position:relative;background:var(--color-surface);background-image:linear-gradient(var(--color-neutral-300) 1px,transparent 1px),linear-gradient(90deg,var(--color-neutral-300) 1px,transparent 1px);background-size:100% 36px,36px 100%;color:var(--color-neutral-600);aspect-ratio:4/3;overflow:hidden">
+                <div style="width:100%;height:100%;transition:transform .5s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-p-linva-1000-0" shape="rect" radius="0" placeholder="LINVA 1000 · 4:3"></image-slot></div>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;padding:28px 30px 30px">
+                <h3 style="font-size:24px;letter-spacing:-.03em;margin:0 0 4px;line-height:1.15">LINVA 1000</h3>
+                <p style="margin:0 0 20px;font-size:14px;color:var(--color-neutral-600)">Inverter + lithium battery</p>
+                <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:26px">
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">1000 VA</b> power</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">100 AH</b> battery capacity</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">3 hrs at 400 W</b> backup</span></span>
+                </div>
+                <div style="margin-top:auto;display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:700;font-size:16px;letter-spacing:0.01em;color:var(--color-accent-700)">View product <span aria-hidden="true">→</span></div>
+              </div>
+            </article>
+            <article onClick="{{ pdp.linva1500 }}" style="display:flex;flex-direction:column;background:#fff;box-shadow:var(--shadow-sm);border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .25s ease,transform .25s ease" style-hover="box-shadow:var(--shadow-lg);transform:translateY(-4px)">
+              <div style="position:relative;background:var(--color-surface);background-image:linear-gradient(var(--color-neutral-300) 1px,transparent 1px),linear-gradient(90deg,var(--color-neutral-300) 1px,transparent 1px);background-size:100% 36px,36px 100%;color:var(--color-neutral-600);aspect-ratio:4/3;overflow:hidden">
+                <div style="width:100%;height:100%;transition:transform .5s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-p-linva-1500-0" shape="rect" radius="0" placeholder="LINVA 1500 · 4:3"></image-slot></div>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;padding:28px 30px 30px">
+                <h3 style="font-size:24px;letter-spacing:-.03em;margin:0 0 4px;line-height:1.15">LINVA 1500</h3>
+                <p style="margin:0 0 20px;font-size:14px;color:var(--color-neutral-600)">Inverter + lithium battery</p>
+                <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:26px">
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">1500 VA</b> power</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">100 AH</b> battery capacity</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">3 hrs at 400 W</b> backup</span></span>
+                </div>
+                <div style="margin-top:auto;display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:700;font-size:16px;letter-spacing:0.01em;color:var(--color-accent-700)">View product <span aria-hidden="true">→</span></div>
+              </div>
+            </article>
+            <article onClick="{{ pdp.linva2500 }}" style="display:flex;flex-direction:column;background:#fff;box-shadow:var(--shadow-sm);border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .25s ease,transform .25s ease" style-hover="box-shadow:var(--shadow-lg);transform:translateY(-4px)">
+              <div style="position:relative;background:var(--color-surface);background-image:linear-gradient(var(--color-neutral-300) 1px,transparent 1px),linear-gradient(90deg,var(--color-neutral-300) 1px,transparent 1px);background-size:100% 36px,36px 100%;color:var(--color-neutral-600);aspect-ratio:4/3;overflow:hidden">
+                <div style="width:100%;height:100%;transition:transform .5s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-p-linva-2500-0" shape="rect" radius="0" placeholder="LINVA 2500 · 4:3"></image-slot></div>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;padding:28px 30px 30px">
+                <h3 style="font-size:24px;letter-spacing:-.03em;margin:0 0 4px;line-height:1.15">LINVA 2500</h3>
+                <p style="margin:0 0 20px;font-size:14px;color:var(--color-neutral-600)">Inverter + lithium battery</p>
+                <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:26px">
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">2500 VA</b> power</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">100 AH</b> battery capacity</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">3 hrs at 400 W</b> backup</span></span>
+                </div>
+                <div style="margin-top:auto;display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:700;font-size:16px;letter-spacing:0.01em;color:var(--color-accent-700)">View product <span aria-hidden="true">→</span></div>
+              </div>
+            </article>
+          </div>
+          <div style="display:flex;margin-top:clamp(32px,3.6vw,52px)">
+            <a class="btn btn-primary" href="Product%20Listing.dc.html#inverter-battery" style="font-weight:700;font-size:16px;letter-spacing:0.01em;text-transform:none;padding:16px 24px;text-decoration:none;transition:transform .18s ease,background .18s ease" style-hover="transform:translateY(-2px)">See all Inverter &amp; Battery →</a>
+          </div>
+        </div>
+
+        <div hidden="{{ hide_solar }}" style="animation:panelIn .4s cubic-bezier(.22,.61,.36,1)">
+          <div style="display:grid;grid-template-columns:{{ productCols }};gap:clamp(20px,2.2vw,32px)">
+            <article onClick="{{ pdp.linvasol1050 }}" style="display:flex;flex-direction:column;background:#fff;box-shadow:var(--shadow-sm);border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .25s ease,transform .25s ease" style-hover="box-shadow:var(--shadow-lg);transform:translateY(-4px)">
+              <div style="position:relative;background:var(--color-surface);background-image:linear-gradient(var(--color-neutral-300) 1px,transparent 1px),linear-gradient(90deg,var(--color-neutral-300) 1px,transparent 1px);background-size:100% 36px,36px 100%;color:var(--color-neutral-600);aspect-ratio:4/3;overflow:hidden">
+                <div style="width:100%;height:100%;transition:transform .5s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-p-linvasol-1050-0" shape="rect" radius="0" placeholder="LINVASOL 1050 · 4:3"></image-slot></div>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;padding:28px 30px 30px">
+                <h3 style="font-size:24px;letter-spacing:-.03em;margin:0 0 4px;line-height:1.15">LINVASOL 1050</h3>
+                <p style="margin:0 0 20px;font-size:14px;color:var(--color-neutral-600)">Solar inverter + battery</p>
+                <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:26px">
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">1050 VA</b> power</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">100 AH</b> battery capacity</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">540 W × 2</b> recommended panels</span></span>
+                </div>
+                <div style="margin-top:auto;display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:700;font-size:16px;letter-spacing:0.01em;color:var(--color-accent-700)">View product <span aria-hidden="true">→</span></div>
+              </div>
+            </article>
+            <article onClick="{{ pdp.linvasol1550 }}" style="display:flex;flex-direction:column;background:#fff;box-shadow:var(--shadow-sm);border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .25s ease,transform .25s ease" style-hover="box-shadow:var(--shadow-lg);transform:translateY(-4px)">
+              <div style="position:relative;background:var(--color-surface);background-image:linear-gradient(var(--color-neutral-300) 1px,transparent 1px),linear-gradient(90deg,var(--color-neutral-300) 1px,transparent 1px);background-size:100% 36px,36px 100%;color:var(--color-neutral-600);aspect-ratio:4/3;overflow:hidden">
+                <div style="width:100%;height:100%;transition:transform .5s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-p-linvasol-1550-0" shape="rect" radius="0" placeholder="LINVASOL 1550 · 4:3"></image-slot></div>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;padding:28px 30px 30px">
+                <h3 style="font-size:24px;letter-spacing:-.03em;margin:0 0 4px;line-height:1.15">LINVASOL 1550</h3>
+                <p style="margin:0 0 20px;font-size:14px;color:var(--color-neutral-600)">Solar inverter + battery</p>
+                <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:26px">
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">1550 VA</b> power</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">100 AH</b> battery capacity</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">540 W × 2</b> recommended panels</span></span>
+                </div>
+                <div style="margin-top:auto;display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:700;font-size:16px;letter-spacing:0.01em;color:var(--color-accent-700)">View product <span aria-hidden="true">→</span></div>
+              </div>
+            </article>
+            <article onClick="{{ pdp.linvasol2550 }}" style="display:flex;flex-direction:column;background:#fff;box-shadow:var(--shadow-sm);border-radius:16px;overflow:hidden;cursor:pointer;transition:box-shadow .25s ease,transform .25s ease" style-hover="box-shadow:var(--shadow-lg);transform:translateY(-4px)">
+              <div style="position:relative;background:var(--color-surface);background-image:linear-gradient(var(--color-neutral-300) 1px,transparent 1px),linear-gradient(90deg,var(--color-neutral-300) 1px,transparent 1px);background-size:100% 36px,36px 100%;color:var(--color-neutral-600);aspect-ratio:4/3;overflow:hidden">
+                <div style="width:100%;height:100%;transition:transform .5s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-p-linvasol-2550-0" shape="rect" radius="0" placeholder="LINVASOL 2550 · 4:3"></image-slot></div>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;padding:28px 30px 30px">
+                <h3 style="font-size:24px;letter-spacing:-.03em;margin:0 0 4px;line-height:1.15">LINVASOL 2550</h3>
+                <p style="margin:0 0 20px;font-size:14px;color:var(--color-neutral-600)">Solar inverter + battery</p>
+                <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:26px">
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">2550 VA</b> power</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">100 AH</b> battery capacity</span></span>
+                  <span style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45"><span style="color:var(--color-accent);font-weight:700">✓</span><span><b style="font-weight:700">540 W × 4</b> recommended panels</span></span>
+                </div>
+                <div style="margin-top:auto;display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:700;font-size:16px;letter-spacing:0.01em;color:var(--color-accent-700)">View product <span aria-hidden="true">→</span></div>
+              </div>
+            </article>
+          </div>
+          <div style="display:flex;margin-top:clamp(32px,3.6vw,52px)">
+            <a class="btn btn-primary" href="Product%20Listing.dc.html#solar-solutions" style="font-weight:700;font-size:16px;letter-spacing:0.01em;text-transform:none;padding:16px 24px;text-decoration:none;transition:transform .18s ease,background .18s ease" style-hover="transform:translateY(-2px)">See all Solar Solutions →</a>
+          </div>
+        </div>
+
+        
+      </div>
+    </section>
+
+    <section id="why" data-screen-label="Why UKAVA" style="background:{{ whyBg }};color:{{ whyFg }};padding-block:clamp(64px,7.5vw,116px)">
+      <div style="max-width:1440px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,64px)">
+        <div data-reveal="" style="max-width:60ch;margin-bottom:clamp(48px,5vw,72px)">
+          
+          <h2 style="font-size:clamp(32px,3.8vw,56px);letter-spacing:-.035em;margin:0 0 16px;color:inherit;max-width:18ch">Reasons to choose UKAVA</h2>
+          
+        </div>
+
+        <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(28px,3vw,52px);margin-bottom:clamp(56px,6vw,88px)">
+          <div>
+            <span style="display:block;width:44px;height:3px;background:var(--color-accent);margin-bottom:22px"></span>
+            <h3 style="font-size:21px;margin:0 0 12px;color:inherit;letter-spacing:-.02em">Manufactured in India</h3>
+            <p style="margin:0;font-size:14px;line-height:1.6;opacity:.65">Built domestically with UKAVA's own engineering and quality control.</p>
+          </div>
+          <div>
+            <span style="display:block;width:44px;height:3px;background:var(--color-accent);margin-bottom:22px"></span>
+            <h3 style="font-size:21px;margin:0 0 12px;color:inherit;letter-spacing:-.02em">LFP + NMC expertise</h3>
+            <p style="margin:0;font-size:14px;line-height:1.6;opacity:.65">Lithium chemistry spanning both energy storage and electric mobility.</p>
+          </div>
+          <div>
+            <span style="display:block;width:44px;height:3px;background:var(--color-accent);margin-bottom:22px"></span>
+            <h3 style="font-size:21px;margin:0 0 12px;color:inherit;letter-spacing:-.02em">One connected portfolio</h3>
+            <p style="margin:0;font-size:14px;line-height:1.6;opacity:.65">Mobility, energy, power backup and solar — engineered under one brand.</p>
+          </div>
+          <div>
+            <span style="display:block;width:44px;height:3px;background:var(--color-accent);margin-bottom:22px"></span>
+            <h3 style="font-size:21px;margin:0 0 12px;color:inherit;letter-spacing:-.02em">Service &amp; warranty</h3>
+            <p style="margin:0;font-size:14px;line-height:1.6;opacity:.65">Warranty coverage and after-sales support that stay with you.</p>
+          </div>
+        </div>
+
+        <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:36px;border-top:2px solid {{ whyRule }};padding-top:44px">
+          <div>
+            <span style="display:block;font-family:var(--font-heading);font-weight:800;font-size:clamp(46px,5.4vw,76px);letter-spacing:-.05em;line-height:.9">20K+</span>
+            <span style="display:block;margin-top:12px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.55">Verified partners</span>
+          </div>
+          <div>
+            <span style="display:block;font-family:var(--font-heading);font-weight:800;font-size:clamp(46px,5.4vw,76px);letter-spacing:-.05em;line-height:.9">10L</span>
+            <span style="display:block;margin-top:12px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.55">Markets served</span>
+          </div>
+          <div>
+            <span style="display:block;font-family:var(--font-heading);font-weight:800;font-size:clamp(46px,5.4vw,76px);letter-spacing:-.05em;line-height:.9">100+</span>
+            <span style="display:block;margin-top:12px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.55">Products</span>
+          </div>
+          <div>
+            <span style="display:block;font-family:var(--font-heading);font-weight:800;font-size:clamp(46px,5.4vw,76px);letter-spacing:-.05em;line-height:.9">20 yrs</span>
+            <span style="display:block;margin-top:12px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.55">Industry experience</span>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <section id="partner" data-screen-label="Partner" style="background:var(--color-surface);padding-block:clamp(64px,7.5vw,116px)">
+      <div style="max-width:1440px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,64px)">
+        <div data-reveal="" style="display:grid;grid-template-columns:{{ partnerCols }};gap:clamp(32px,4vw,80px);align-items:center">
+          <div>
+            
+            <h2 style="font-size:clamp(32px,3.8vw,54px);letter-spacing:-.035em;margin:0 0 18px;max-width:17ch">Grow with UKAVA across energy &amp; electric mobility.</h2>
+            <p style="max-width:52ch;margin:0 0 30px;color:var(--color-neutral-800);font-size:17px;line-height:1.55">Become a UKAVA dealer or distributor and build your business across the full portfolio. Share your details and our business team will connect with you.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:26px;margin-bottom:36px">
+              <span style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;border-bottom:3px solid var(--color-accent);padding-bottom:6px">Electric Scooters</span>
+              <span style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;border-bottom:3px solid var(--color-accent);padding-bottom:6px">Lithium Batteries</span>
+              <span style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;border-bottom:3px solid var(--color-accent);padding-bottom:6px">Inverter &amp; Battery</span>
+              <span style="font-family:var(--font-heading);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;border-bottom:3px solid var(--color-accent);padding-bottom:6px">Solar Solutions</span>
+            </div>
+            <button class="btn btn-primary" onClick="{{ openPartner }}" style="font-weight: 700; font-size: 16px;letter-spacing: 0.01em;text-transform: none;padding:18px 26px;transition:transform .18s ease,background .18s ease" style-hover="transform:translateY(-2px)">Become a UKAVA Partner</button>
+          </div>
+          <div class="grayscale" style="position:relative;aspect-ratio:{{ partnerPhotoRatio }};overflow:hidden;border-radius:16px;background:var(--color-neutral-300);background-image:linear-gradient(rgba(0,0,0,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.06) 1px,transparent 1px);background-size:100% 44px,44px 100%;color:var(--color-neutral-700)">
+            <div style="width:100%;height:100%;transition:transform .6s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.04)"><image-slot id="ukava-partner-store" shape="rect" radius="0" placeholder="Dealer storefront photo · 4:5"></image-slot></div>
+          </div>
+        </div>
+
+        <div data-reveal="" style="margin-top:clamp(56px,6vw,96px)">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:32px">
+            <div>
+              <p style="margin:0 0 10px;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700)">Dealer stories</p>
+              <h3 style="font-size:clamp(22px,2.2vw,30px);letter-spacing:-.025em;margin:0">Partners building businesses with UKAVA</h3>
+            </div>
+            <div style="display:flex;gap:8px">
+              <button onClick="{{ prevStory }}" aria-label="Previous story" style="width:48px;height:48px;display:grid;place-items:center;background:var(--color-bg);border:0;border-radius:10px;cursor:pointer;color:var(--color-text);font-family:var(--font-heading);font-weight:800;font-size:16px;transition:background .18s ease,color .18s ease" style-hover="background:var(--color-accent);color:var(--color-bg)">←</button>
+              <button onClick="{{ nextStory }}" aria-label="Next story" style="width:48px;height:48px;display:grid;place-items:center;background:var(--color-bg);border:0;border-radius:10px;cursor:pointer;color:var(--color-text);font-family:var(--font-heading);font-weight:800;font-size:16px;transition:background .18s ease,color .18s ease" style-hover="background:var(--color-accent);color:var(--color-bg)">→</button>
+            </div>
+          </div>
+          <div class="hscroll" ref="{{ storiesRef }}" style="display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 4px 24px;scroll-behavior:smooth">
+            <figure style="flex:0 0 {{ storyCardWidth }};scroll-snap-align:start;margin:0;display:flex;gap:20px;background:#fff;border-radius:16px;box-shadow:var(--shadow-md);padding:22px">
+              <div style="position:relative;flex:0 0 130px">
+                <div class="grayscale" style="width:130px;height:176px;border-radius:12px;overflow:hidden;background:var(--color-neutral-300);background-image:linear-gradient(rgba(0,0,0,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.06) 1px,transparent 1px);background-size:100% 32px,32px 100%;color:var(--color-neutral-700)">
+                  <div style="width:100%;height:100%;transition:transform .6s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-dealer-1" shape="rect" radius="0" placeholder="Dealer photo"></image-slot></div>
+                </div>
+                <span style="position:absolute;right:-12px;top:-10px;width:36px;height:36px;border-radius:10px;background:var(--color-accent);color:#fff;display:grid;place-items:center;font-size:26px;font-weight:800;line-height:0;padding-top:8px">”</span>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;min-width:0">
+                <blockquote style="margin: 0 0 18px; font-size: 22px; line-height: 1.5; letter-spacing: -.01em">“UKAVA helped us expand our offering beyond batteries into electric mobility.”</blockquote>
+                <div style="margin-top:auto">
+                  <span style="display: block; font-weight: 700; font-size: 13px; line-height: 14px">Rajesh Kumar</span>
+                  <span style="display:block;font-size:13px;color:var(--color-neutral-600);margin-top:2px">Kumar Auto &amp; Batteries</span>
+                  <span style="display:block;font-size:12px;color:var(--color-neutral-600);margin-top:2px">Jaipur, Rajasthan · Partner since 2021</span>
+                  <span style="display:{{ noteDisplay }};margin-top:10px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700)">Placeholder — pending verified quote</span>
+                </div>
+              </div>
+            </figure>
+            <figure style="flex:0 0 {{ storyCardWidth }};scroll-snap-align:start;margin:0;display:flex;gap:20px;background:#fff;border-radius:16px;box-shadow:var(--shadow-md);padding:22px">
+              <div style="position:relative;flex:0 0 130px">
+                <div class="grayscale" style="width:130px;height:176px;border-radius:12px;overflow:hidden;background:var(--color-neutral-300);background-image:linear-gradient(rgba(0,0,0,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.06) 1px,transparent 1px);background-size:100% 32px,32px 100%;color:var(--color-neutral-700)">
+                  <div style="width:100%;height:100%;transition:transform .6s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-dealer-2" shape="rect" radius="0" placeholder="Dealer photo"></image-slot></div>
+                </div>
+                <span style="position:absolute;right:-12px;top:-10px;width:36px;height:36px;border-radius:10px;background:var(--color-accent);color:#fff;display:grid;place-items:center;font-size:26px;font-weight:800;line-height:0;padding-top:8px">”</span>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;min-width:0">
+                <blockquote style="margin: 0 0 18px; font-size: 22px; line-height: 1.5; letter-spacing: -.01em">“The wider portfolio helped us serve more customer needs from one brand.”</blockquote>
+                <div style="margin-top:auto">
+                  <span style="display: block; font-weight: 700; font-size: 13px; line-height: 14px">Meena Iyer</span>
+                  <span style="display:block;font-size:13px;color:var(--color-neutral-600);margin-top:2px">Iyer Power Solutions</span>
+                  <span style="display:block;font-size:12px;color:var(--color-neutral-600);margin-top:2px">Coimbatore, Tamil Nadu · Partner since 2022</span>
+                  <span style="display:{{ noteDisplay }};margin-top:10px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700)">Placeholder — pending verified quote</span>
+                </div>
+              </div>
+            </figure>
+            <figure style="flex:0 0 {{ storyCardWidth }};scroll-snap-align:start;margin:0;display:flex;gap:20px;background:#fff;border-radius:16px;box-shadow:var(--shadow-md);padding:22px">
+              <div style="position:relative;flex:0 0 130px">
+                <div class="grayscale" style="width:130px;height:176px;border-radius:12px;overflow:hidden;background:var(--color-neutral-300);background-image:linear-gradient(rgba(0,0,0,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.06) 1px,transparent 1px);background-size:100% 32px,32px 100%;color:var(--color-neutral-700)">
+                  <div style="width:100%;height:100%;transition:transform .6s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-dealer-3" shape="rect" radius="0" placeholder="Dealer photo"></image-slot></div>
+                </div>
+                <span style="position:absolute;right:-12px;top:-10px;width:36px;height:36px;border-radius:10px;background:var(--color-accent);color:#fff;display:grid;place-items:center;font-size:26px;font-weight:800;line-height:0;padding-top:8px">”</span>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;min-width:0">
+                <blockquote style="margin: 0 0 18px; font-size: 22px; line-height: 1.5; letter-spacing: -.01em">“Product support and quick responses made onboarding much easier.”</blockquote>
+                <div style="margin-top:auto">
+                  <span style="display: block; font-weight: 700; font-size: 13px; line-height: 14px">Sandeep Verma</span>
+                  <span style="display: block; font-size: 13px; color: var(--color-neutral-600); margin-top: 2px; line-height: 14px">Verma E-Mobility</span>
+                  <span style="display:block;font-size:12px;color:var(--color-neutral-600);margin-top:2px">Lucknow, Uttar Pradesh · Partner since 2020</span>
+                  <span style="display:{{ noteDisplay }};margin-top:10px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700)">Placeholder — pending verified quote</span>
+                </div>
+              </div>
+            </figure>
+            <figure style="flex: 0 0 {{ storyCardWidth }}; scroll-snap-align: start; margin: 0; display: flex; gap: 20px; background: #fff; border-radius: 16px; box-shadow: var(--shadow-md); padding: 22px; height: 240px">
+              <div style="position:relative;flex:0 0 130px">
+                <div class="grayscale" style="width:130px;height:176px;border-radius:12px;overflow:hidden;background:var(--color-neutral-300);background-image:linear-gradient(rgba(0,0,0,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.06) 1px,transparent 1px);background-size:100% 32px,32px 100%;color:var(--color-neutral-700)">
+                  <div style="width: 110%; height: 110%; transition: transform .6s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-dealer-4" shape="rect" radius="0" placeholder="Dealer photo" style="height: 196px"></image-slot></div>
+                </div>
+                <span style="position:absolute;right:-12px;top:-10px;width:36px;height:36px;border-radius:10px;background:var(--color-accent);color:#fff;display:grid;place-items:center;font-size:26px;font-weight:800;line-height:0;padding-top:8px">”</span>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;min-width:0">
+                <blockquote style="margin: 0 0 18px; font-size: 22px; line-height: 1.5; letter-spacing: -.01em">“A reliable business relationship that keeps our shelves moving.”</blockquote>
+                <div style="margin-top:auto">
+                  <span style="display: block; font-weight: 700; font-size: 13px; line-height: 14px">Farhan Shaikh</span>
+                  <span style="display:block;font-size:13px;color:var(--color-neutral-600);margin-top:2px">Shaikh Energy Store</span>
+                  <span style="display:block;font-size:12px;color:var(--color-neutral-600);margin-top:2px">Pune, Maharashtra · Partner since 2023</span>
+                  <span style="display:{{ noteDisplay }};margin-top:10px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700)">Placeholder — pending verified quote</span>
+                </div>
+              </div>
+            </figure>
+            <figure style="flex:0 0 {{ storyCardWidth }};scroll-snap-align:start;margin:0;display:flex;gap:20px;background:#fff;border-radius:16px;box-shadow:var(--shadow-md);padding:22px">
+              <div style="position:relative;flex:0 0 130px">
+                <div class="grayscale" style="width:130px;height:176px;border-radius:12px;overflow:hidden;background:var(--color-neutral-300);background-image:linear-gradient(rgba(0,0,0,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.06) 1px,transparent 1px);background-size:100% 32px,32px 100%;color:var(--color-neutral-700)">
+                  <div style="width:100%;height:100%;transition:transform .6s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-dealer-5" shape="rect" radius="0" placeholder="Dealer photo"></image-slot></div>
+                </div>
+                <span style="position:absolute;right:-12px;top:-10px;width:36px;height:36px;border-radius:10px;background:var(--color-accent);color:#fff;display:grid;place-items:center;font-size:26px;font-weight:800;line-height:0;padding-top:8px">”</span>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;min-width:0">
+                <blockquote style="margin: 0 0 18px; font-size: 22px; line-height: 1.5; letter-spacing: -.01em">“Onboarding was quick and stock reaches us when promised.”</blockquote>
+                <div style="margin-top:auto">
+                  <span style="display: block; font-weight: 700; font-size: 13px; line-height: 14px">Gurpreet Singh</span>
+                  <span style="display:block;font-size:13px;color:var(--color-neutral-600);margin-top:2px">Singh Battery House</span>
+                  <span style="display:block;font-size:12px;color:var(--color-neutral-600);margin-top:2px">Ludhiana, Punjab · Partner since 2021</span>
+                  <span style="display:{{ noteDisplay }};margin-top:10px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700)">Placeholder — pending verified quote</span>
+                </div>
+              </div>
+            </figure>
+            <figure style="flex:0 0 {{ storyCardWidth }};scroll-snap-align:start;margin:0;display:flex;gap:20px;background:#fff;border-radius:16px;box-shadow:var(--shadow-md);padding:22px">
+              <div style="position:relative;flex:0 0 130px">
+                <div class="grayscale" style="width:130px;height:176px;border-radius:12px;overflow:hidden;background:var(--color-neutral-300);background-image:linear-gradient(rgba(0,0,0,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.06) 1px,transparent 1px);background-size:100% 32px,32px 100%;color:var(--color-neutral-700)">
+                  <div style="width:100%;height:100%;transition:transform .6s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)"><image-slot id="ukava-dealer-6" shape="rect" radius="0" placeholder="Dealer photo"></image-slot></div>
+                </div>
+                <span style="position:absolute;right:-12px;top:-10px;width:36px;height:36px;border-radius:10px;background:var(--color-accent);color:#fff;display:grid;place-items:center;font-size:26px;font-weight:800;line-height:0;padding-top:8px">”</span>
+              </div>
+              <div style="display:flex;flex-direction:column;flex:1;min-width:0">
+                <blockquote style="margin: 0 0 18px; font-size: 22px; line-height: 1.5; letter-spacing: -.01em">“Adding solar to our counter opened a second revenue line.”</blockquote>
+                <div style="margin-top:auto">
+                  <span style="display:block;font-weight:700;font-size:14px">Anita Das</span>
+                  <span style="display:block;font-size:13px;color:var(--color-neutral-600);margin-top:2px">Das Solar &amp; Power</span>
+                  <span style="display:block;font-size:12px;color:var(--color-neutral-600);margin-top:2px">Bhubaneswar, Odisha · Partner since 2022</span>
+                  <span style="display:{{ noteDisplay }};margin-top:10px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700)">Placeholder — pending verified quote</span>
+                </div>
+              </div>
+            </figure>
+          </div>
+          <p style="display:{{ noteDisplay }};margin:26px 0 0;font-size:12px;color:var(--color-neutral-700)">Use only real dealer photos and verified quotes. Prioritise business outcomes: portfolio expansion, support quality, sales confidence.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="support" data-screen-label="Fallback conversion" style="color: var(--color-bg); padding-block: clamp(44px,5vw,72px); background-color: #FC5013">
+      <div style="max-width:1440px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,64px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px">
+        <div>
+          <h2 style="font-size:clamp(26px,3vw,42px);letter-spacing:-.035em;margin:0 0 10px;color:inherit;max-width:22ch">Not sure which product is right for you?</h2>
+          <p style="margin:0;max-width:58ch;font-size:16px;opacity:.92">Share your number and our team can help with product selection, pricing and purchase details.</p>
+        </div>
+        <button class="btn" onClick="{{ openCallback }}" style="font-weight: 700; background:var(--color-bg);color:var(--color-accent);font-size: 16px;letter-spacing: 0.01em;text-transform: none;padding:18px 26px;transition:transform .18s ease,background .18s ease" style-hover="transform:translateY(-2px);background:var(--color-text);color:var(--color-bg)">Request a Callback</button>
+      </div>
+    </section>
+  </main>
+
+  <footer id="about" style="color: var(--color-neutral-200); padding-top: clamp(56px,6vw,88px); background-color: #241816">
+    <div style="max-width:1440px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,64px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:44px 32px;padding-bottom:56px">
+        <div>
+          <a href="UKAVA%20Homepage.dc.html" aria-label="UKAVA home" style="display:inline-flex;align-items:center;text-decoration:none">
+            <img src="ukava-logo-white.png" alt="UKAVA" style="height:34px;width:auto;display:block" />
+          </a>
+          
+          <p style="margin:0;font-size:13px;max-width:30ch;opacity:.55;line-height:1.6">Lithium-powered products for homes, businesses and roads across India.</p>
+        </div>
+        <div>
+          <h3 style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.45;margin:0 0 18px;color:inherit">Products</h3>
+          <a href="#offerings" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Electric Scooters</a>
+          <a href="#offerings" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Lithium Batteries</a>
+          <a href="#offerings" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Inverter &amp; Battery</a>
+          <a href="#offerings" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Solar Solutions</a>
+        </div>
+        <div>
+          <h3 style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.45;margin:0 0 18px;color:inherit">Company</h3>
+          <a href="About%20UKAVA.dc.html" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">About Us</a>
+          <a href="#partner" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Partner With Us</a>
+          <a href="#support" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Contact</a>
+        </div>
+        <div>
+          <h3 style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.45;margin:0 0 18px;color:inherit">Support</h3>
+          <a href="#support" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Service</a>
+          <a href="#support" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Warranty</a>
+          <a href="#support" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Product registration</a>
+          <a href="#support" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Downloads</a>
+        </div>
+        <div>
+          <h3 style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.45;margin:0 0 18px;color:inherit">Contact</h3>
+          <a href="tel:18001204502" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">1800 120 4502</a>
+          <p style="margin:0 0 8px;font-size:14px;opacity:.65">Email TBD</p>
+          <p style="margin:0;font-size:14px;opacity:.65">Registered address TBD</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;border-top:1px solid var(--color-neutral-800);padding:22px 0 40px;font-size:12px;opacity:.45">
+        <span>© 2026 UKAVA. All rights reserved.</span>
+        <span>Legal / privacy links TBD</span>
+      </div>
+    </div>
+  </footer>
+
+  <div style="display:{{ modalDisplay }};position:fixed;inset:0;z-index:100;align-items:center;justify-content:center">
+    <div onClick="{{ closeLead }}" style="position:absolute;inset:0;background:color-mix(in srgb, #201e1d 62%, transparent)"></div>
+    <div role="dialog" aria-modal="true" style="position:relative;width:min(470px,100%);max-height:94vh;overflow-y:auto;background:var(--color-bg);border-top:6px solid var(--color-accent);border-radius:16px;padding:clamp(26px,3vw,40px);box-shadow:var(--shadow-lg)">
+      <button onClick="{{ closeLead }}" aria-label="Close" style="position:absolute;top:14px;right:14px;width:36px;height:36px;background:transparent;border:0;cursor:pointer;font-size:22px;line-height:1;color:var(--color-text)">×</button>
+
+      <div style="display:{{ formDisplay }}">
+        <p style="margin:0 0 12px;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--color-accent-700)">{{ leadKicker }}</p>
+        <h2 style="font-size:28px;letter-spacing:-.03em;margin:0 0 10px">{{ leadTitle }}</h2>
+        <p style="margin:0 0 26px;font-size:14px;line-height:1.55;color:var(--color-neutral-800)">{{ leadSub }}</p>
+
+        <div style="display:{{ interestDisplay }};align-items:center;gap:10px;margin-bottom:22px;padding:12px 14px;background:var(--color-text);color:var(--color-bg)">
+          <span style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;opacity:.6">Interest</span>
+          <span style="font-family:var(--font-heading);font-weight:800;font-size:14px">{{ leadProduct }}</span>
+        </div>
+
+        <div class="field" style="margin-bottom:16px">
+          <label for="ukv-name">Name</label>
+          <input class="input" id="ukv-name" value="{{ name }}" onChange="{{ setName }}" style="min-height:48px;font-size:15px;background:var(--color-bg);border-width:2px">
+          <div style="font-size:12px;color:var(--color-accent-700);margin-top:6px">{{ errName }}</div>
+        </div>
+        <div class="field" style="margin-bottom:16px">
+          <label for="ukv-mobile">Mobile number</label>
+          <div style="display:flex">
+            <span style="display:flex;align-items:center;padding:0 14px;background:var(--color-text);color:var(--color-bg);font-family:var(--font-heading);font-weight:800;font-size:14px">+91</span>
+            <input class="input" id="ukv-mobile" inputmode="numeric" maxlength="10" placeholder="10-digit number" value="{{ mobile }}" onChange="{{ setMobile }}" style="min-height:48px;font-size:15px;background:var(--color-bg);border-width:2px">
+          </div>
+          <div style="font-size:12px;color:var(--color-accent-700);margin-top:6px">{{ errMobile }}</div>
+        </div>
+        <div class="field" style="margin-bottom:16px">
+          <label for="ukv-city">City</label>
+          <input class="input" id="ukv-city" value="{{ city }}" onChange="{{ setCity }}" style="min-height:48px;font-size:15px;background:var(--color-bg);border-width:2px">
+          <div style="font-size:12px;color:var(--color-accent-700);margin-top:6px">{{ errCity }}</div>
+        </div>
+        <div class="field" style="display:{{ partnerFieldsDisplay }};margin-bottom:16px">
+          <label for="ukv-business">Current business</label>
+          <input class="input" id="ukv-business" placeholder="e.g. battery dealer, EV retailer" value="{{ business }}" onChange="{{ setBusiness }}" style="min-height:48px;font-size:15px;background:var(--color-bg);border-width:2px">
+          <div style="font-size:12px;color:var(--color-accent-700);margin-top:6px">{{ errBusiness }}</div>
+        </div>
+        <div class="field" style="display:{{ partnerFieldsDisplay }};margin-bottom:16px">
+          <label for="ukv-category">Category interested in</label>
+          <select class="input" id="ukv-category" value="{{ category }}" onChange="{{ setCategory }}" style="min-height:48px;font-size:15px;background:var(--color-bg);border-width:2px">
+            <option value="">Select a category</option>
+            <option value="Electric Scooters">Electric Scooters</option>
+            <option value="Lithium Batteries">Lithium Batteries</option>
+            <option value="Inverter &amp; Battery">Inverter &amp; Battery</option>
+            <option value="Solar Solutions">Solar Solutions</option>
+            <option value="Full portfolio">Full portfolio</option>
+          </select>
+          <div style="font-size:12px;color:var(--color-accent-700);margin-top:6px">{{ errCategory }}</div>
+        </div>
+
+        <button class="btn btn-primary" onClick="{{ submitLead }}" style="font-weight: 700; width:100%;justify-content:flex-start;margin-top:12px;font-size: 16px;letter-spacing: 0.01em;text-transform: none;padding:18px">{{ leadCta }}</button>
+        <p style="margin:14px 0 0;font-size:11px;color:var(--color-neutral-700)">By submitting, you agree UKAVA may contact you about your enquiry.</p>
+      </div>
+
+      <div style="display:{{ successDisplay }}">
+        <div style="width:48px;height:48px;background:var(--color-accent);color:var(--color-bg);display:grid;place-items:center;font-family:var(--font-heading);font-weight:800;font-size:22px;margin-bottom:24px">✓</div>
+        <h2 style="font-size:28px;letter-spacing:-.03em;margin:0 0 10px">{{ successTitle }}</h2>
+        <p style="margin:0 0 26px;font-size:14px;line-height:1.55;color:var(--color-neutral-800)">{{ successSub }}</p>
+        <button class="btn btn-secondary" onClick="{{ closeLead }}" style="font-weight: 700; width:100%;justify-content:flex-start;font-size: 16px;letter-spacing: 0.01em;text-transform: none;padding:18px;border-width:2px">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultCategory&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Electric Scooters&quot;,&quot;Lithium Batteries&quot;,&quot;Inverter &amp; Battery&quot;,&quot;Solar Solutions&quot;],&quot;default&quot;:&quot;Electric Scooters&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Featured products&quot;},&quot;darkWhy&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Why UKAVA&quot;},&quot;showPlaceholderNotes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;}}">
+const CATS = { "Electric Scooters": "mobility", "Lithium Batteries": "batteries", "Inverter & Battery": "inverter", "Solar Solutions": "solar" };
+const TAB_KEYS = ["mobility", "batteries", "inverter", "solar"];
+
+const CATALOGUE = {
+  mobility: ["UKAVA Strom", "UKAVA Rapid", "UKAVA Raya", "UKAVA Vega", "UKAVA Aura", "UKAVA Zyro"],
+  batteries: ["Lithium Inverter Batteries", "Electric Two-Wheeler Lithium Battery", "Electric Three-Wheeler Lithium Battery", "Rechargeable LFP Battery", "ESS (Energy Storage System)"],
+  inverter: ["LINVA 1000", "LINVA 1500", "LINVA 2500"],
+  solar: ["LINVASOL 1050", "LINVASOL 1550", "LINVASOL 2550"]
+};
+
+const slugify = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+const camelKey = (s) => slugify(s).replace(/-([a-z0-9])/g, (m, c) => c.toUpperCase());
+const PRODUCTS = {};
+Object.keys(CATALOGUE).forEach((k) => CATALOGUE[k].forEach((n) => { PRODUCTS[camelKey(n)] = n; }));
+
+class Component extends DCLogic {
+  state = {
+    tab: null, menuOpen: false, w: 1440, scrolled: false, heroSlide: 0, heroLive: [],
+    lead: null, product: "", sent: false,
+    name: "", mobile: "", city: "", business: "", category: "",
+    errors: {}
+  };
+
+  componentDidMount() {
+    this._onScroll = () => {
+      const past = window.scrollY > 60;
+      if (past !== this.state.scrolled) this.setState({ scrolled: past });
+    };
+    this._onScroll();
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+    this._resize = () => this.setState({ w: window.innerWidth });
+    this._resize();
+    window.addEventListener("resize", this._resize);
+    this._key = (e) => { if (e.key === "Escape" && this.state.lead) this.closeLead(); };
+    document.addEventListener("keydown", this._key);
+    this.initReveal();
+    this.initHero();
+    this.initStoriesAuto();
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this._resize);
+    window.removeEventListener("scroll", this._onScroll);
+    document.removeEventListener("keydown", this._key);
+    if (this._sweep) { window.removeEventListener("scroll", this._sweep); window.removeEventListener("load", this._sweep); }
+    if (this._heroTimer) clearInterval(this._heroTimer);
+    if (this._storyTimer) clearInterval(this._storyTimer);
+    if (this._heroObs) this._heroObs.disconnect();
+    if (this._io) this._io.disconnect();
+  }
+
+  /* Only rotate through hero slots that actually hold an image; a lone image never rotates. */
+  initHero() {
+    const ids = ["ukava-hero-1", "ukava-hero-2", "ukava-hero-3"];
+    const scan = () => {
+      const live = ids.filter((id) => {
+        const el = document.getElementById(id);
+        return el && (el.hasAttribute("data-filled") || el.getAttribute("src"));
+      });
+      const cur = this.state.heroLive.join();
+      if (live.join() !== cur) {
+        this.setState((s) => ({ heroLive: live, heroSlide: s.heroSlide < live.length ? s.heroSlide : 0 }));
+      }
+      this.syncHeroTimer(live.length);
+    };
+    scan();
+    this._heroObs = new MutationObserver(scan);
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) this._heroObs.observe(el, { attributes: true, attributeFilter: ["data-filled", "src"] });
+    });
+    setTimeout(scan, 800);
+  }
+
+  syncHeroTimer(count) {
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const want = !reduce && count > 1;
+    if (want && !this._heroTimer) {
+      this._heroTimer = setInterval(() => this.setState((s) => ({
+        heroSlide: s.heroLive.length ? (s.heroSlide + 1) % s.heroLive.length : 0
+      })), 5000);
+    } else if (!want && this._heroTimer) {
+      clearInterval(this._heroTimer);
+      this._heroTimer = null;
+    }
+  }
+
+  initReveal() {
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const nodes = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
+    if (reduce || !("IntersectionObserver" in window)) return;
+    nodes.forEach((el) => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(20px)";
+      el.style.transition = "opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1)";
+    });
+    const show = (el) => {
+      el.style.opacity = "1";
+      el.style.transform = "none";
+      if (this._io) this._io.unobserve(el);
+    };
+    this._io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting || en.boundingClientRect.bottom < 0) show(en.target);
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.06 });
+    nodes.forEach((el) => this._io.observe(el));
+    this._sweep = () => nodes.forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > -1) show(el);
+      else if (r.bottom <= 0) show(el);
+    });
+    window.addEventListener("scroll", this._sweep, { passive: true });
+    window.addEventListener("load", this._sweep);
+    setTimeout(this._sweep, 1200);
+  }
+
+  get tab() { return this.state.tab || CATS[this.props.defaultCategory] || "mobility"; }
+
+  openLead(kind, product) {
+    this.setState({ lead: kind, product: product || "", sent: false, errors: {}, name: "", mobile: "", city: "", business: "", category: "" });
+    document.body.style.overflow = "hidden";
+  }
+  closeLead = () => { this.setState({ lead: null }); document.body.style.overflow = ""; };
+
+  submitLead = () => {
+    const s = this.state, errors = {};
+    if (s.name.trim().length < 2) errors.name = "Please enter your name.";
+    if (s.mobile.replace(/\D/g, "").length !== 10) errors.mobile = "Enter a valid 10-digit mobile number.";
+    if (!s.city.trim()) errors.city = "Please enter your city.";
+    if (s.lead === "partner") {
+      if (!s.business.trim()) errors.business = "Tell us about your current business.";
+      if (!s.category) errors.category = "Select a category.";
+    }
+    if (Object.keys(errors).length) { this.setState({ errors }); return; }
+    console.log("[UKAVA lead]", {
+      type: s.lead === "product" ? "consumer_product" : s.lead === "partner" ? "partner_dealer" : "callback",
+      product: s.lead === "product" ? s.product : null,
+      name: s.name.trim(), mobile: "+91" + s.mobile.replace(/\D/g, ""), city: s.city.trim(),
+      business: s.business.trim() || null, category: s.category || null,
+      submittedAt: new Date().toISOString(), source: "homepage"
+    });
+    this.setState({ sent: true, errors: {} });
+  };
+
+  scrollStories(dir) {
+    const el = this._stories;
+    if (!el) return;
+    const card = el.firstElementChild;
+    const gap = parseFloat(getComputedStyle(el).columnGap) || 24;
+    const step = card ? card.getBoundingClientRect().width + gap : 380;
+    const max = el.scrollWidth - el.clientWidth - 4;
+    let to = el.scrollLeft + dir * step;
+    if (to > max) to = 0;
+    if (to < 0) to = max;
+    el.scrollTo({ left: to, behavior: "smooth" });
+  }
+
+  initStoriesAuto() {
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+    this._storyTimer = setInterval(() => {
+      const el = this._stories;
+      if (!el || this._storyHover) return;
+      const r = el.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > window.innerHeight) return;
+      this.scrollStories(1);
+    }, 4500);
+  }
+
+  renderVals() {
+    const s = this.state, tab = this.tab, narrow = s.w < 1080;
+    const on = "var(--color-text)", off = "#5C5757";
+    const wOn = 800, wOff = 500;
+    const dark = this.props.darkWhy !== false;
+    const notes = this.props.showPlaceholderNotes !== false;
+    const partner = s.lead === "partner";
+    const activeHero = s.heroLive[s.heroSlide] || s.heroLive[0];
+    const fade = "opacity 1s cubic-bezier(.22,.61,.36,1)";
+    const heroLayer = (id, trayRight) => s.heroLive.indexOf(id) !== -1
+      ? { position: "absolute", inset: 0, opacity: activeHero === id ? 1 : 0, transition: fade }
+      : { position: "absolute", right: trayRight, bottom: "26px", width: "116px", height: "82px", zIndex: 4,
+          border: "2px dashed rgba(255,255,255,.55)", borderRadius: "8px", overflow: "hidden",
+          background: "rgba(16,14,13,.45)", color: "#fff" };
+
+    const copy = {
+      product: { kicker: "Product enquiry", title: "Get price & details for " + (s.product || "this product"), sub: "Share your details and our team will call you with pricing and options.", cta: "Get Price & Details", okTitle: "Thanks. Our team will get in touch shortly.", okSub: "We've noted your interest and a UKAVA representative will call you soon." },
+      callback: { kicker: "Request a callback", title: "Request a callback", sub: "Leave your details and our team will call you back shortly.", cta: "Request a Callback", okTitle: "Thanks. Our team will get in touch shortly.", okSub: "We've received your details. Expect a call from a UKAVA representative soon." },
+      partner: { kicker: "Partner with UKAVA", title: "Become a UKAVA partner", sub: "Tell us about your business and our team will explore the opportunity with you.", cta: "Become a Partner", okTitle: "Thanks. Our business team will reach out shortly.", okSub: "We've received your partnership enquiry and will contact you to discuss next steps." }
+    }[s.lead || "callback"];
+
+    const enq = {}, pdp = {};
+    Object.keys(PRODUCTS).forEach((k) => {
+      enq[k] = (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.openLead("product", PRODUCTS[k]); };
+      pdp[k] = () => { location.href = "Product%20Detail.dc.html#" + slugify(PRODUCTS[k]); };
+    });
+
+    return {
+      headerBg: s.scrolled ? "#fff" : "rgba(16,14,13,.10)",
+      headerBlur: s.scrolled ? "none" : "saturate(1.1) blur(14px)",
+      headerLinkHover: s.scrolled ? "var(--color-accent)" : "var(--color-accent-400)",
+      headerPhoneIcon: s.scrolled ? "var(--color-accent)" : "#fff",
+      headerBurgerBorder: s.scrolled ? "var(--color-neutral-300)" : "rgba(255,255,255,.4)",
+      headerFg: s.scrolled ? "var(--color-text)" : "#fff",
+      headerShadow: s.scrolled ? "0 1px 0 var(--color-neutral-300)" : "none",
+      logoDarkDisplay: s.scrolled ? "block" : "none",
+      logoLightDisplay: s.scrolled ? "none" : "block",
+      navDisplay: narrow ? "none" : "flex",
+      burgerDisplay: narrow ? "flex" : "none",
+      menuDisplay: narrow && s.menuOpen ? "block" : "none",
+      heroCols: narrow ? "1fr" : "1fr 1.08fr",
+      heroFigureHeight: narrow ? "min(78vw, 420px)" : "clamp(440px, 44vw, 620px)",
+      heroBleed: narrow ? "0px" : "calc(-1 * clamp(20px, 4.5vw, 64px))",
+      partnerCols: narrow ? "1fr" : "1.1fr .9fr",
+      partnerPhotoRatio: narrow ? "16/10" : "4/5",
+      heroTileDisplay: narrow ? "none" : "block",
+      heroOp1: activeHero === "ukava-hero-1" ? 1 : 0,
+      heroLayer2: heroLayer("ukava-hero-2", "26px"),
+      heroLayer3: heroLayer("ukava-hero-3", "154px"),
+      heroHeight: narrow ? "min(78vh, 610px)" : "850px",
+      heroDotsDisplay: s.heroLive.length > 1 ? "flex" : "none",
+      heroDot1Display: s.heroLive.length > 0 ? "block" : "none",
+      heroDot2Display: s.heroLive.length > 1 ? "block" : "none",
+      heroDot3Display: s.heroLive.length > 2 ? "block" : "none",
+      heroDot1: s.heroSlide === 0 ? "var(--color-accent)" : "rgba(255,255,255,.45)",
+      heroDot2: s.heroSlide === 1 ? "var(--color-accent)" : "rgba(255,255,255,.45)",
+      heroDot3: s.heroSlide === 2 ? "var(--color-accent)" : "rgba(255,255,255,.45)",
+      heroGo1: () => this.setState({ heroSlide: 0 }), heroGo2: () => this.setState({ heroSlide: 1 }), heroGo3: () => this.setState({ heroSlide: 2 }),
+      toggleMenu: () => this.setState({ menuOpen: !s.menuOpen }),
+      closeMenu: () => this.setState({ menuOpen: false }),
+
+      productCols: narrow ? "1fr" : "repeat(auto-fill, minmax(340px, 1fr))",
+      enq, pdp,
+      hide_mobility: tab !== "mobility", hide_batteries: tab !== "batteries", hide_inverter: tab !== "inverter", hide_solar: tab !== "solar",
+      tab_mobility: () => this.setState({ tab: "mobility" }), tab_batteries: () => this.setState({ tab: "batteries" }),
+      tab_inverter: () => this.setState({ tab: "inverter" }), tab_solar: () => this.setState({ tab: "solar" }),
+      sel_mobility: tab === "mobility", sel_batteries: tab === "batteries", sel_inverter: tab === "inverter", sel_solar: tab === "solar",
+      pill_mobility: tab === "mobility" ? "var(--color-accent)" : "transparent",
+      pill_batteries: tab === "batteries" ? "var(--color-accent)" : "transparent",
+      pill_inverter: tab === "inverter" ? "var(--color-accent)" : "transparent",
+      pill_solar: tab === "solar" ? "var(--color-accent)" : "transparent",
+      pillHover_mobility: tab === "mobility" ? "var(--color-accent-600)" : "var(--color-neutral-200)",
+      pillHover_batteries: tab === "batteries" ? "var(--color-accent-600)" : "var(--color-neutral-200)",
+      pillHover_inverter: tab === "inverter" ? "var(--color-accent-600)" : "var(--color-neutral-200)",
+      pillHover_solar: tab === "solar" ? "var(--color-accent-600)" : "var(--color-neutral-200)",
+      shadow_mobility: tab === "mobility" ? "var(--shadow-sm)" : "none",
+      shadow_batteries: tab === "batteries" ? "var(--shadow-sm)" : "none",
+      shadow_inverter: tab === "inverter" ? "var(--shadow-sm)" : "none",
+      shadow_solar: tab === "solar" ? "var(--shadow-sm)" : "none",
+      weight_mobility: tab === "mobility" ? wOn : wOff,
+      weight_batteries: tab === "batteries" ? wOn : wOff,
+      weight_inverter: tab === "inverter" ? wOn : wOff,
+      weight_solar: tab === "solar" ? wOn : wOff,
+      color_mobility: tab === "mobility" ? on : off, line_mobility: tab === "mobility" ? "var(--color-accent)" : "transparent",
+      color_batteries: tab === "batteries" ? on : off, line_batteries: tab === "batteries" ? "var(--color-accent)" : "transparent",
+      color_inverter: tab === "inverter" ? on : off, line_inverter: tab === "inverter" ? "var(--color-accent)" : "transparent",
+      color_solar: tab === "solar" ? on : off, line_solar: tab === "solar" ? "var(--color-accent)" : "transparent",
+      colorMobility: tab === "mobility" ? on : off, lineMobility: tab === "mobility" ? "var(--color-accent)" : "transparent",
+      colorEnergy: tab === "energy" ? on : off, lineEnergy: tab === "energy" ? "var(--color-accent)" : "transparent",
+      colorBackup: tab === "backup" ? on : off, lineBackup: tab === "backup" ? "var(--color-accent)" : "transparent",
+      colorSolar: tab === "solar" ? on : off, lineSolar: tab === "solar" ? "var(--color-accent)" : "transparent",
+
+      whyBg: dark ? "var(--color-text)" : "var(--color-bg)",
+      whyFg: dark ? "var(--color-neutral-100)" : "var(--color-text)",
+      whyRule: dark ? "var(--color-neutral-800)" : "var(--color-text)",
+      noteDisplay: notes ? "block" : "none",
+
+      enq,
+      openCallback: () => this.openLead("callback", ""),
+      openPartner: () => this.openLead("partner", ""),
+      closeLead: this.closeLead,
+      submitLead: this.submitLead,
+
+      modalDisplay: s.lead ? "flex" : "none",
+      formDisplay: s.sent ? "none" : "block",
+      successDisplay: s.sent ? "block" : "none",
+      interestDisplay: s.lead === "product" ? "flex" : "none",
+      partnerFieldsDisplay: partner ? "block" : "none",
+      leadKicker: copy.kicker, leadTitle: copy.title, leadSub: copy.sub, leadCta: copy.cta,
+      successTitle: copy.okTitle, successSub: copy.okSub, leadProduct: s.product,
+
+      name: s.name, mobile: s.mobile, city: s.city, business: s.business, category: s.category,
+      setName: (e) => this.setState({ name: e.target.value }),
+      setMobile: (e) => this.setState({ mobile: e.target.value.replace(/\D/g, "").slice(0, 10) }),
+      setCity: (e) => this.setState({ city: e.target.value }),
+      setBusiness: (e) => this.setState({ business: e.target.value }),
+      setCategory: (e) => this.setState({ category: e.target.value }),
+      errName: s.errors.name || "", errMobile: s.errors.mobile || "", errCity: s.errors.city || "",
+      errBusiness: s.errors.business || "", errCategory: s.errors.category || "",
+
+      storyCardWidth: narrow ? "86%" : "calc(40% - 14px)",
+      storiesRef: (el) => {
+        this._stories = el;
+        if (el && !el._hoverBound) {
+          el._hoverBound = true;
+          el.addEventListener("pointerenter", () => { this._storyHover = true; });
+          el.addEventListener("pointerleave", () => { this._storyHover = false; });
+        }
+      },
+      prevStory: () => this.scrollStories(-1),
+      nextStory: () => this.scrollStories(1)
+    };
+  }
+}
+
+</script>
+</body>
+</html>

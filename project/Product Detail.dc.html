@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-c1cb5aca-9857-4246-8810-aa4607a40ecc/styles.css">
+<script src="_ds/modernist-c1cb5aca-9857-4246-8810-aa4607a40ecc/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<script src="./ukava-catalogue.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&amp;display=swap">
+<style>
+  :root { --font-heading: "DM Sans", system-ui, sans-serif; --font-body: "DM Sans", system-ui, sans-serif;
+    --radius-sm: 6px; --radius-md: 10px; --radius-lg: 14px;
+    --color-accent: #FC5013; --color-accent-500: #FC5013;
+    --color-accent-100: #FFEDE5; --color-accent-200: #FFD5C4; --color-accent-300: #FEB194;
+    --color-accent-400: #FD7A46; --color-accent-600: #E03F06; --color-accent-700: #B93304;
+    --color-accent-800: #8E2703; --color-accent-900: #661B02; }
+  body { margin: 0; background: var(--color-bg); font-family: "DM Sans", system-ui, sans-serif; }
+  h1, h2, h3, h4, h5, h6, button, input, select, textarea { font-family: "DM Sans", system-ui, sans-serif; }
+  a { color: var(--color-accent); }
+  a:hover { color: var(--color-accent-700); }
+  .hscroll { scrollbar-width: none; }
+  .hscroll::-webkit-scrollbar { display: none; }
+  @keyframes panelIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-body);color:var(--color-text);background:var(--color-bg)">
+
+  <header style="position:sticky;top:0;z-index:60;background:#fff;color:var(--color-text);border-bottom:1px solid var(--color-neutral-300)">
+    <div style="max-width:1440px;margin-inline:auto;padding:0 clamp(20px,4.5vw,64px);height:84px;display:flex;align-items:center;gap:clamp(24px,4vw,56px)">
+      <a href="UKAVA%20Homepage.dc.html" aria-label="UKAVA home" style="text-decoration:none;display:flex;align-items:center;margin-right:auto">
+        <span style="position:relative;display:block;width:200px;height:48px;overflow:hidden">
+          <img src="ukava-logo.jpg" alt="UKAVA — EV &amp; Lithium Battery" style="position:absolute;left:-44px;top:-118px;width:288px;max-width:none;height:auto;mix-blend-mode:multiply">
+        </span>
+      </a>
+      <nav style="display:{{ navDisplay }};align-items:center;gap:clamp(28px,3.4vw,48px)">
+        <a href="UKAVA%20Homepage.dc.html" style="position:relative;color:inherit;text-decoration:none;font-size:15px;font-weight:500;letter-spacing:0em;padding:6px 0;border-bottom:2px solid transparent" style-hover="color:var(--color-accent)">Home</a>
+        <a href="Product%20Listing.dc.html" style="position:relative;color:inherit;text-decoration:none;font-size:15px;font-weight:600;letter-spacing:0em;padding:6px 0;border-bottom:2px solid var(--color-accent)" style-hover="color:var(--color-accent)">Products</a>
+        <a href="About%20UKAVA.dc.html" style="position:relative;color:inherit;text-decoration:none;font-size:15px;font-weight:500;letter-spacing:0em;padding:6px 0;border-bottom:2px solid transparent" style-hover="color:var(--color-accent)">About Us</a>
+        <a href="tel:18001204502" style="display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none;font-size:16px;font-weight:600;letter-spacing:0em" style-hover="color:var(--color-accent)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>1800 120 4502</span>
+        </a>
+      </nav>
+      <a href="tel:18001204502" aria-label="Call UKAVA on 1800 120 4502" style="display:{{ burgerDisplay }};align-items:center;justify-content:center;width:46px;height:46px;border-radius:8px;background:var(--color-accent);color:#fff;text-decoration:none">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+      <button onClick="{{ toggleMenu }}" aria-label="Menu" style="display:{{ burgerDisplay }};width:46px;height:46px;align-items:center;justify-content:center;background:transparent;border:1px solid var(--color-neutral-300);border-radius:8px;cursor:pointer;flex-direction:column;gap:5px">
+        <span style="display:block;width:20px;height:2px;background:var(--color-text)"></span>
+        <span style="display:block;width:20px;height:2px;background:var(--color-text)"></span>
+        <span style="display:block;width:20px;height:2px;background:var(--color-text)"></span>
+      </button>
+    </div>
+    <div style="display:{{ menuDisplay }};border-top:1px solid var(--color-neutral-300);padding:8px clamp(20px,5vw,64px) 24px;background:#fff">
+      <a href="UKAVA%20Homepage.dc.html" onClick="{{ closeMenu }}" style="display:block;color:inherit;text-decoration:none;padding:18px 0;border-bottom:1px solid var(--color-neutral-300);font-weight:600;font-size:18px">Home</a>
+      <a href="Product%20Listing.dc.html" onClick="{{ closeMenu }}" style="display:block;color:inherit;text-decoration:none;padding:18px 0;border-bottom:1px solid var(--color-neutral-300);font-weight:600;font-size:18px">Products</a>
+      <a href="About%20UKAVA.dc.html" onClick="{{ closeMenu }}" style="display:block;color:inherit;text-decoration:none;padding:18px 0;font-weight:600;font-size:18px">About Us</a>
+    </div>
+  </header>
+
+  <main>
+    <section data-screen-label="Product hero" style="background:#fff;color:var(--color-text);padding-block:clamp(28px,3vw,44px) clamp(48px,5.4vw,80px)">
+      <div style="max-width:1440px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,64px)">
+        <nav aria-label="Breadcrumb" style="display:flex;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--color-neutral-700);margin-bottom:clamp(28px,3vw,44px)">
+          <a href="Product%20Listing.dc.html" style="color:inherit;text-decoration:none" style-hover="color:var(--color-accent-400)">Products</a>
+          <span>/</span>
+          <a href="{{ catHref }}" style="color:inherit;text-decoration:none" style-hover="color:var(--color-accent-400)">{{ catLabel }}</a>
+          <span>/</span>
+          <span style="color:var(--color-text)">{{ name }}</span>
+        </nav>
+
+        <div style="display:grid;grid-template-columns:{{ heroCols }};gap:clamp(28px,3.4vw,60px);align-items:start">
+          <div style="display:grid;grid-template-columns:{{ galleryCols }};gap:clamp(14px,1.4vw,22px)">
+            <div class="hscroll" style="display:{{ railDisplay }};flex-direction:{{ railDirection }};gap:12px;overflow:auto;order:{{ railOrder }}">
+              <sc-for list="{{ thumbs }}" as="t" hint-placeholder-count="5">
+                <button onClick="{{ t.select }}" aria-label="View image" style="flex:0 0 auto;width:{{ t.size }};aspect-ratio:1/1;padding:0;border:2px solid {{ t.border }};border-radius:10px;overflow:hidden;background:var(--color-surface);cursor:pointer;transition:border-color .2s ease">
+                  <image-slot id="{{ t.slotId }}" shape="rect" radius="0" placeholder="{{ t.label }}"></image-slot>
+                </button>
+              </sc-for>
+            </div>
+            <div style="position:relative;aspect-ratio:1/1;border-radius:18px;overflow:hidden;background:var(--color-surface);background-image:linear-gradient(var(--color-neutral-300) 1px,transparent 1px),linear-gradient(90deg,var(--color-neutral-300) 1px,transparent 1px);background-size:100% 48px,48px 100%;color:var(--color-neutral-600)">
+              <image-slot id="{{ mainSlotId }}" shape="rect" radius="0" placeholder="{{ mainSlotLabel }}"></image-slot>
+            </div>
+          </div>
+
+          <div>
+            <p style="margin:0 0 12px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--color-accent-700)">{{ typeLabel }}</p>
+            <h1 style="font-size:clamp(34px,4.2vw,58px);line-height:1;letter-spacing:-.03em;font-weight:600;margin:0 0 clamp(28px,3vw,40px)">{{ name }}</h1>
+
+            <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 24px;padding-bottom:clamp(28px,3vw,40px);border-bottom:1px solid var(--color-neutral-300)">
+              <sc-for list="{{ primarySpecs }}" as="s" hint-placeholder-count="3">
+                <div>
+                  <span style="display:block;font-size:{{ primaryValueSize }};font-weight:700;letter-spacing:-.01em;line-height:1.2;text-wrap:pretty">{{ s.value }}</span>
+                  <span style="display:block;margin-top:6px;font-size:13px;color:{{ heroLabelColor }}">{{ s.label }}</span>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="display:{{ colourDisplay }};flex-direction:column;gap:14px;padding-block:clamp(24px,2.6vw,34px)">
+              <span style="font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--color-neutral-700)">Available colours</span>
+              <div style="display:flex;gap:12px">
+                <sc-for list="{{ colours }}" as="c" hint-placeholder-count="4">
+                  <button onClick="{{ c.select }}" aria-label="{{ c.name }}" title="{{ c.name }}" style="width:34px;height:34px;border-radius:50%;background:{{ c.hex }};border:2px solid {{ c.ring }};cursor:pointer;padding:0;transition:border-color .2s ease"></button>
+                </sc-for>
+              </div>
+              <span style="font-size:12px;color:var(--color-neutral-700)">{{ colourNote }}</span>
+            </div>
+
+            <button class="btn btn-primary" onClick="{{ openEnquiry }}" style="margin-top:clamp(20px,2.4vw,32px);font-size:16px;font-weight:600;letter-spacing:0em;text-transform:none;padding:18px 30px;border-radius:8px;transition:transform .18s ease,background .18s ease" style-hover="transform:translateY(-2px)">Enquire Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Features" style="display:{{ featuresDisplay }};padding-block:clamp(56px,6.5vw,100px)">
+      <div style="max-width:1440px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,64px)">
+        <h2 style="font-size:clamp(28px,3.2vw,46px);letter-spacing:-.03em;font-weight:600;margin:0 0 clamp(32px,3.6vw,52px);max-width:22ch">Everything you need, built in</h2>
+        <div style="display:grid;grid-template-columns:{{ featureCols }};gap:2px;background:var(--color-neutral-300);border-radius:16px;overflow:hidden">
+          <sc-for list="{{ features }}" as="f" hint-placeholder-count="9">
+            <div style="background:#fff;padding:28px 26px 30px">
+              <span style="display:block;width:32px;height:3px;background:var(--color-accent);margin-bottom:20px"></span>
+              <h3 style="font-size:{{ featureTitleSize }};font-weight:600;letter-spacing:-.015em;margin:0 0 6px">{{ f.name }}</h3>
+              <p style="margin:0;font-size:13px;color:{{ labelColor }}">{{ f.note }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Highlight specs" style="display:{{ highlightDisplay }};background:var(--color-surface);color:var(--color-text)">
+      <div style="display:grid;grid-template-columns:{{ highlightCols }}">
+        <div style="position:relative;min-height:{{ highlightImageHeight }};background:var(--color-neutral-300);background-image:linear-gradient(rgba(0,0,0,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.05) 1px,transparent 1px);background-size:100% 48px,48px 100%;color:var(--color-neutral-700)">
+          <image-slot id="{{ detailSlotId }}" shape="rect" radius="0" placeholder="{{ detailSlotLabel }}"></image-slot>
+        </div>
+        <div style="padding:clamp(44px,5vw,88px) clamp(20px,4.5vw,64px)">
+          <p style="margin:0 0 28px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-700)">{{ highlightKicker }}</p>
+          <div style="display:flex;flex-direction:column;gap:clamp(26px,2.8vw,38px)">
+            <sc-for list="{{ highlightSpecs }}" as="s" hint-placeholder-count="3">
+              <div>
+                <span style="display:block;font-size:{{ highlightValueSize }};font-weight:700;letter-spacing:-.03em;line-height:1">{{ s.value }}</span>
+                <span style="display:block;margin-top:8px;font-size:14px;color:{{ heroLabelColor }}">{{ s.label }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Secondary module" style="padding-block:clamp(56px,6.5vw,100px)">
+      <div style="max-width:1440px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,64px)">
+        <h2 style="font-size:clamp(26px,2.8vw,40px);letter-spacing:-.03em;font-weight:600;margin:0 0 clamp(32px,3.4vw,48px)">{{ moduleTitle }}</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:clamp(28px,3vw,44px)">
+          <sc-for list="{{ moduleSpecs }}" as="s" hint-placeholder-count="5">
+            <div style="padding-top:20px;border-top:2px solid var(--color-text)">
+              <span style="display:block;font-size:{{ moduleValueSize }};font-weight:700;letter-spacing:-.02em;line-height:1.15">{{ s.value }}</span>
+              <span style="display:block;margin-top:6px;font-size:14px;color:{{ labelColor }}">{{ s.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Full specifications" style="background:var(--color-surface);padding-block:clamp(56px,6.5vw,100px)">
+      <div style="max-width:1080px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,64px)">
+        <h2 style="font-size:clamp(26px,2.8vw,40px);letter-spacing:-.03em;font-weight:600;margin:0 0 clamp(28px,3vw,44px)">Complete specifications</h2>
+        <div style="display:flex;flex-direction:column;gap:2px;background:var(--color-neutral-300);border-radius:16px;overflow:hidden">
+          <sc-for list="{{ specGroups }}" as="g" hint-placeholder-count="6">
+            <div style="background:#fff">
+              <button onClick="{{ g.toggle }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 28px;background:transparent;border:0;cursor:pointer;text-align:left;color:inherit">
+                <span style="font-size:17px;font-weight:600;letter-spacing:-.01em">{{ g.title }}</span>
+                <span aria-hidden="true" style="flex:0 0 auto;width:28px;height:28px;display:grid;place-items:center;border-radius:8px;background:{{ g.iconBg }};color:{{ g.iconFg }};font-size:18px;font-weight:700;line-height:1">{{ g.icon }}</span>
+              </button>
+              <div hidden="{{ g.closed }}" style="padding:0 28px 26px;animation:panelIn .3s cubic-bezier(.22,.61,.36,1)">
+                <sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="4">
+                  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--color-neutral-300)">
+                    <span style="font-size:{{ specRowSize }};color:{{ labelColor }}">{{ r.label }}</span>
+                    <span style="font-size:{{ specRowSize }};font-weight:700">{{ r.value }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Enquiry" style="background:#FC5013;color:#fff;padding-block:clamp(48px,5.4vw,80px)">
+      <div style="max-width:1440px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,64px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px">
+        <div>
+          <h2 style="font-size:clamp(26px,3vw,42px);letter-spacing:-.03em;font-weight:600;margin:0 0 10px">{{ enquiryHeading }}</h2>
+          <p style="margin:0;max-width:56ch;font-size:16px;opacity:.92">Get in touch to know more about the product and availability.</p>
+        </div>
+        <button class="btn" onClick="{{ openEnquiry }}" style="background:#fff;color:var(--color-accent);font-size:16px;font-weight:600;letter-spacing:0em;text-transform:none;padding:18px 30px;border-radius:8px;transition:transform .18s ease,background .18s ease" style-hover="transform:translateY(-2px);background:#241816;color:#fff">Enquire Now</button>
+      </div>
+    </section>
+
+    <section data-screen-label="Similar products" style="padding-block:clamp(56px,6.5vw,100px)">
+      <div style="max-width:1440px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,64px)">
+        <h2 style="font-size:clamp(26px,2.8vw,40px);letter-spacing:-.03em;font-weight:600;margin:0 0 clamp(28px,3vw,44px)">Explore similar products</h2>
+        <div style="display:grid;grid-template-columns:{{ similarCols }};gap:clamp(20px,2.2vw,32px)">
+          <sc-for list="{{ similar }}" as="p" hint-placeholder-count="3">
+            <a href="{{ p.href }}" style="display:flex;flex-direction:column;background:#fff;border-radius:16px;box-shadow:var(--shadow-sm);overflow:hidden;text-decoration:none;color:inherit;transition:box-shadow .25s ease,transform .25s ease" style-hover="box-shadow:var(--shadow-lg);transform:translateY(-4px)">
+              <div style="aspect-ratio:4/3;overflow:hidden;background:var(--color-surface);background-image:linear-gradient(var(--color-neutral-300) 1px,transparent 1px),linear-gradient(90deg,var(--color-neutral-300) 1px,transparent 1px);background-size:100% 36px,36px 100%;color:var(--color-neutral-600)">
+                <div style="width:100%;height:100%;transition:transform .5s cubic-bezier(.22,.61,.36,1)" style-hover="transform:scale(1.05)">
+                  <image-slot id="{{ p.slotId }}" shape="rect" radius="0" placeholder="{{ p.slotLabel }}"></image-slot>
+                </div>
+              </div>
+              <div style="padding:24px 26px 26px">
+                <h3 style="font-size:{{ cardTitleSize }};font-weight:600;letter-spacing:-.02em;margin:0 0 10px">{{ p.name }}</h3>
+                <p style="margin:0 0 18px;font-size:15px;font-weight:700">{{ p.headline }}</p>
+                <span style="display:flex;align-items:center;gap:8px;font-weight:600;font-size:16px;color:{{ cardLinkColor }}">Explore <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+        <div style="display:flex;margin-top:clamp(28px,3vw,44px)">
+          <a href="{{ catHref }}" style="display:flex;align-items:center;gap:8px;font-weight:600;font-size:16px;text-decoration:none;color:var(--color-text);padding-bottom:6px;border-bottom:2px solid var(--color-accent)" style-hover="color:var(--color-accent)">{{ viewAllLabel }} <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="color:var(--color-neutral-200);padding-top:clamp(56px,6vw,88px);background-color:#241816">
+    <div style="max-width:1440px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,64px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:44px 32px;padding-bottom:56px">
+        <div>
+          <a href="UKAVA%20Homepage.dc.html" aria-label="UKAVA home" style="display:inline-flex;align-items:center;text-decoration:none">
+            <img src="ukava-logo-white.png" alt="UKAVA" style="height:34px;width:auto;display:block" />
+          </a>
+          <p style="margin:16px 0 0;font-size:13px;max-width:30ch;opacity:.55;line-height:1.6">Lithium-powered products for homes, businesses and roads across India.</p>
+        </div>
+        <div>
+          <h3 style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.45;margin:0 0 18px;color:inherit">Products</h3>
+          <a href="Product%20Listing.dc.html#electric-scooters" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Electric Scooters</a>
+          <a href="Product%20Listing.dc.html#lithium-batteries" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Lithium Batteries</a>
+          <a href="Product%20Listing.dc.html#inverter-battery" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Inverter &amp; Battery</a>
+          <a href="Product%20Listing.dc.html#solar-solutions" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Solar Solutions</a>
+        </div>
+        <div>
+          <h3 style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.45;margin:0 0 18px;color:inherit">Company</h3>
+          <a href="About%20UKAVA.dc.html" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">About Us</a>
+          <a href="UKAVA%20Homepage.dc.html#partner" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Partner With Us</a>
+          <a href="UKAVA%20Homepage.dc.html#support" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Contact</a>
+        </div>
+        <div>
+          <h3 style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.45;margin:0 0 18px;color:inherit">Support</h3>
+          <a href="UKAVA%20Homepage.dc.html#support" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Service</a>
+          <a href="UKAVA%20Homepage.dc.html#support" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Warranty</a>
+          <a href="UKAVA%20Homepage.dc.html#support" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Product registration</a>
+          <a href="UKAVA%20Homepage.dc.html#support" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Downloads</a>
+        </div>
+        <div>
+          <h3 style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.45;margin:0 0 18px;color:inherit">Contact</h3>
+          <a href="tel:18001204502" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">1800 120 4502</a>
+          <p style="margin:0 0 8px;font-size:14px;opacity:.65">Email TBD</p>
+          <p style="margin:0;font-size:14px;opacity:.65">Registered address TBD</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;border-top:1px solid rgba(255,255,255,.12);padding:22px 0 40px;font-size:12px;opacity:.45">
+        <span>© 2026 UKAVA. All rights reserved.</span>
+        <span>Legal / privacy links TBD</span>
+      </div>
+    </div>
+  </footer>
+
+  <div style="display:{{ modalDisplay }};position:fixed;inset:0;z-index:100;align-items:center;justify-content:center">
+    <div onClick="{{ closeLead }}" style="position:absolute;inset:0;background:color-mix(in srgb, #201e1d 62%, transparent)"></div>
+    <div role="dialog" aria-modal="true" style="position:relative;width:min(470px,100%);max-height:94vh;overflow-y:auto;background:var(--color-bg);border-top:6px solid var(--color-accent);border-radius:16px;padding:clamp(26px,3vw,40px);box-shadow:var(--shadow-lg)">
+      <button onClick="{{ closeLead }}" aria-label="Close" style="position:absolute;top:14px;right:14px;width:36px;height:36px;background:transparent;border:0;cursor:pointer;font-size:22px;line-height:1;color:var(--color-text)">×</button>
+      <div style="display:{{ formDisplay }}">
+        <p style="margin:0 0 12px;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--color-accent-700)">Product enquiry</p>
+        <h2 style="font-size:28px;letter-spacing:-.03em;margin:0 0 10px">{{ enquiryFormTitle }}</h2>
+        <p style="margin:0 0 24px;font-size:14px;line-height:1.55;color:var(--color-neutral-800)">Share your details and our team will call you with pricing and availability.</p>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:22px;padding:12px 14px;background:var(--color-text);color:#fff;border-radius:8px">
+          <span style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;opacity:.6">Interest</span>
+          <span style="font-weight:800;font-size:14px">{{ name }}</span>
+        </div>
+        <div class="field" style="margin-bottom:16px">
+          <label for="pd-name">Name</label>
+          <input class="input" id="pd-name" value="{{ leadName }}" onChange="{{ setName }}" style="min-height:48px;font-size:15px;background:var(--color-bg);border-width:2px">
+          <div style="font-size:12px;color:var(--color-accent-700);margin-top:6px">{{ errName }}</div>
+        </div>
+        <div class="field" style="margin-bottom:16px">
+          <label for="pd-mobile">Mobile number</label>
+          <div style="display:flex">
+            <span style="display:flex;align-items:center;padding:0 14px;background:var(--color-text);color:#fff;font-weight:800;font-size:14px">+91</span>
+            <input class="input" id="pd-mobile" inputmode="numeric" maxlength="10" placeholder="10-digit number" value="{{ mobile }}" onChange="{{ setMobile }}" style="min-height:48px;font-size:15px;background:var(--color-bg);border-width:2px">
+          </div>
+          <div style="font-size:12px;color:var(--color-accent-700);margin-top:6px">{{ errMobile }}</div>
+        </div>
+        <div class="field" style="margin-bottom:16px">
+          <label for="pd-city">City</label>
+          <input class="input" id="pd-city" value="{{ city }}" onChange="{{ setCity }}" style="min-height:48px;font-size:15px;background:var(--color-bg);border-width:2px">
+          <div style="font-size:12px;color:var(--color-accent-700);margin-top:6px">{{ errCity }}</div>
+        </div>
+        <button class="btn btn-primary" onClick="{{ submitLead }}" style="width:100%;justify-content:flex-start;margin-top:12px;font-size:16px;font-weight:600;letter-spacing:0em;text-transform:none;padding:18px;border-radius:8px">Enquire Now</button>
+        <p style="margin:14px 0 0;font-size:11px;color:var(--color-neutral-700)">By submitting, you agree UKAVA may contact you about your enquiry.</p>
+      </div>
+      <div style="display:{{ successDisplay }}">
+        <div style="width:48px;height:48px;background:var(--color-accent);color:#fff;display:grid;place-items:center;border-radius:10px;font-weight:800;font-size:22px;margin-bottom:24px">✓</div>
+        <h2 style="font-size:28px;letter-spacing:-.03em;margin:0 0 10px">Thanks. Our team will get in touch shortly.</h2>
+        <p style="margin:0 0 26px;font-size:14px;line-height:1.55;color:var(--color-neutral-800)">We've noted your interest and a UKAVA representative will call you soon.</p>
+        <button class="btn btn-secondary" onClick="{{ closeLead }}" style="width:100%;justify-content:flex-start;font-size:16px;font-weight:600;letter-spacing:0em;text-transform:none;padding:18px;border-radius:8px;border-width:2px">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;product&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;UKAVA Strom&quot;,&quot;UKAVA Rapid&quot;,&quot;UKAVA Raya&quot;,&quot;UKAVA Vega&quot;,&quot;UKAVA Aura&quot;,&quot;UKAVA Zyro&quot;,&quot;UKAVA Torra&quot;,&quot;UKAVA Trivolt&quot;,&quot;UKAVA Cargo&quot;,&quot;Lithium Inverter Batteries&quot;,&quot;ESS (Energy Storage System)&quot;,&quot;Electric Three-Wheeler Lithium Battery&quot;,&quot;Electric Two-Wheeler Lithium Battery&quot;,&quot;Rechargeable LFP Battery&quot;,&quot;LINVA 1000&quot;,&quot;LINVA 1500&quot;,&quot;LINVA 2500&quot;,&quot;LINVASOL 1050&quot;,&quot;LINVASOL 1550&quot;,&quot;LINVASOL 2550&quot;],&quot;default&quot;:&quot;UKAVA Rapid&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Product&quot;},&quot;primaryValueSize&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:20,&quot;min&quot;:14,&quot;max&quot;:32,&quot;step&quot;:1,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero specs&quot;},&quot;heroLabelColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#605d5d&quot;,&quot;options&quot;:[&quot;#605d5d&quot;,&quot;#201e1d&quot;,&quot;#B93304&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Hero specs&quot;},&quot;highlightValueSize&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:44,&quot;min&quot;:28,&quot;max&quot;:64,&quot;step&quot;:1,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Highlight band&quot;},&quot;moduleValueSize&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:24,&quot;min&quot;:16,&quot;max&quot;:34,&quot;step&quot;:1,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Detail modules&quot;},&quot;featureTitleSize&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:18,&quot;min&quot;:14,&quot;max&quot;:24,&quot;step&quot;:1,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Detail modules&quot;},&quot;specRowSize&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:15,&quot;min&quot;:12,&quot;max&quot;:20,&quot;step&quot;:1,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Specifications&quot;},&quot;cardTitleSize&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:20,&quot;min&quot;:16,&quot;max&quot;:30,&quot;step&quot;:1,&quot;unit&quot;:&quot;px&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Similar products&quot;},&quot;cardLinkColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#B93304&quot;,&quot;options&quot;:[&quot;#B93304&quot;,&quot;#FC5013&quot;,&quot;#201e1d&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Similar products&quot;},&quot;labelColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#605d5d&quot;,&quot;options&quot;:[&quot;#605d5d&quot;,&quot;#201e1d&quot;,&quot;#B93304&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Labels&quot;}}">
+const slugify = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+const CAT_LABELS = {
+  "electric-scooters": "Electric Scooters",
+  "lithium-batteries": "Lithium Batteries",
+  "inverter-battery": "Inverter & Battery",
+  "solar-solutions": "Solar Solutions"
+};
+
+const EMPTY = {
+  name: "UKAVA product", type: "", cat: "electric-scooters",
+  primary: [], highlight: [], highlightKicker: "", moduleTitle: "", module: [],
+  features: [], colours: [], groups: []
+};
+
+class Component extends DCLogic {
+  state = { slug: null, w: 1440, shot: 0, colour: 0, open: 0, menuOpen: false, lead: false, sent: false, leadName: "", mobile: "", city: "", errors: {}, ready: false };
+
+  componentDidMount() {
+    this._resize = () => this.setState({ w: window.innerWidth });
+    this._resize();
+    window.addEventListener("resize", this._resize);
+    this._sync = () => {
+      const q = new URLSearchParams(location.search).get("p");
+      const h = (location.hash || "").replace("#", "");
+      const want = q || h;
+      if (want) this.setState({ slug: want, shot: 0, colour: 0, open: 0 });
+    };
+    this._sync();
+    window.addEventListener("hashchange", this._sync);
+    window.addEventListener("popstate", this._sync);
+    this._key = (e) => { if (e.key === "Escape" && this.state.lead) this.closeLead(); };
+    document.addEventListener("keydown", this._key);
+    if (!window.UKAVA) {
+      this._poll = setInterval(() => { if (window.UKAVA) { clearInterval(this._poll); this.setState({ ready: true }); } }, 60);
+    }
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this._resize);
+    window.removeEventListener("hashchange", this._sync);
+    window.removeEventListener("popstate", this._sync);
+    document.removeEventListener("keydown", this._key);
+    if (this._poll) clearInterval(this._poll);
+  }
+
+  closeLead = () => { this.setState({ lead: false }); document.body.style.overflow = ""; };
+
+  submitLead = () => {
+    const s = this.state, errors = {};
+    if (s.leadName.trim().length < 2) errors.name = "Please enter your name.";
+    if (s.mobile.replace(/\D/g, "").length !== 10) errors.mobile = "Enter a valid 10-digit mobile number.";
+    if (!s.city.trim()) errors.city = "Please enter your city.";
+    if (Object.keys(errors).length) { this.setState({ errors }); return; }
+    console.log("[UKAVA lead]", { type: "consumer_product", product: this.product.name, name: s.leadName.trim(), mobile: "+91" + s.mobile.replace(/\D/g, ""), city: s.city.trim(), source: "product-detail", submittedAt: new Date().toISOString() });
+    this.setState({ sent: true, errors: {} });
+  };
+
+  get product() {
+    if (!window.UKAVA) return EMPTY;
+    const want = this.state.slug || slugify(this.props.product || "UKAVA Rapid");
+    return window.UKAVA.find(want) || window.UKAVA.find("ukava-rapid") || window.UKAVA.products[0];
+  }
+
+  renderVals() {
+    const s = this.state, p = this.product;
+    const narrow = s.w < 780, mid = s.w < 1120;
+    const base = "ukava-p-" + slugify(p.name);
+    const shots = ["Main angle", "Side profile", "Front", "Rear three-quarter", "Detail shot"];
+    const all = window.UKAVA ? window.UKAVA.byCat(p.cat) : [];
+    const similar = all.filter((q) => q.name !== p.name).slice(0, 3).map((q) => ({
+      name: q.name,
+      headline: q.primary.length ? q.primary[0].value : "",
+      slotId: "ukava-p-" + slugify(q.name) + "-0",
+      slotLabel: q.name + " \u00b7 4:3",
+      href: "Product%20Detail.dc.html#" + slugify(q.name)
+    }));
+
+    return {
+      navDisplay: narrow ? "none" : "flex",
+      burgerDisplay: narrow ? "flex" : "none",
+      menuDisplay: narrow && s.menuOpen ? "block" : "none",
+      toggleMenu: () => this.setState({ menuOpen: !s.menuOpen }),
+      closeMenu: () => this.setState({ menuOpen: false }),
+
+      name: p.name,
+      typeLabel: p.type,
+      catLabel: CAT_LABELS[p.cat],
+      catHref: "Product%20Listing.dc.html#" + p.cat,
+      viewAllLabel: "View all " + CAT_LABELS[p.cat],
+      enquiryHeading: "Interested in " + p.name + "?",
+      enquiryFormTitle: "Enquire about " + p.name,
+
+      heroCols: mid ? "1fr" : "1.15fr .85fr",
+      galleryCols: narrow ? "1fr" : "88px 1fr",
+      railDisplay: "flex",
+      railDirection: narrow ? "row" : "column",
+      railOrder: narrow ? "2" : "0",
+      highlightCols: mid ? "1fr" : "1.05fr .95fr",
+      highlightImageHeight: narrow ? "300px" : "520px",
+      featureCols: narrow ? "1fr" : mid ? "repeat(2,1fr)" : "repeat(3,1fr)",
+      similarCols: narrow ? "1fr" : mid ? "repeat(2,1fr)" : "repeat(3,1fr)",
+      primaryValueSize: (this.props.primaryValueSize || 20) + "px",
+      highlightValueSize: (this.props.highlightValueSize || 44) + "px",
+      moduleValueSize: (this.props.moduleValueSize || 24) + "px",
+      specRowSize: (this.props.specRowSize || 15) + "px",
+      featureTitleSize: (this.props.featureTitleSize || 18) + "px",
+      cardTitleSize: (this.props.cardTitleSize || 20) + "px",
+      labelColor: this.props.labelColor || "var(--color-neutral-700)",
+      heroLabelColor: this.props.heroLabelColor || "var(--color-neutral-700)",
+      cardLinkColor: this.props.cardLinkColor || "var(--color-accent-700)",
+
+      mainSlotId: base + "-" + s.shot,
+      mainSlotLabel: p.name + " \u2014 " + shots[s.shot] + " \u00b7 1:1",
+      detailSlotId: base + "-detail",
+      detailSlotLabel: p.name + " \u2014 detail / lifestyle shot",
+      thumbs: shots.map((label, i) => ({
+        size: narrow ? "72px" : "84px",
+        slotId: base + "-" + i,
+        label: label,
+        border: i === s.shot ? "var(--color-accent)" : "var(--color-neutral-300)",
+        select: () => this.setState({ shot: i })
+      })),
+
+      primarySpecs: p.primary,
+      highlightDisplay: p.cat === "electric-scooters" ? "block" : "none",
+      highlightKicker: p.highlightKicker,
+      highlightSpecs: p.highlight,
+      moduleTitle: p.moduleTitle,
+      moduleSpecs: p.module,
+      features: p.features,
+      featuresDisplay: p.features.length ? "block" : "none",
+      colourDisplay: p.colours.length ? "flex" : "none",
+      colourNote: "Catalogue colour options for the UKAVA EV range. Gallery updates per colour once photography is supplied.",
+      colours: p.colours.map((c, i) => ({
+        name: c.name, hex: c.hex,
+        ring: i === s.colour ? "var(--color-accent)" : "var(--color-neutral-400)",
+        select: () => this.setState({ colour: i })
+      })),
+
+      specGroups: p.groups.map((g, i) => ({
+        title: g.title, rows: g.rows,
+        closed: s.open !== i,
+        icon: s.open === i ? "\u2212" : "+",
+        iconBg: s.open === i ? "var(--color-accent)" : "var(--color-surface)",
+        iconFg: s.open === i ? "#fff" : "var(--color-text)",
+        toggle: () => this.setState({ open: s.open === i ? -1 : i })
+      })),
+
+      similar,
+      noteDisplay: "none",
+
+      modalDisplay: s.lead ? "flex" : "none",
+      formDisplay: s.sent ? "none" : "block",
+      successDisplay: s.sent ? "block" : "none",
+      openEnquiry: () => { this.setState({ lead: true, sent: false, errors: {}, leadName: "", mobile: "", city: "" }); document.body.style.overflow = "hidden"; },
+      closeLead: this.closeLead,
+      submitLead: this.submitLead,
+      leadName: s.leadName, mobile: s.mobile, city: s.city,
+      setName: (e) => this.setState({ leadName: e.target.value }),
+      setMobile: (e) => this.setState({ mobile: e.target.value.replace(/\D/g, "").slice(0, 10) }),
+      setCity: (e) => this.setState({ city: e.target.value }),
+      errName: s.errors.name || "", errMobile: s.errors.mobile || "", errCity: s.errors.city || ""
+    };
+  }
+}
+</script>
+</body>
+</html>

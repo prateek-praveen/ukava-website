@@ -1,0 +1,916 @@
+UKAVA Product Catalogue — Website Content Reference
+Purpose: A source-of-truth product content file for updating the UKAVA website in Claude.
+Important: All product data below is transcribed from the three supplied UKAVA catalogues. No additional product claims have been added. Where catalogue wording is unusual or inconsistent, it is preserved rather than silently corrected.
+Website category mapping
+Specification
+Catalogue value
+Electric Scooters
+UKAVA Strom, Rapid, Raya, Vega, Aura, Zyro, Torra, Trivolt, Cargo
+Lithium Batteries
+Lithium Inverter Batteries; ESS; Electric Three-Wheeler Lithium Battery; Electric Two-Wheeler Lithium Battery; Rechargeable LFP Battery
+Inverter & Battery
+LINVA 1000, LINVA 1500, LINVA 2500
+Solar Solutions
+LINVASOL 1050, LINVASOL 1550, LINVASOL 2550
+1. Electric Scooters
+Catalogue colour options shown for the EV range: Black, White, Red, Yellow.
+UKAVA Strom
+Specification
+Catalogue value
+Speed
+55 KMPH
+Motor Power
+1000 WATT
+Battery Option
+Lithium
+GPS Tracking
+On Demand
+Climbing
+15 Degree
+Front Suspension
+Telescopic
+Rear Suspension
+Coil Spring
+Brake
+DISC
+Tyre
+10-10 Tubeless
+Loading Capacity
+200 KG
+Head Light
+LED
+Back Light
+STYLISH
+Mobile Charging
+AVAILABLE
+Anti-theft Alarm
+Yes
+Speedometre
+Digital
+Central Locking
+Yes
+Find my Scooty
+Yes
+Secure Parking
+Yes
+Battery Info
+Yes
+Reverse Gear
+Yes
+Floor mat
+Yes
+Body Type
+ABS
+Speed
+3 MODE
+Boot Space
+Available
+NFC
+ON DEMAND
+Warranty Motor
+1 Year
+Warranty Controller
+1 Year
+Battery & Charger
+Without
+UKAVA Rapid
+Specification
+Catalogue value
+Speed
+55 KMPH
+Motor Power
+1000 WATT
+Battery Option
+Lithium
+GPS Tracking
+On Demand
+Climbing
+15 Degree
+Front Suspension
+Telescopic
+Rear Suspension
+Coil Spring
+Brake
+DISC
+Tyre
+12-12 Tubeless
+Loading Capacity
+180 kg
+Head Light
+LED
+Back Light
+STYLISH
+Mobile Charging
+AVAILABLE
+Anti-theft Alarm
+Yes
+Speedometre
+Digital
+Central Locking
+Yes
+Find my Scooty
+Yes
+Secure Parking
+Yes
+Battery Info
+Yes
+Reverse Gear
+Yes
+Floor mat
+Yes
+Body Type
+ABS
+Speed
+3 MODE
+Boot Space
+Available
+NFC
+ON DEMAND
+Warranty Motor
+1 Year
+Warranty Controller
+1 Year
+Battery & Charger
+Without
+UKAVA Raya
+Specification
+Catalogue value
+Speed
+55 KMPH
+Motor Power
+1500 WATT
+Battery Option
+Lithium
+GPS Tracking
+On Demand
+Climbing
+15 Degree
+Front Suspension
+Telescopic
+Rear Suspension
+Coil Spring
+Brake
+DISC
+Tyre
+12-12 Tubeless
+Loading Capacity
+200 KG
+Head Light
+LED
+Back Light
+STYLISH
+Mobile Charging
+AVAILABLE
+Anti-theft Alarm
+Yes
+Speedometre
+Digital
+Central Locking
+Yes
+Find my Scooty
+Yes
+Secure Parking
+Yes
+Battery Info
+Yes
+Reverse Gear
+Yes
+Floor mat
+Yes
+Body Type
+ABS
+Speed
+3 MODE
+Boot Space
+Available
+NFC
+ON DEMAND
+Warranty Motor
+1 Year
+Warranty Controller
+1 Year
+Battery & Charger
+Without
+UKAVA Vega
+Specification
+Catalogue value
+Speed
+55 KMPH
+Motor Power
+1500 WATT
+Battery Option
+Lithium
+GPS Tracking
+On Demand
+Climbing
+15 Degree
+Front Suspension
+Telescopic
+Rear Suspension
+Coil Spring
+Brake
+DOUBLE DISC
+Tyre
+12-12 Tubeless
+Loading Capacity
+200 KG
+Head Light
+LED
+Back Light
+STYLISH
+Mobile Charging
+AVAILABLE
+Anti-theft Alarm
+Yes
+Speedometre
+Digital
+Central Locking
+Yes
+Find my Scooty
+Yes
+Secure Parking
+Yes
+Battery Info
+Yes
+Reverse Gear
+Yes
+Floor mat
+Yes
+Body Type
+ABS
+Speed
+3 MODE
+Boot Space
+Available
+NFC
+ON DEMAND
+Warranty Motor
+1 Year
+Warranty Controller
+1 Year
+Battery & Charger
+Without
+UKAVA Aura
+Specification
+Catalogue value
+Speed
+55 KMPH
+Motor Power
+1500 WATT
+Battery Option
+Lithium
+GPS Tracking
+On Demand
+Climbing
+15 Degree
+Front Suspension
+Telescopic
+Rear Suspension
+Coil Spring
+Brake
+DOUBLE DISC
+Tyre
+12-12 Tubeless
+Loading Capacity
+200 KG
+Head Light
+LED
+Back Light
+STYLISH
+Mobile Charging
+AVAILABLE
+Anti-theft Alarm
+Yes
+Speedometre
+Digital
+Central Locking
+Yes
+Find my Scooty
+Yes
+Secure Parking
+Yes
+Battery Info
+Yes
+Reverse Gear
+Yes
+Floor mat
+Yes
+Body Type
+ABS
+Speed
+3 MODE
+Boot Space
+Available
+NFC
+ON DEMAND
+Warranty Motor
+1 Year
+Warranty Controller
+1 Year
+Battery & Charger
+Without
+UKAVA Zyro
+Specification
+Catalogue value
+Speed
+55 KMPH
+Motor Power
+1500 WATT
+Battery Option
+Lithium
+GPS Tracking
+On Demand
+Climbing
+15 Degree
+Front Suspension
+Telescopic
+Rear Suspension
+Coil Spring
+Brake
+DOUBLE DISC
+Tyre
+12-12 Tubeless
+Loading Capacity
+200 KG
+Head Light
+LED
+Back Light
+STYLISH
+Mobile Charging
+AVAILABLE
+Anti-theft Alarm
+Yes
+Speedometre
+Digital
+Central Locking
+Yes
+Find my Scooty
+Yes
+Secure Parking
+Yes
+Battery Info
+Yes
+Reverse Gear
+Yes
+Floor mat
+Yes
+Body Type
+ABS
+Speed
+3 MODE
+Boot Space
+Available
+NFC
+ON DEMAND
+Warranty Motor
+1 Year
+Warranty Controller
+1 Year
+Battery & Charger
+Without
+UKAVA Torra
+Specification
+Catalogue value
+Speed
+55 KMPH
+Motor Power
+1500 WATT
+Battery Option
+Lithium
+GPS Tracking
+On Demand
+Climbing
+15 Degree
+Front Suspension
+Telescopic
+Rear Suspension
+Coil Spring
+Brake
+DOUBLE DISC
+Tyre
+2-12 Tubeless
+Loading Capacity
+200 KG
+Head Light
+LED
+Back Light
+STYLISH
+Mobile Charging
+AVAILABLE
+Anti-theft Alarm
+Yes
+Speedometre
+Digital
+Central Locking
+Yes
+Find my Scooty
+Yes
+Secure Parking
+Yes
+Battery Info
+Yes
+Reverse Gear
+Yes
+Floor mat
+Yes
+Body Type
+ABS
+Speed
+3 MODE
+Boot Space
+Available
+NFC
+ON DEMAND
+Warranty Motor
+1 Year
+Warranty Controller
+1 Year
+Battery & Charger
+Without
+UKAVA Trivolt
+Specification
+Catalogue value
+Speed
+55 KMPH
+Motor Power
+1500 WATT
+Battery Option
+Lithium
+GPS Tracking
+On Demand
+Climbing
+15 Degree
+Front Suspension
+Telescopic
+Rear Suspension
+Coil Spring
+Brake
+DRUM
+Tyre
+10-10 Tubeless
+Loading Capacity
+200 KG
+Head Light
+LED
+Back Light
+STYLISH
+Mobile Charging
+AVAILABLE
+Anti-theft Alarm
+Yes
+Speedometre
+Digital
+Central Locking
+Yes
+Find my Scooty
+Yes
+Secure Parking
+Yes
+Battery Info
+Yes
+Reverse Gear
+Yes
+Floor mat
+Yes
+Body Type
+ABS
+Speed
+3 MODE
+Boot Space
+Available
+NFC
+ON DEMAND
+Warranty Motor
+1 Year
+Warranty Controller
+1 Year
+Battery & Charger
+Without
+UKAVA Cargo
+Specification
+Catalogue value
+Speed
+55 KMPH
+Motor Power
+1500 WATT
+Battery Option
+Lithium
+GPS Tracking
+On Demand
+Climbing
+15 Degree
+Front Suspension
+Telescopic
+Rear Suspension
+Coil Spring
+Brake
+DISC
+Tyre
+10-10 Tubeless
+Loading Capacity
+200 KG
+Head Light
+LED
+Back Light
+STYLISH
+Mobile Charging
+AVAILABLE
+Anti-theft Alarm
+Yes
+Speedometre
+Digital
+Central Locking
+Yes
+Find my Scooty
+Yes
+Secure Parking
+Yes
+Battery Info
+Yes
+Reverse Gear
+Yes
+Floor mat
+No
+Body Type
+IRON
+Speed
+3 MODE
+Boot Space
+No
+NFC
+ON DEMAND
+Warranty Motor
+1 Year
+Warranty Controller
+1 Year
+Battery & Charger
+Without
+2. Lithium Batteries
+Lithium Inverter Batteries
+Specification
+Catalogue value
+Models
+12.8V 100AH; 25.6V 100AH; 48V 100AH; 48V 200AH
+Warranty shown
+10 Years
+Catalogue-listed advantages
+LFP Technology
+High Energy Density
+Fast Charging
+Built-in Battery Management System (BMS)
+Environmentally Friendly
+Long Cycle Life
+ESS (Energy Storage System)
+Specification
+Catalogue value
+Range
+48V TO 360V, & 100AH ONWARDS
+Warranty shown
+10 Years
+Rate
+RATE WILL BE AVAILABLE ON DEMAND
+Electric Three-Wheeler Lithium Battery
+Specification
+Catalogue value
+Models
+51.2V 100AH; 51.2V 150AH; 51.2V 200AH; 60.8V 100AH; 60.8V 150AH; 60.8V 200AH
+Warranty shown
+3 Years
+Catalogue-listed advantages
+LFP Technology
+High Energy Density
+Fast Charging
+Built-in Battery Management System (BMS)
+Environmentally Friendly
+Long Cycle Life
+Electric Two-Wheeler Lithium Battery
+Specification
+Catalogue value
+Available ranges
+60V 20AH; 60V 24AH; 60V 32AH; 60V 36AH; 60V 40AH; 48V 18AH; 48V 24AH; 48V 30AH; 60V 18AH; 60V 24AH; 60V 30AH; 60V 36AH
+Warranty shown
+3 Years
+Catalogue-listed advantages
+LFP Technology
+High Energy Density
+Fast Charging
+Built-in Battery Management System (BMS)
+Environmentally Friendly
+Long Cycle Life
+Rechargeable LFP Battery
+Specification
+Catalogue value
+Models
+12.8V 6AH; 25.6V 12AH; 25.6V 18AH
+Warranty shown
+3 Years
+Catalogue-listed advantages
+LFP Technology
+High Energy Density
+Fast Charging
+Built-in Battery Management System (BMS)
+Environmentally Friendly
+Long Cycle Life
+3. Inverter & Battery — LINVA Series
+LINVA 1000
+Specification
+Catalogue value
+Model No
+LINVA 1000
+Battery Type
+Inbuilt Lithium Battery
+Type of Product
+MPPT PCU
+Battery Capacity
+100 AH
+Suitable For
+Home, Offices & Shops
+Frequency
+50 Hz
+Wattage
+1.28 kW
+Power Source
+Solar and Battery Powered
+Power
+1000 VA
+Battery Backup (Hrs)
+3 Hours at 400 W
+Mounting Type
+Wall Mount
+Model configuration
+1000VA / 12V
+Distributor Rate
+INR 22,070/- (INCLUDING GST)
+MRP
+INR 25,555/-
+Warranty shown
+10 Years
+Catalogue-listed features
+Smart Design Inverter with Inbuilt Battery
+Pure Sinewave
+Safe and Maintenance Free
+Option of Solar / Normal Electricity
+Batttery Life Upto 12 Years
+Fast Charging 3-4 Hours
+No Fumes, No Battery Water Required
+Single Unit - Inverter + Battery
+ECO Friendly
+Uninterrupted Green Energy
+No Maintenance
+User Friendly LCD Display
+Safety & Protection
+Long Life
+LINVA 1500
+Specification
+Catalogue value
+Model No
+LINVA 1500
+Battery Type
+Inbuilt Lithium Battery
+Type of Product
+MPPT PCU
+Battery Capacity
+100 AH
+Suitable For
+Home, Offices & Shops
+Frequency
+50 Hz
+Wattage
+1.28 kW
+Power Source
+Solar and Battery Powered
+Power
+1500 VA
+Battery Backup (Hrs)
+3 Hours at 400 W
+Mounting Type
+Wall Mount
+Model configuration
+1500VA / 12V
+Distributor Rate
+INR 23,050/- (INCLUDING GST)
+MRP
+INR 26,666/-
+Warranty shown
+10 Years
+Catalogue-listed features
+Smart Design Inverter with Inbuilt Battery
+Pure Sinewave
+Safe and Maintenance Free
+Option of Solar / Normal Electricity
+Batttery Life Upto 12 Years
+Fast Charging 3-4 Hours
+No Fumes, No Battery Water Required
+Single Unit - Inverter + Battery
+ECO Friendly
+Uninterrupted Green Energy
+No Maintenance
+User Friendly LCD Display
+Safety & Protection
+Long Life
+LINVA 2500
+Specification
+Catalogue value
+Model No
+LINVA 2500
+Battery Type
+Inbuilt Lithium Battery
+Type of Product
+MPPT PCU
+Battery Capacity
+100 AH
+Suitable For
+Home, Offices & Shops
+Frequency
+50 Hz
+Wattage
+1.28 kW
+Power Source
+Solar and Battery Powered
+Power
+2500 VA
+Battery Backup (Hrs)
+3 Hours at 400 W
+Mounting Type
+Wall Mount
+Model configuration
+2500VA / 24V
+Distributor Rate
+INR 25,160/- (INCLUDING GST)
+MRP
+INR 28,888/-
+Warranty shown
+10 Years
+Catalogue-listed features
+Smart Design Inverter with Inbuilt Battery
+Pure Sinewave
+Safe and Maintenance Free
+Option of Solar / Normal Electricity
+Batttery Life Upto 12 Years
+Fast Charging 3-4 Hours
+No Fumes, No Battery Water Required
+Single Unit - Inverter + Battery
+ECO Friendly
+Uninterrupted Green Energy
+No Maintenance
+User Friendly LCD Display
+Safety & Protection
+Long Life
+4. Solar Solutions — LINVA Solar Series
+LINVASOL 1050
+Specification
+Catalogue value
+Model No
+LINVASOL 1050
+Battery Type
+Inbuilt Lithium Battery
+Type of Product
+MPPT SOLAR PCU
+Battery Capacity
+100 AH
+Suitable For
+Home, Offices & Shops
+Frequency
+50 Hz
+Wattage
+1.28 kW
+Power Source
+Solar and Battery Powered
+Power
+1050 VA
+Battery Backup (Hrs)
+3 Hours at 400 W
+Mounting Type
+Wall Mount
+Model configuration
+1050VA / 12V
+Recommended Solar Panels
+540 watt Mono half cut Bifacial Panels - 2 pcs
+Distributor Rate
+INR 27,221/- (INCLUDING GST)
+MRP
+INR 31,111/-
+Warranty shown
+10 Years
+Catalogue-listed features
+Smart Design Inverter with Inbuilt Battery
+Pure Sinewave
+Safe and Maintenance Free
+Option of Solar / Normal Electricity
+Batttery Life Upto 12 Years
+Fast Charging 3-4 Hours
+No Fumes, No Battery Water Required
+Single Unit - Inverter + Battery
+ECO Friendly
+Uninterrupted Green Energy
+No Maintenance
+User Friendly LCD Display
+Safety & Protection
+Long Life
+LINVASOL 1550
+Specification
+Catalogue value
+Model No
+LINVASOL 1550
+Battery Type
+Inbuilt Lithium Battery
+Type of Product
+MPPT SOLAR PCU
+Battery Capacity
+100 AH
+Suitable For
+Home, Offices & Shops
+Frequency
+50 Hz
+Wattage
+1.28 kW
+Power Source
+Solar and Battery Powered
+Power
+1550 VA
+Battery Backup (Hrs)
+3 Hours at 400 W
+Mounting Type
+Wall Mount
+Model configuration
+1550VA / 12V
+Recommended Solar Panels
+540 watt Mono half cut Bifacial Panels - 2 pcs
+Distributor Rate
+INR 28,221/- (INCLUDING GST)
+MRP
+INR 32,500/-
+Warranty shown
+10 Years
+Catalogue-listed features
+Smart Design Inverter with Inbuilt Battery
+Pure Sinewave
+Safe and Maintenance Free
+Option of Solar / Normal Electricity
+Batttery Life Upto 12 Years
+Fast Charging 3-4 Hours
+No Fumes, No Battery Water Required
+Single Unit - Inverter + Battery
+ECO Friendly
+Uninterrupted Green Energy
+No Maintenance
+User Friendly LCD Display
+Safety & Protection
+Long Life
+LINVASOL 2550
+Specification
+Catalogue value
+Model No
+LINVASOL 2550
+Battery Type
+Inbuilt Lithium Battery
+Type of Product
+MPPT SOLAR PCU
+Battery Capacity
+100 AH
+Suitable For
+Home, Offices & Shops
+Frequency
+50 Hz
+Wattage
+1.28 kW
+Power Source
+Solar and Battery Powered
+Power
+2550 VA
+Battery Backup (Hrs)
+3 Hours at 400 W
+Mounting Type
+Wall Mount
+Model configuration
+2550VA / 24V
+Recommended Solar Panels
+540 watt Mono half cut Bifacial Panels - 4 pcs
+Distributor Rate
+INR 30,313/- (INCLUDING GST)
+MRP
+INR 35,500/-
+Warranty shown
+10 Years
+Catalogue-listed features
+Smart Design Inverter with Inbuilt Battery
+Pure Sinewave
+Safe and Maintenance Free
+Option of Solar / Normal Electricity
+Batttery Life Upto 12 Years
+Fast Charging 3-4 Hours
+No Fumes, No Battery Water Required
+Single Unit - Inverter + Battery
+ECO Friendly
+Uninterrupted Green Energy
+No Maintenance
+User Friendly LCD Display
+Safety & Protection
+Long Life
+Implementation notes for Claude
+Use these four consumer-facing website categories: Electric Scooters, Lithium Batteries, Inverter & Battery, Solar Solutions.
+Do not rename UKAVA model names.
+Do not add range, charging time, price, bestseller/quick-delivery claims, battery capacity, or other specifications unless they appear in this reference for that product.
+For homepage cards, show only a small subset of catalogue-supported specifications; keep the complete set for product-detail pages.
+Where a catalogue says On Demand, Available, Yes, Without, or uses unusual wording, preserve that meaning rather than inferring a different specification.
+Use product-detail pages for full specifications, image galleries/colour variants when assets exist, enquiry/dealer CTAs, and related products from the same website category.

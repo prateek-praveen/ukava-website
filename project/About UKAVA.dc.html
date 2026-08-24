@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-c1cb5aca-9857-4246-8810-aa4607a40ecc/styles.css">
+<script src="_ds/modernist-c1cb5aca-9857-4246-8810-aa4607a40ecc/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800;9..40,900&amp;display=swap">
+<style>
+  :root { --font-heading: "DM Sans", system-ui, sans-serif; --font-body: "DM Sans", system-ui, sans-serif;
+    --radius-sm: 6px; --radius-md: 10px; --radius-lg: 14px;
+    --color-accent: #FC5013; --color-accent-500: #FC5013;
+    --color-accent-100: #FFEDE5; --color-accent-200: #FFD5C4; --color-accent-300: #FEB194;
+    --color-accent-400: #FD7A46; --color-accent-600: #E03F06; --color-accent-700: #B93304;
+    --color-accent-800: #8E2703; --color-accent-900: #661B02; }
+  body { margin: 0; background: var(--color-bg); font-family: "DM Sans", system-ui, sans-serif; }
+  h1, h2, h3, h4, h5, h6, button, input, select, textarea { font-family: "DM Sans", system-ui, sans-serif; }
+  a { color: var(--color-accent); }
+  a:hover { color: var(--color-accent-700); }
+</style>
+</helmet>
+
+<div style="font-family:var(--font-body);color:var(--color-text);background:var(--color-bg)">
+
+  <header style="position:sticky;top:0;z-index:60;background:#fff;color:var(--color-text);border-bottom:1px solid var(--color-neutral-300)">
+    <div style="max-width:1440px;margin-inline:auto;padding:0 clamp(20px,4.5vw,64px);height:84px;display:flex;align-items:center;gap:clamp(24px,4vw,56px)">
+      <a href="UKAVA%20Homepage.dc.html" aria-label="UKAVA home" style="text-decoration:none;display:flex;align-items:center;margin-right:auto">
+        <span style="position:relative;display:block;width:200px;height:48px;overflow:hidden">
+          <img src="ukava-logo.jpg" alt="UKAVA — EV &amp; Lithium Battery" style="position:absolute;left:-44px;top:-118px;width:288px;max-width:none;height:auto;mix-blend-mode:multiply">
+        </span>
+      </a>
+      <nav style="display:{{ navDisplay }};align-items:center;gap:clamp(28px,3.4vw,48px)">
+        <a href="UKAVA%20Homepage.dc.html" style="color:inherit;text-decoration:none;font-size:15px;font-weight:500;letter-spacing:0em;padding:6px 0;border-bottom:2px solid transparent" style-hover="color:var(--color-accent)">Home</a>
+        <a href="Product%20Listing.dc.html" style="color:inherit;text-decoration:none;font-size:15px;font-weight:500;letter-spacing:0em;padding:6px 0;border-bottom:2px solid transparent" style-hover="color:var(--color-accent)">Products</a>
+        <a href="About%20UKAVA.dc.html" style="color:inherit;text-decoration:none;font-size:15px;font-weight:600;letter-spacing:0em;padding:6px 0;border-bottom:2px solid var(--color-accent)" style-hover="color:var(--color-accent)">About Us</a>
+        <a href="tel:18001204502" style="display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none;font-size:16px;font-weight:600;letter-spacing:0em" style-hover="color:var(--color-accent)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>1800 120 4502</span>
+        </a>
+      </nav>
+      <a href="tel:18001204502" aria-label="Call UKAVA on 1800 120 4502" style="display:{{ burgerDisplay }};align-items:center;justify-content:center;width:46px;height:46px;border-radius:8px;background:var(--color-accent);color:#fff;text-decoration:none">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+      <button onClick="{{ toggleMenu }}" aria-label="Menu" style="display:{{ burgerDisplay }};width:46px;height:46px;align-items:center;justify-content:center;background:transparent;border:1px solid var(--color-neutral-300);border-radius:8px;cursor:pointer;flex-direction:column;gap:5px">
+        <span style="display:block;width:20px;height:2px;background:var(--color-text)"></span>
+        <span style="display:block;width:20px;height:2px;background:var(--color-text)"></span>
+        <span style="display:block;width:20px;height:2px;background:var(--color-text)"></span>
+      </button>
+    </div>
+    <div style="display:{{ menuDisplay }};border-top:1px solid var(--color-neutral-300);padding:8px clamp(20px,5vw,64px) 24px;background:#fff">
+      <a href="UKAVA%20Homepage.dc.html" onClick="{{ closeMenu }}" style="display:block;color:inherit;text-decoration:none;padding:18px 0;border-bottom:1px solid var(--color-neutral-300);font-weight:600;font-size:18px">Home</a>
+      <a href="Product%20Listing.dc.html" onClick="{{ closeMenu }}" style="display:block;color:inherit;text-decoration:none;padding:18px 0;border-bottom:1px solid var(--color-neutral-300);font-weight:600;font-size:18px">Products</a>
+      <a href="About%20UKAVA.dc.html" onClick="{{ closeMenu }}" style="display:block;color:inherit;text-decoration:none;padding:18px 0;font-weight:600;font-size:18px">About Us</a>
+    </div>
+  </header>
+
+  <main>
+    <section data-screen-label="About hero" style="background:#241816;color:#fff;padding-block:clamp(44px,5vw,80px)">
+      <div style="max-width:1440px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,64px)">
+        <nav aria-label="Breadcrumb" style="display:flex;gap:8px;font-size:13px;color:rgba(255,255,255,.55);margin-bottom:clamp(28px,3vw,44px)">
+          <a href="UKAVA%20Homepage.dc.html" style="color:inherit;text-decoration:none" style-hover="color:var(--color-accent-400)">Home</a>
+          <span>/</span>
+          <span style="color:#fff">About Us</span>
+        </nav>
+        <p style="margin:0 0 22px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--color-accent-400)">Energy + Electric Mobility</p>
+        <h1 style="font-size:clamp(38px,4.8vw,68px);line-height:1;letter-spacing:-.03em;font-weight:600;margin:0 0 24px;max-width:20ch">Building India's energy and mobility ecosystem.</h1>
+        <p style="margin:0;max-width:56ch;font-size:clamp(16px,1.3vw,20px);line-height:1.55;color:rgba(255,255,255,.78)">UKAVA manufactures lithium-powered products across electric scooters, lithium batteries, inverter systems and solar solutions — engineered under one brand for homes, businesses and roads.</p>
+      </div>
+    </section>
+
+    <section data-screen-label="What we build" style="padding-block:clamp(56px,6.5vw,100px)">
+      <div style="max-width:1440px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,64px)">
+        <h2 style="font-size:clamp(26px,2.8vw,42px);letter-spacing:-.03em;font-weight:600;margin:0 0 clamp(32px,3.4vw,52px);max-width:24ch">What UKAVA builds</h2>
+        <div style="display:grid;grid-template-columns:{{ fourCols }};gap:clamp(24px,2.6vw,40px)">
+          <a href="Product%20Listing.dc.html#electric-scooters" style="text-decoration:none;color:inherit;padding-top:22px;border-top:2px solid var(--color-text)" style-hover="color:var(--color-accent)">
+            <h3 style="font-size:21px;font-weight:600;letter-spacing:-.02em;margin:0 0 10px">Electric Scooters</h3>
+            <p style="margin:0;font-size:15px;line-height:1.55;color:var(--color-neutral-700)">Nine models across scooters, three-wheelers and cargo vehicles.</p>
+          </a>
+          <a href="Product%20Listing.dc.html#lithium-batteries" style="text-decoration:none;color:inherit;padding-top:22px;border-top:2px solid var(--color-text)" style-hover="color:var(--color-accent)">
+            <h3 style="font-size:21px;font-weight:600;letter-spacing:-.02em;margin:0 0 10px">Lithium Batteries</h3>
+            <p style="margin:0;font-size:15px;line-height:1.55;color:var(--color-neutral-700)">LFP batteries for inverters, two- and three-wheelers, and energy storage.</p>
+          </a>
+          <a href="Product%20Listing.dc.html#inverter-battery" style="text-decoration:none;color:inherit;padding-top:22px;border-top:2px solid var(--color-text)" style-hover="color:var(--color-accent)">
+            <h3 style="font-size:21px;font-weight:600;letter-spacing:-.02em;margin:0 0 10px">Inverter &amp; Battery</h3>
+            <p style="margin:0;font-size:15px;line-height:1.55;color:var(--color-neutral-700)">LINVA inverters with inbuilt lithium batteries for homes, offices and shops.</p>
+          </a>
+          <a href="Product%20Listing.dc.html#solar-solutions" style="text-decoration:none;color:inherit;padding-top:22px;border-top:2px solid var(--color-text)" style-hover="color:var(--color-accent)">
+            <h3 style="font-size:21px;font-weight:600;letter-spacing:-.02em;margin:0 0 10px">Solar Solutions</h3>
+            <p style="margin:0;font-size:15px;line-height:1.55;color:var(--color-neutral-700)">LINVASOL solar PCUs with inbuilt lithium batteries and panel sizing.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="How we work" style="background:var(--color-surface);padding-block:clamp(56px,6.5vw,100px)">
+      <div style="max-width:1440px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,64px);display:grid;grid-template-columns:{{ splitCols }};gap:clamp(32px,4vw,72px);align-items:center">
+        <div>
+          <h2 style="font-size:clamp(26px,2.8vw,42px);letter-spacing:-.03em;font-weight:600;margin:0 0 24px;max-width:20ch">Engineered in India, built to last</h2>
+          <div style="display:flex;flex-direction:column;gap:26px">
+            <div>
+              <span style="display:block;width:44px;height:3px;background:var(--color-accent);margin-bottom:16px"></span>
+              <h3 style="font-size:19px;font-weight:600;letter-spacing:-.015em;margin:0 0 8px">Manufactured in India</h3>
+              <p style="margin:0;font-size:15px;line-height:1.6;color:var(--color-neutral-700)">Built domestically with UKAVA's own engineering and quality control.</p>
+            </div>
+            <div>
+              <span style="display:block;width:44px;height:3px;background:var(--color-accent);margin-bottom:16px"></span>
+              <h3 style="font-size:19px;font-weight:600;letter-spacing:-.015em;margin:0 0 8px">LFP battery expertise</h3>
+              <p style="margin:0;font-size:15px;line-height:1.6;color:var(--color-neutral-700)">Lithium chemistry with built-in battery management, applied across energy and mobility.</p>
+            </div>
+            <div>
+              <span style="display:block;width:44px;height:3px;background:var(--color-accent);margin-bottom:16px"></span>
+              <h3 style="font-size:19px;font-weight:600;letter-spacing:-.015em;margin:0 0 8px">One connected portfolio</h3>
+              <p style="margin:0;font-size:15px;line-height:1.6;color:var(--color-neutral-700)">Mobility, batteries, backup and solar engineered under a single brand.</p>
+            </div>
+            <div>
+              <span style="display:block;width:44px;height:3px;background:var(--color-accent);margin-bottom:16px"></span>
+              <h3 style="font-size:19px;font-weight:600;letter-spacing:-.015em;margin:0 0 8px">Warranty on every product</h3>
+              <p style="margin:0;font-size:15px;line-height:1.6;color:var(--color-neutral-700)">Up to 10 years on lithium inverter batteries and LINVA systems; 3 years across vehicle battery ranges.</p>
+            </div>
+          </div>
+        </div>
+        <div class="grayscale" style="aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:var(--color-neutral-300);background-image:linear-gradient(rgba(0,0,0,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.06) 1px,transparent 1px);background-size:100% 44px,44px 100%;color:var(--color-neutral-700)">
+          <image-slot id="ukava-about-facility" shape="rect" radius="0" placeholder="Manufacturing / facility photo · 4:5"></image-slot>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Partner" style="padding-block:clamp(56px,6.5vw,100px)">
+      <div style="max-width:1440px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,64px);display:grid;grid-template-columns:{{ splitCols }};gap:clamp(32px,4vw,72px);align-items:center">
+        <div>
+          <p style="display:inline-flex;margin:0 0 20px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#fff;background:var(--color-text);padding:8px 12px;border-radius:6px">For Businesses</p>
+          <h2 style="font-size:clamp(26px,2.8vw,42px);letter-spacing:-.03em;font-weight:600;margin:0 0 18px;max-width:20ch">Grow with UKAVA across energy &amp; electric mobility.</h2>
+          <p style="margin:0 0 30px;max-width:52ch;font-size:16px;line-height:1.6;color:var(--color-neutral-700)">Dealers and distributors can work across the full portfolio — scooters, lithium batteries, LINVA inverters and LINVASOL solar systems.</p>
+          <a class="btn btn-primary" href="UKAVA%20Homepage.dc.html#partner" style="font-size:16px;font-weight:600;letter-spacing:0em;text-transform:none;padding:18px 26px;border-radius:8px;text-decoration:none;transition:transform .18s ease,background .18s ease" style-hover="transform:translateY(-2px)">Become a UKAVA Partner</a>
+        </div>
+        <div class="grayscale" style="aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:var(--color-neutral-300);background-image:linear-gradient(rgba(0,0,0,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.06) 1px,transparent 1px);background-size:100% 40px,40px 100%;color:var(--color-neutral-700)">
+          <image-slot id="ukava-about-dealer" shape="rect" radius="0" placeholder="Dealer storefront photo · 4:3"></image-slot>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#FC5013;color:#fff;padding-block:clamp(44px,5vw,72px)">
+      <div style="max-width:1440px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,64px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px">
+        <div>
+          <h2 style="font-size:clamp(26px,3vw,40px);letter-spacing:-.03em;font-weight:600;margin:0 0 10px;max-width:24ch">Talk to the UKAVA team</h2>
+          <p style="margin:0;max-width:52ch;font-size:16px;opacity:.92">Call our toll-free line for product selection, pricing and dealer enquiries.</p>
+        </div>
+        <a href="tel:18001204502" style="display:flex;align-items:center;gap:12px;background:#fff;color:var(--color-accent);font-size:18px;font-weight:600;padding:18px 26px;border-radius:8px;text-decoration:none;transition:transform .18s ease,background .18s ease" style-hover="transform:translateY(-2px);background:#241816;color:#fff">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>1800 120 4502</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer style="color:var(--color-neutral-200);padding-top:clamp(56px,6vw,88px);background-color:#241816">
+    <div style="max-width:1440px;margin-inline:auto;padding-inline:clamp(20px,4.5vw,64px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:44px 32px;padding-bottom:56px">
+        <div>
+          <a href="UKAVA%20Homepage.dc.html" aria-label="UKAVA home" style="display:inline-flex;align-items:center;text-decoration:none">
+            <img src="ukava-logo-white.png" alt="UKAVA" style="height:34px;width:auto;display:block" />
+          </a>
+          <p style="margin:16px 0 0;font-size:13px;max-width:30ch;opacity:.55;line-height:1.6">Lithium-powered products for homes, businesses and roads across India.</p>
+        </div>
+        <div>
+          <h3 style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.45;margin:0 0 18px;color:inherit">Products</h3>
+          <a href="Product%20Listing.dc.html#electric-scooters" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Electric Scooters</a>
+          <a href="Product%20Listing.dc.html#lithium-batteries" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Lithium Batteries</a>
+          <a href="Product%20Listing.dc.html#inverter-battery" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Inverter &amp; Battery</a>
+          <a href="Product%20Listing.dc.html#solar-solutions" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Solar Solutions</a>
+        </div>
+        <div>
+          <h3 style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.45;margin:0 0 18px;color:inherit">Company</h3>
+          <a href="About%20UKAVA.dc.html" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">About Us</a>
+          <a href="UKAVA%20Homepage.dc.html#partner" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">Partner With Us</a>
+        </div>
+        <div>
+          <h3 style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.45;margin:0 0 18px;color:inherit">Contact</h3>
+          <a href="tel:18001204502" style="display:block;color:inherit;text-decoration:none;font-size:14px;padding:6px 0" style-hover="color:var(--color-accent-400)">1800 120 4502</a>
+          <p style="margin:6px 0 0;font-size:14px;opacity:.65">Email TBD</p>
+          <p style="margin:6px 0 0;font-size:14px;opacity:.65">Registered address TBD</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;border-top:1px solid rgba(255,255,255,.12);padding:22px 0 40px;font-size:12px;opacity:.45">
+        <span>© 2026 UKAVA. All rights reserved.</span>
+        <span>Legal / privacy links TBD</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { w: 1440, menuOpen: false };
+
+  componentDidMount() {
+    this._resize = () => this.setState({ w: window.innerWidth });
+    this._resize();
+    window.addEventListener("resize", this._resize);
+  }
+  componentWillUnmount() { window.removeEventListener("resize", this._resize); }
+
+  renderVals() {
+    const s = this.state, narrow = s.w < 860, mid = s.w < 1120;
+    return {
+      navDisplay: narrow ? "none" : "flex",
+      burgerDisplay: narrow ? "flex" : "none",
+      menuDisplay: narrow && s.menuOpen ? "block" : "none",
+      toggleMenu: () => this.setState({ menuOpen: !s.menuOpen }),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      fourCols: narrow ? "1fr" : mid ? "repeat(2,1fr)" : "repeat(4,1fr)",
+      splitCols: mid ? "1fr" : "1.05fr .95fr"
+    };
+  }
+}
+
+</script>
+</body>
+</html>
