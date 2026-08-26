@@ -1,0 +1,95 @@
+.band {
+  background: #fff;
+}
+
+.inner {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding: 30px var(--page-pad) 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid rgba(29, 29, 27, 0.06);
+  border-radius: 20px;
+  box-shadow: 0 16px 44px rgba(255, 255, 255, 0.07);
+  overflow: hidden;
+  background: #fff;
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px clamp(22px, 2.4vw, 36px);
+  border-left: 1px solid rgba(29, 29, 27, 0.09);
+}
+
+.cell:first-child {
+  border-left: 0;
+}
+
+.figure {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: clamp(16px, 1.8vw, 22px);
+}
+
+.value {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(38px, 3vw, 48px);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.label {
+  margin-top: clamp(12px, 1.4vw, 18px);
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--color-neutral-600);
+}
+
+@media (max-width: 1079px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Two-up: keep a vertical rule between the pair and a horizontal one
+     between the rows. */
+  .cell:nth-child(odd) {
+    border-left: 0;
+  }
+
+  .cell:nth-child(n + 3) {
+    border-top: 1px solid rgba(29, 29, 27, 0.09);
+  }
+}
+
+/* Two-up on a phone leaves each figure ~130px; shrink the type and the icon
+   so "20+ yrs" stays on one line instead of clipping. */
+@media (max-width: 560px) {
+  .cell {
+    padding: 18px 16px;
+  }
+
+  .figure {
+    gap: 10px;
+  }
+
+  .figure svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .value {
+    font-size: 30px;
+  }
+
+  .label {
+    font-size: 14px;
+  }
+}

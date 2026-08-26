@@ -1,0 +1,36 @@
+.tabs {
+  display: flex;
+  gap: 36px;
+  overflow-x: auto;
+  border-bottom: 2px solid #dcdcdc;
+}
+
+.tab {
+  flex: 0 0 auto;
+  background: transparent;
+  border: 0;
+  border-bottom: 4px solid transparent;
+  color: #5c5757;
+  cursor: pointer;
+  padding: 0 0 16px;
+  margin-bottom: -2px;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    color 0.2s ease,
+    font-weight 0.2s ease;
+}
+
+.tab:hover {
+  color: var(--color-text);
+}
+
+.on {
+  color: var(--color-text);
+  font-weight: 800;
+  border-bottom-color: var(--color-accent);
+}

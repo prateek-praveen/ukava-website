@@ -1,0 +1,230 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  background: #fff;
+  padding-block: clamp(56px, 5.6vw, 88px) clamp(72px, 7vw, 96px);
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.scene img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 58%;
+}
+
+.veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    #fff 0%,
+    rgba(255, 255, 255, 0.7) 8%,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.05) 34%,
+    rgba(255, 255, 255, 0.1) 56%,
+    rgba(255, 255, 255, 0.5) 74%,
+    rgba(255, 255, 255, 0.88) 88%,
+    #fff 100%
+  );
+}
+
+.inner {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--page-pad);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: clamp(24px, 2.4vw, 34px);
+}
+
+.kicker {
+  margin: 0 0 16px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent-700);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 3.5vw, 50px);
+  line-height: 1.04;
+  letter-spacing: 0;
+  margin: 0;
+  color: var(--color-text);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(14px, 1.6vw, 26px);
+  margin-top: 26px;
+}
+
+.meta span {
+  font-size: 15px;
+  color: var(--color-neutral-700);
+}
+
+.metaRule {
+  width: 1px;
+  height: 18px;
+  background: var(--color-neutral-300);
+}
+
+.partnerCta {
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 18px 28px;
+  border-radius: 999px;
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease;
+}
+
+.partnerCta:hover {
+  transform: translateY(-2px);
+}
+
+.rail {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  overflow-x: hidden;
+  padding-block: 18px 40px;
+}
+
+.track {
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+  width: max-content;
+  padding-inline: max(var(--page-pad), calc((100vw - var(--page-max)) / 2 + var(--page-pad)));
+  animation: ukavaMarquee 64s linear infinite;
+}
+
+.rail:hover .track {
+  animation-play-state: paused;
+}
+
+.card {
+  flex: 0 0 clamp(280px, 22vw, 340px);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 18px 50px rgba(29, 29, 27, 0.16);
+  padding: clamp(24px, 2vw, 30px);
+  scroll-snap-align: start;
+}
+
+.stars {
+  font-size: 15px;
+  letter-spacing: 3px;
+  color: var(--color-accent);
+}
+
+.quote {
+  margin: 14px 0 0;
+  font-size: clamp(16px, 1.2vw, 18px);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  text-wrap: pretty;
+}
+
+.person {
+  margin-top: auto;
+  padding-top: clamp(20px, 1.8vw, 26px);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar {
+  position: relative;
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--color-neutral-300);
+}
+
+.who {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.who strong {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.who span {
+  font-size: 13px;
+  color: var(--color-neutral-600);
+}
+
+/* Below the desktop breakpoint the marquee becomes a snap scroller the
+   visitor drives with a thumb, and the duplicate run is dropped. */
+@media (max-width: 1079px) {
+  .rail {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+
+  .track {
+    animation: none;
+  }
+
+  .card {
+    flex-basis: min(84vw, 400px);
+  }
+
+  .duplicate {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rail {
+    overflow-x: auto;
+  }
+
+  .track {
+    animation: none;
+  }
+
+  .duplicate {
+    display: none;
+  }
+}

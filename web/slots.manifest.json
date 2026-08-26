@@ -1,0 +1,338 @@
+{
+ "ukava-dealer-1": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-dealer-1.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-dealer-2": {
+  "s": 1.4004633195748624,
+  "src": "/img/slots/ukava-dealer-2.webp",
+  "x": 69.76862511253248,
+  "y": 20.02316597874313
+ },
+ "ukava-dealer-3": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-dealer-3.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-dealer-4": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-dealer-4.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-dealer-5": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-dealer-5.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-dealer-6": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-dealer-6.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-hero-2": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-hero-2.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-hero-3": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-hero-3.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-hero-battery": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-hero-battery.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-hero-inverter": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-hero-inverter.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-hero-scooter": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-hero-scooter.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-electric-three-wheeler-lithium-battery-0": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-electric-three-wheeler-lithium-battery-0.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-lithium-inverter-batteries-0": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-lithium-inverter-batteries-0.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-lithium-inverter-batteries-1": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-lithium-inverter-batteries-1.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-rapid": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-rapid.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-raya": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-raya.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-rechargeable-lfp-battery-0": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-rechargeable-lfp-battery-0.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-rechargeable-lfp-battery-1": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-rechargeable-lfp-battery-1.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-royal": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-royal.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-storm": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-storm.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-strom": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-strom.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-aura-0": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-aura-0.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-aura-1": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-aura-1.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-aura-2": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-aura-2.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-aura-3": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-aura-3.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-aura-4": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-aura-4.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-aura-detail": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-aura-detail.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-cargo-0": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-cargo-0.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-cargo-1": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-cargo-1.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-cargo-2": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-cargo-2.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-cargo-3": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-cargo-3.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-rapid-0": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-rapid-0.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-rapid-1": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-rapid-1.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-rapid-detail": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-rapid-detail.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-raya-0": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-raya-0.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-raya-1": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-raya-1.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-raya-2": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-raya-2.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-raya-3": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-raya-3.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-strom-0": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-strom-0.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-strom-1": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-strom-1.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-strom-2": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-strom-2.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-torra-0": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-torra-0.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-trivolt-0": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-trivolt-0.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-trivolt-1": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-trivolt-1.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-vega-0": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-vega-0.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-vega-1": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-vega-1.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-vega-2": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-vega-2.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-vega-3": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-vega-3.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-vega-detail": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-vega-detail.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-zyro-0": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-zyro-0.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-zyro-1": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-zyro-1.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-zyro-2": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-zyro-2.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-zyro-3": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-zyro-3.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-ukava-zyro-4": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-ukava-zyro-4.webp",
+  "x": 0.0,
+  "y": 0.0
+ },
+ "ukava-p-vega": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-p-vega.webp",
+  "x": 0.0,
+  "y": 3.680542076766308
+ },
+ "ukava-partner-store": {
+  "s": 1.0,
+  "src": "/img/slots/ukava-partner-store.webp",
+  "x": 0.0,
+  "y": 0.0
+ }
+}

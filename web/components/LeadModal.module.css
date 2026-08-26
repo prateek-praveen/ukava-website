@@ -1,0 +1,172 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, #201e1d 62%, transparent);
+}
+
+.dialog {
+  position: relative;
+  width: min(470px, 100%);
+  max-height: 94vh;
+  overflow-y: auto;
+  background: var(--color-bg);
+  border-top: 6px solid var(--color-accent);
+  border-radius: 16px;
+  padding: clamp(26px, 3vw, 40px);
+  box-shadow: var(--shadow-lg);
+}
+
+.close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.kicker {
+  margin: 0 0 12px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent-700);
+}
+
+.title {
+  font-size: 28px;
+  letter-spacing: -0.03em;
+  margin: 0 0 10px;
+}
+
+.sub {
+  margin: 0 0 26px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--color-neutral-800);
+}
+
+/* The interest chip is what makes a product lead qualified — it is filled
+   from the card that opened the form, never typed by the visitor. */
+.interest {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  padding: 12px 14px;
+  background: var(--color-text);
+  color: #fff;
+  border-radius: 8px;
+}
+
+.interestLabel {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.interestValue {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.row {
+  margin-bottom: 16px;
+}
+
+.row .input,
+.dialog select.input {
+  min-height: 48px;
+  font-size: 15px;
+  background: var(--color-bg);
+  border-width: 2px;
+}
+
+.prefix {
+  display: flex;
+}
+
+.prefix span {
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  background: var(--color-text);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 14px;
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+.prefix .input {
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.error {
+  font-size: 12px;
+  color: var(--color-accent-700);
+  margin-top: 6px;
+  min-height: 18px;
+}
+
+.submit {
+  width: 100%;
+  justify-content: flex-start;
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  padding: 18px;
+  border-radius: 999px;
+}
+
+.consent {
+  margin: 14px 0 0;
+  font-size: 11px;
+  color: var(--color-neutral-700);
+}
+
+.tick {
+  width: 48px;
+  height: 48px;
+  background: var(--color-accent);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 22px;
+  margin-bottom: 24px;
+}
+
+.done {
+  width: 100%;
+  justify-content: flex-start;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  padding: 18px;
+  border-width: 2px;
+  border-radius: 999px;
+}

@@ -1,0 +1,162 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  color: var(--color-text);
+  transition: box-shadow 0.3s ease;
+}
+
+.translucent {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(1.1) blur(14px);
+  -webkit-backdrop-filter: saturate(1.1) blur(14px);
+}
+
+.solid {
+  background: #fff;
+  border-bottom: 1px solid var(--color-neutral-300);
+}
+
+.scrolled {
+  box-shadow: 0 1px 0 var(--color-neutral-300);
+}
+
+.bar {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding: 0 var(--page-pad);
+  height: 84px;
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 4vw, 56px);
+}
+
+.brand {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+}
+
+/* The supplied logo is a square JPG with a wide white margin; the design
+   crops to the wordmark with a fixed window and multiply-blends the ground
+   into the bar. */
+.logoWindow {
+  position: relative;
+  display: block;
+  width: 200px;
+  height: 48px;
+  overflow: hidden;
+}
+
+.logoWindow img {
+  position: absolute;
+  left: -44px;
+  top: -118px;
+  width: 288px;
+  max-width: none;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(28px, 3.4vw, 48px);
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+}
+
+.link:hover {
+  color: var(--color-accent);
+}
+
+.active {
+  font-weight: 600;
+  border-bottom-color: var(--color-accent);
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: inherit;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.phone:hover {
+  color: var(--color-accent);
+}
+
+.callButton,
+.burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+}
+
+.callButton {
+  background: var(--color-accent);
+  color: #fff;
+  text-decoration: none;
+}
+
+.burger {
+  background: transparent;
+  border: 1px solid var(--color-neutral-300);
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.burger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--color-text);
+}
+
+.sheet {
+  border-top: 1px solid var(--color-neutral-300);
+  padding: 8px clamp(20px, 5vw, 64px) 24px;
+  background: #fff;
+  color: var(--color-text);
+}
+
+.sheetLink {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--color-neutral-300);
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.sheetLink:last-child {
+  border-bottom: 0;
+}
+
+@media (max-width: 1079px) {
+  .nav {
+    display: none;
+  }
+
+  .callButton,
+  .burger {
+    display: flex;
+  }
+}
