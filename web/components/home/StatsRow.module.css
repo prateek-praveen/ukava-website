@@ -107,13 +107,18 @@
 /* ── mobile: horizontal auto-scrolling marquee (≤768px) ───────────── */
 @media (max-width: 768px) {
   .inner {
-    padding: 20px var(--page-pad) 28px;
+    padding: 10px var(--page-pad) 24px;
   }
 
+  /* Supporting information, not a headline: the card, its border, radius
+     and shadow all come off so the stats sit on the page surface. */
   .grid {
     display: block;
     overflow: hidden;
-    border-radius: 16px;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .track {
@@ -129,8 +134,8 @@
   /* Re-establish the separator between every item — the two-up rules above
      drop it on odd cells, which no longer applies in a single row. */
   .track .cell {
-    flex: 0 0 156px;
-    padding: 16px 18px;
+    flex: 0 0 148px;
+    padding: 4px 16px;
     border-top: 0;
     border-left: 1px solid rgba(29, 29, 27, 0.09);
   }
@@ -145,20 +150,20 @@
   }
 
   .figure svg {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
   }
 
   .value {
-    font-size: 30px;
+    font-size: 26px;
     line-height: 1;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.03em;
   }
 
   .label {
-    margin-top: 8px;
+    margin-top: 5px;
     font-size: 13px;
-    line-height: 1.35;
+    line-height: 1.3;
   }
 }
 

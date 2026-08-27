@@ -25,6 +25,14 @@ export default function ProductCard({ product }: { product: Product }) {
       <div className={styles.body}>
         <span className={styles.index} aria-hidden="true" />
         <h3 className={styles.name}>{product.name}</h3>
+        {/* Two short details for quick scanning on mobile; the full spec
+            list below carries the same information on desktop. */}
+        <p className={styles.compact}>
+          {specs
+            .slice(0, 2)
+            .map((s) => s.value)
+            .join(" · ")}
+        </p>
         <p className={styles.type}>{product.type}</p>
         <div className={styles.specs}>
           {specs.map((s) => (
@@ -39,7 +47,9 @@ export default function ProductCard({ product }: { product: Product }) {
           ))}
         </div>
         <span className={styles.more}>
-          View more details <span aria-hidden="true">→</span>
+          <span className={styles.moreLong}>View more details</span>
+          <span className={styles.moreShort}>View details</span>
+          <span aria-hidden="true">→</span>
         </span>
       </div>
     </Link>

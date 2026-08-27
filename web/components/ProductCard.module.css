@@ -113,6 +113,13 @@
   content: counter(ukavaProduct, decimal-leading-zero);
 }
 
+/* Desktop keeps the full spec list and the long CTA label; these two are
+   mobile-only and render nothing above the breakpoint. */
+.compact,
+.moreShort {
+  display: none;
+}
+
 /* ── mobile: compact two-up card (≤768px) ─────────────────────────── */
 @media (max-width: 768px) {
   .card {
@@ -128,46 +135,66 @@
     transform: none;
   }
 
+  /* The renders are square, so a square frame lets the product fill the
+     card instead of sitting in letterbox gutters. */
   .frame {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1 / 1;
   }
 
   /* Contain, so a product render is never cropped or stretched to fill.
      ImageSlot sets object-fit inline, hence the override. */
   .zoom img {
     object-fit: contain !important;
-    padding: 6px;
+    padding: 0;
   }
 
   .body {
-    padding: 12px 12px 14px;
+    padding: 10px 12px 12px;
   }
 
+  /* The index would add a fourth line; image, name and details carry the
+     card on their own. */
   .index {
-    display: block;
-    margin-bottom: 6px;
-    font-family: var(--font-heading);
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.14em;
-    color: var(--color-neutral-500);
+    display: none;
   }
 
   .name {
     font-size: 16px;
-    line-height: 1.25;
+    font-weight: 600;
+    line-height: 1.22;
     letter-spacing: -0.015em;
-    margin: 0 0 10px;
+    margin: 0 0 4px;
   }
 
-  /* The image and name already carry the category on mobile. */
-  .type,
-  .specs {
+  .compact {
+    display: block;
+    margin: 0 0 2px;
+    font-size: 13px;
+    line-height: 1.35;
+    color: var(--color-neutral-700);
+  }
+
+  .type {
+    display: block;
+    margin: 0 0 10px;
+    font-size: 12px;
+    line-height: 1.35;
+    color: var(--color-neutral-600);
+  }
+
+  /* The long label is replaced, not duplicated. */
+  .specs,
+  .moreLong {
     display: none;
   }
 
+  .moreShort {
+    display: inline;
+  }
+
   .more {
-    font-size: 13px;
-    gap: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    gap: 5px;
   }
 }

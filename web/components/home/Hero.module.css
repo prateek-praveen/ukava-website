@@ -263,43 +263,53 @@
 
   .copyWrap {
     justify-content: flex-start;
-    padding: 40px 22px 0;
+    align-items: center;
+    padding: 36px 22px 0;
   }
 
   .copy {
     width: 100%;
+    margin-inline: auto;
+    text-align: center;
   }
 
   .headline {
     font-size: clamp(32px, 9.6vw, 40px);
     line-height: 1.07;
     letter-spacing: -0.025em;
-    margin: 0 0 14px;
-    max-width: 15ch;
+    margin: 0 auto 12px;
+    max-width: 18ch;
   }
 
   .lede {
     font-size: 16px;
-    line-height: 1.55;
-    margin: 0 0 24px;
+    line-height: 1.5;
+    margin: 0 auto 22px;
     max-width: 34ch;
   }
 
+  /* Both CTAs share one row; the label scales down rather than stacking
+     so they still fit a 320px viewport. */
   .actions {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 11px;
     width: 100%;
-    max-width: 340px;
+    max-width: 420px;
+    margin-inline: auto;
   }
 
   .primary,
   .secondary {
-    width: 100%;
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
     justify-content: center;
-    min-height: 52px;
-    padding: 15px 22px;
-    font-size: 16px;
+    min-height: 50px;
+    padding: 14px 10px;
+    font-size: clamp(13px, 3.9vw, 15px);
+    white-space: nowrap;
   }
 
   .dots {

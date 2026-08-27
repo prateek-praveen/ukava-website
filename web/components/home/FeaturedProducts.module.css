@@ -94,19 +94,26 @@
     padding-block: 64px;
   }
 
+  /* Heading and CTA share one row; the CTA is dropped rather than wrapped
+     when the row gets tight (see the narrow rule below). */
   .head {
-    margin-bottom: 26px;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-bottom: 18px;
     gap: 12px;
   }
 
   .title {
-    font-size: 30px;
-    letter-spacing: -0.025em;
+    font-size: 19px;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
   }
 
   .viewAll {
     font-size: 13px;
     padding: 10px 0 8px;
+    white-space: nowrap;
+    letter-spacing: 0.06em;
   }
 
   .tabs {
@@ -121,12 +128,20 @@
   }
 
   .footer {
-    margin-top: 28px;
+    margin-top: 24px;
   }
 
   .seeAll {
     width: 100%;
     justify-content: center;
     padding: 15px 20px;
+  }
+}
+
+/* Below this the row cannot hold both, and the section already has a CTA
+   under the grid — so the top one goes rather than wrapping to its own line. */
+@media (max-width: 429px) {
+  .viewAll {
+    display: none;
   }
 }
