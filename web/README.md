@@ -55,9 +55,12 @@ All 29 pages prerender at build time.
      (`ukava-p-<slug>-0`, plus `-1`…`-4` for the gallery and `-detail` for the callout)
 4. **Pending links.** Social handles, the registered address, the email address, and the Privacy
    Policy / Terms of Use pages render as inert marks rather than links to nowhere.
-5. **A newer About page design exists in Claude Design but not in this export.** The bundle in
-   `../project/` is a frozen snapshot taken at the handoff; re-export it ("Send to Claude Code
-   Web") so the new About design reaches the repo, then rebuild `app/about/`.
+5. **About page photography.** Eleven new slots render captioned frames until filled:
+   `ukava-about-founder`, four `ukava-about-build-*` category cards, and six
+   `ukava-about-work-*` gallery shots.
+6. **The `../project/` bundle is a frozen snapshot from the handoff export.** Design changes made
+   in Claude Design since then do not reach this repo; re-export ("Send to Claude Code Web") to
+   pick them up.
 
 ## Deliberate departures from the prototype
 
@@ -66,11 +69,10 @@ All 29 pages prerender at build time.
 - The catalogue spelled the first scooter "UKAVA Strom" while the prototype's homepage said
   "UKAVA Storm". Confirmed as **Storm** — the catalogue entry, its slug (`ukava-storm`) and its
   image slot ids were all corrected to match.
-- The About page follows the combined file, **not** the standalone `About UKAVA.dc.html` — that
-  file is an earlier draft. Chat 4 supersedes it on three specific points: "How we work" went
-  from grey to white, the flat orange contact band was replaced by the immersive closing CTA that
-  fades into the footer, and the phone number became 1800 212 2131.
-  **The user reports a newer About design that is not present in this export** — see below.
+- The About page was rebuilt from screenshots of the current design, which is **not** in this
+  export — neither `About UKAVA.dc.html` nor the combined file's About section matches it. It is
+  now: Our Story (founder portrait + narrative), a four-up proof strip, "One energy partner. Many
+  solutions." with four dark category cards, and a two-row drifting work gallery.
 - Product cards are one component across the homepage and the listing. Where the two diverged in
   the prototype (heading weight, spec labels) the listing's explicit values were adopted.
 - DM Sans is self-hosted (`public/fonts/`) instead of loaded from Google Fonts.
