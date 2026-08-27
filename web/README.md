@@ -60,6 +60,15 @@ All 29 pages prerender at build time.
 6. **The `../project/` bundle is a frozen snapshot from the handoff export.** Design changes made
    in Claude Design since then do not reach this repo; re-export ("Send to Claude Code Web") to
    pick them up.
+7. **The desktop testimonial marquee is inert and awaiting a decision.**
+   `components/home/PartnerStories.module.css` declares
+   `animation: ukavaMarquee 64s linear infinite` on `.track`, but CSS Modules scope the
+   identifier used in `animation`, and no `@keyframes ukavaMarquee` exists in that module — so
+   the name never resolves and the desktop rail has always rendered static. The mobile rail was
+   given its own in-module `ukavaMarqueeMobile` and now drifts. Enabling it on desktop is a
+   one-line change, but it alters the approved desktop, so it is left off pending sign-off.
+   Note the desktop track carries a `padding-inline` gutter, which offsets the -50% loop point;
+   that padding has to come off at the same time or the loop will visibly jump.
 
 ## Deliberate departures from the prototype
 

@@ -124,6 +124,10 @@
   gap: 24px;
   width: max-content;
   padding-inline: max(var(--page-pad), calc((100vw - var(--page-max)) / 2 + var(--page-pad)));
+  /* NOTE: this name does not resolve. CSS Modules scope the identifier used
+     in `animation`, and no `@keyframes ukavaMarquee` is declared in this
+     module, so the desktop rail has always rendered static. Left as-is to
+     keep the approved desktop untouched — see README before enabling. */
   animation: ukavaMarquee 64s linear infinite;
 }
 
@@ -229,6 +233,17 @@
   }
 }
 
+/* Declared in this module so the scoped name actually resolves. Two
+   identical runs, so -50% lands on a seamless repeat. */
+@keyframes ukavaMarqueeMobile {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* ── mobile (≤768px) ──────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .section {
@@ -252,8 +267,8 @@
   }
 
   .meta {
-    margin-top: 16px;
-    gap: 14px;
+    margin-top: 14px;
+    gap: 12px;
   }
 
   .meta span {
@@ -272,25 +287,81 @@
   /* Content-driven height rather than the fixed desktop rail. */
   .rail {
     height: auto;
-    padding-block: 12px 24px;
+    padding-block: 12px 20px;
   }
 
-  .story {
-    flex-basis: min(78vw, 320px);
-    padding: 20px;
-    border-radius: 16px;
+  .track {
+    gap: 12px;
+  }
+
+  .card {
+    flex-basis: min(76vw, 300px);
+    padding: 16px;
+    border-radius: 14px;
+    box-shadow: 0 10px 28px rgba(29, 29, 27, 0.14);
+  }
+
+  .stars {
+    font-size: 13px;
+    letter-spacing: 2px;
   }
 
   .quote {
+    margin-top: 10px;
     font-size: 14px;
     line-height: 1.45;
   }
 
-  .storyName strong {
+  .person {
+    padding-top: 14px;
+    gap: 10px;
+  }
+
+  .avatar {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .who strong {
     font-size: 14px;
   }
 
-  .storyName span {
+  .who span {
     font-size: 12px;
+  }
+}
+
+/* The rail keeps drifting on a phone. The 1079px rules above turn it into a
+   manual scroller, which is why it sat still on mobile; these restore the
+   marquee and the duplicate run that makes the loop seamless.
+
+   The track's page gutter comes off so the two runs are exactly half the
+   width each — with it, -50% lands 18px out and the loop visibly jumps. */
+@media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .rail {
+    overflow-x: hidden;
+    scroll-snap-type: none;
+  }
+
+  .track {
+    padding-inline: 0;
+    animation: ukavaMarqueeMobile 36s linear infinite;
+  }
+
+  .duplicate {
+    display: flex;
+  }
+
+  /* Touch has no hover, so holding the rail is what pauses it. */
+  .rail:active .track {
+    animation-play-state: paused;
+  }
+}
+
+/* Reduced motion keeps the manual snap scroller, with the gutter restored. */
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  .card {
+    scroll-snap-align: start;
   }
 }

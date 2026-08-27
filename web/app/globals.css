@@ -242,15 +242,6 @@ a:hover {
   display: none;
 }
 
-@keyframes ukavaMarquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 @keyframes panelIn {
   from {
     opacity: 0;
