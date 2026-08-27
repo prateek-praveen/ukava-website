@@ -203,3 +203,52 @@
     justify-self: stretch;
   }
 }
+
+/* ── mobile (≤768px) ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .section {
+    padding-block: 64px 28px;
+  }
+
+  .head {
+    margin-bottom: 26px;
+  }
+
+  .title {
+    font-size: 30px;
+    letter-spacing: -0.03em;
+  }
+
+  .kicker {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  .split {
+    row-gap: 22px;
+  }
+
+  .row {
+    padding: 17px 0;
+    gap: 14px;
+  }
+
+  .rowTitle {
+    font-size: 20px;
+    line-height: 1.25;
+  }
+
+  .panelBody {
+    padding: 0 0 20px 30px;
+  }
+
+  .panelBody p {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .visual {
+    border-radius: 12px;
+    aspect-ratio: 4 / 3;
+  }
+}

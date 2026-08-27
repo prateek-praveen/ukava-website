@@ -93,3 +93,96 @@
     font-size: 14px;
   }
 }
+
+/* Above the mobile breakpoint the track is transparent to layout, so the
+   four cells remain direct grid items exactly as before. */
+.track {
+  display: contents;
+}
+
+.dup {
+  display: none;
+}
+
+/* ── mobile: horizontal auto-scrolling marquee (≤768px) ───────────── */
+@media (max-width: 768px) {
+  .inner {
+    padding: 20px var(--page-pad) 28px;
+  }
+
+  .grid {
+    display: block;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
+  .track {
+    display: flex;
+    width: max-content;
+    animation: ukavaStats 42s linear infinite;
+  }
+
+  .dup {
+    display: flex;
+  }
+
+  /* Re-establish the separator between every item — the two-up rules above
+     drop it on odd cells, which no longer applies in a single row. */
+  .track .cell {
+    flex: 0 0 156px;
+    padding: 16px 18px;
+    border-top: 0;
+    border-left: 1px solid rgba(29, 29, 27, 0.09);
+  }
+
+  .track .cell:first-child {
+    border-left: 0;
+  }
+
+  .figure {
+    gap: 10px;
+    margin-top: 0;
+  }
+
+  .figure svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .value {
+    font-size: 30px;
+    line-height: 1;
+    letter-spacing: -0.035em;
+  }
+
+  .label {
+    margin-top: 8px;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+}
+
+/* Exactly two identical runs, so -50% lands on a seamless repeat. */
+@keyframes ukavaStats {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  .grid {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .track {
+    animation: none;
+  }
+}

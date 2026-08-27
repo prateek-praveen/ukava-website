@@ -98,3 +98,76 @@
     padding: 22px 22px 24px;
   }
 }
+
+/* The index is presentational ordering only — hidden until the compact
+   two-up grid, where it helps the eye track rows. */
+.card {
+  counter-increment: ukavaProduct;
+}
+
+.index {
+  display: none;
+}
+
+.index::before {
+  content: counter(ukavaProduct, decimal-leading-zero);
+}
+
+/* ── mobile: compact two-up card (≤768px) ─────────────────────────── */
+@media (max-width: 768px) {
+  .card {
+    border-radius: 12px;
+  }
+
+  .card:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .card:hover .zoom {
+    transform: none;
+  }
+
+  .frame {
+    aspect-ratio: 4 / 3;
+  }
+
+  /* Contain, so a product render is never cropped or stretched to fill.
+     ImageSlot sets object-fit inline, hence the override. */
+  .zoom img {
+    object-fit: contain !important;
+    padding: 6px;
+  }
+
+  .body {
+    padding: 12px 12px 14px;
+  }
+
+  .index {
+    display: block;
+    margin-bottom: 6px;
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: var(--color-neutral-500);
+  }
+
+  .name {
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    margin: 0 0 10px;
+  }
+
+  /* The image and name already carry the category on mobile. */
+  .type,
+  .specs {
+    display: none;
+  }
+
+  .more {
+    font-size: 13px;
+    gap: 6px;
+  }
+}

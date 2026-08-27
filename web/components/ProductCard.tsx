@@ -23,6 +23,7 @@ export default function ProductCard({ product }: { product: Product }) {
         </div>
       </div>
       <div className={styles.body}>
+        <span className={styles.index} aria-hidden="true" />
         <h3 className={styles.name}>{product.name}</h3>
         <p className={styles.type}>{product.type}</p>
         <div className={styles.specs}>

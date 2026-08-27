@@ -140,3 +140,37 @@
 .legalLinks a:hover {
   color: var(--color-accent);
 }
+
+/* ── mobile (≤768px) ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .footer {
+    padding-top: 48px;
+  }
+
+  .columns {
+    gap: 30px 24px;
+    padding-bottom: 34px;
+  }
+
+  .colTitle {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  /* Taller rows so the link list is comfortable to tap. */
+  .colLink {
+    padding: 10px 0;
+    font-size: 15px;
+  }
+
+  .blurb {
+    margin: 14px 0 18px;
+    font-size: 14px;
+  }
+
+  .legal {
+    padding: 16px 0 24px;
+    font-size: 13px;
+    gap: 10px;
+  }
+}

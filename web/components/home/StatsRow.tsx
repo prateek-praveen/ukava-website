@@ -50,33 +50,51 @@ const STATS = [
   },
 ];
 
+function Cell({ stat, duplicate }: { stat: (typeof STATS)[number]; duplicate?: boolean }) {
+  return (
+    <div
+      className={`${styles.cell} ${duplicate ? styles.dup : ""}`}
+      aria-hidden={duplicate || undefined}
+    >
+      <div className={styles.figure}>
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="var(--color-accent)"
+          strokeWidth={1.7}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+          style={{ flex: "0 0 auto" }}
+        >
+          {stat.icon}
+        </svg>
+        <span className={styles.value}>{stat.value}</span>
+      </div>
+      <span className={styles.label}>{stat.label}</span>
+    </div>
+  );
+}
+
 export default function StatsRow() {
   return (
     <div className={styles.band}>
       <div className={styles.inner}>
         <div className={styles.grid}>
-          {STATS.map((s) => (
-            <div key={s.label} className={styles.cell}>
-              <div className={styles.figure}>
-                <svg
-                  width="30"
-                  height="30"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="var(--color-accent)"
-                  strokeWidth={1.7}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                  style={{ flex: "0 0 auto" }}
-                >
-                  {s.icon}
-                </svg>
-                <span className={styles.value}>{s.value}</span>
-              </div>
-              <span className={styles.label}>{s.label}</span>
-            </div>
-          ))}
+          {/* `.track` is display:contents above 768px, so the cells stay
+              direct grid items and the desktop row is untouched. Below it,
+              the track becomes a marquee and the duplicate run — hidden on
+              desktop — makes the loop seamless. */}
+          <div className={styles.track}>
+            {STATS.map((s) => (
+              <Cell key={s.label} stat={s} />
+            ))}
+            {STATS.map((s) => (
+              <Cell key={`${s.label}-dup`} stat={s} duplicate />
+            ))}
+          </div>
         </div>
       </div>
     </div>

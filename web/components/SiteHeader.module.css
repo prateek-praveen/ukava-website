@@ -160,3 +160,43 @@
     display: flex;
   }
 }
+
+/* ── mobile (≤768px) ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .bar {
+    gap: 12px;
+    height: 76px;
+  }
+
+  /* The crop window scales with the wordmark so the bar fits a 320px
+     viewport alongside the call and menu buttons. */
+  .logoWindow {
+    width: 168px;
+    height: 40px;
+  }
+
+  .logoWindow img {
+    left: -37px;
+    top: -99px;
+    width: 242px;
+  }
+
+  .callButton,
+  .burger {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 359px) {
+  .logoWindow {
+    width: 140px;
+    height: 34px;
+  }
+
+  .logoWindow img {
+    left: -31px;
+    top: -83px;
+    width: 202px;
+  }
+}

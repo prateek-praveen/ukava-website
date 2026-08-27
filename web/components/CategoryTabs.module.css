@@ -34,3 +34,16 @@
   font-weight: 800;
   border-bottom-color: var(--color-accent);
 }
+
+/* ── mobile (≤768px) ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .tabs {
+    gap: 22px;
+  }
+
+  /* Padded to a comfortable tap height without moving the underline. */
+  .tab {
+    padding: 12px 0 16px;
+    font-size: 15px;
+  }
+}

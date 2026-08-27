@@ -98,3 +98,44 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ── mobile (≤768px) ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero {
+    padding-block: 26px 0;
+  }
+
+  /* Reframed for a portrait viewport so the banner reads as a band rather
+     than a sliver of a very wide crop. */
+  .heroArt img {
+    top: -10px;
+    height: 240px;
+    object-position: 72% bottom;
+  }
+
+  .crumbs {
+    margin-bottom: 16px;
+    font-size: 12px;
+  }
+
+  .title {
+    font-size: clamp(32px, 9.6vw, 40px);
+    line-height: 1.06;
+    margin-bottom: 22px;
+  }
+
+  .gridSection {
+    padding-block: 32px 64px;
+  }
+
+  .intro {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    counter-reset: ukavaProduct;
+  }
+}

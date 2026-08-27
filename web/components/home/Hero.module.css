@@ -219,3 +219,90 @@
     min-height: 48px;
   }
 }
+
+/* ── mobile hero (≤768px) ──────────────────────────────────────────
+   Recomposed rather than shrunk: the banner is pinned to the lower part
+   of the frame so the scooters sit below the copy, and the headline runs
+   over the clean, hazy top of the image. No dark overlay — the existing
+   white fade does the work. */
+@media (max-width: 768px) {
+  .stage {
+    height: clamp(620px, 84vh, 680px);
+    min-height: 620px;
+  }
+
+  .slide img {
+    top: auto;
+    bottom: 0;
+    height: 64%;
+    object-position: 58% center;
+  }
+
+  /* White down to the headline zone, clearing to the product below. */
+  .scrim {
+    background: linear-gradient(
+      180deg,
+      #fff 0%,
+      #fff 24%,
+      rgba(255, 255, 255, 0.92) 33%,
+      rgba(255, 255, 255, 0.45) 44%,
+      rgba(255, 255, 255, 0) 58%
+    );
+  }
+
+  .fade {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.35) 0%,
+      rgba(255, 255, 255, 0) 16%,
+      rgba(255, 255, 255, 0) 84%,
+      rgba(255, 255, 255, 0.72) 95%,
+      #fff 100%
+    );
+  }
+
+  .copyWrap {
+    justify-content: flex-start;
+    padding: 40px 22px 0;
+  }
+
+  .copy {
+    width: 100%;
+  }
+
+  .headline {
+    font-size: clamp(32px, 9.6vw, 40px);
+    line-height: 1.07;
+    letter-spacing: -0.025em;
+    margin: 0 0 14px;
+    max-width: 15ch;
+  }
+
+  .lede {
+    font-size: 16px;
+    line-height: 1.55;
+    margin: 0 0 24px;
+    max-width: 34ch;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+    max-width: 340px;
+  }
+
+  .primary,
+  .secondary {
+    width: 100%;
+    justify-content: center;
+    min-height: 52px;
+    padding: 15px 22px;
+    font-size: 16px;
+  }
+
+  .dots {
+    bottom: 16px;
+  }
+}

@@ -284,3 +284,16 @@ a:hover {
     transition: none;
   }
 }
+
+/* ── mobile (≤768px) ───────────────────────────────────────────────
+   A purpose-built mobile scale. Every rule below this point is scoped to
+   the mobile breakpoint and must not reach the approved desktop layout. */
+@media (max-width: 768px) {
+  :root {
+    --page-pad: 22px;
+  }
+
+  body {
+    font-size: 16px;
+  }
+}
