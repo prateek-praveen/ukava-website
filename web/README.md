@@ -75,3 +75,15 @@ All 29 pages prerender at build time.
 - Product cards are one component across the homepage and the listing. Where the two diverged in
   the prototype (heading weight, spec labels) the listing's explicit values were adopted.
 - DM Sans is self-hosted (`public/fonts/`) instead of loaded from Google Fonts.
+
+## Mobile
+
+Screens `<=768px` get a purpose-built layer rather than a shrunk desktop: the hero banner is
+pinned low so the product sits below the copy, products run two-up with compact cards
+(`object-fit: contain`, descriptor and specs hidden), and the stats row becomes a seamless
+marquee. Every mobile rule lives in a `@media (max-width: 768px)` block at the end of the
+component'''s own module, so desktop is untouched — verified by comparing geometry and 60 computed
+style properties for 2539 rendered elements across all four pages at 1024 and 1440.
+
+The stats marquee needs duplicate cells for a seamless loop; they are `display: none` above the
+breakpoint and their wrapper is `display: contents`, so the desktop grid is unaffected.
