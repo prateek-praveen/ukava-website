@@ -55,14 +55,22 @@ All 29 pages prerender at build time.
      (`ukava-p-<slug>-0`, plus `-1`…`-4` for the gallery and `-detail` for the callout)
 4. **Pending links.** Social handles, the registered address, the email address, and the Privacy
    Policy / Terms of Use pages render as inert marks rather than links to nowhere.
+5. **A newer About page design exists in Claude Design but not in this export.** The bundle in
+   `../project/` is a frozen snapshot taken at the handoff; re-export it ("Send to Claude Code
+   Web") so the new About design reaches the repo, then rebuild `app/about/`.
 
 ## Deliberate departures from the prototype
 
 - Breakpoints are CSS media queries rather than JS window-width state, so the first paint is
   correct and there is no layout flash. The thresholds match the prototype's (1080 / 1180 / 1320).
-- Product names come from the catalogue everywhere. The prototype's homepage hardcoded "UKAVA
-  Storm" while the catalogue says "UKAVA Strom" — the catalogue wins. **Confirm the correct
-  spelling with UKAVA.**
+- The catalogue spelled the first scooter "UKAVA Strom" while the prototype's homepage said
+  "UKAVA Storm". Confirmed as **Storm** — the catalogue entry, its slug (`ukava-storm`) and its
+  image slot ids were all corrected to match.
+- The About page follows the combined file, **not** the standalone `About UKAVA.dc.html` — that
+  file is an earlier draft. Chat 4 supersedes it on three specific points: "How we work" went
+  from grey to white, the flat orange contact band was replaced by the immersive closing CTA that
+  fades into the footer, and the phone number became 1800 212 2131.
+  **The user reports a newer About design that is not present in this export** — see below.
 - Product cards are one component across the homepage and the listing. Where the two diverged in
   the prototype (heading weight, spec labels) the listing's explicit values were adopted.
 - DM Sans is self-hosted (`public/fonts/`) instead of loaded from Google Fonts.

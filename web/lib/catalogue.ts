@@ -342,7 +342,7 @@ function linva(o: LinvaInput): Product {
 }
 
 export const PRODUCTS: Product[] = [
-  scooter({ name: "UKAVA Strom", speed: "55 KMPH", motor: "1000 WATT", brake: "DISC", tyre: "10-10 Tubeless", load: "200 KG", body: "ABS", mat: "Yes", boot: "Available" }),
+  scooter({ name: "UKAVA Storm", speed: "55 KMPH", motor: "1000 WATT", brake: "DISC", tyre: "10-10 Tubeless", load: "200 KG", body: "ABS", mat: "Yes", boot: "Available" }),
   scooter({ name: "UKAVA Rapid", speed: "55 KMPH", motor: "1000 WATT", brake: "DISC", tyre: "12-12 Tubeless", load: "180 kg", body: "ABS", mat: "Yes", boot: "Available" }),
   scooter({ name: "UKAVA Raya", speed: "55 KMPH", motor: "1500 WATT", brake: "DISC", tyre: "12-12 Tubeless", load: "200 KG", body: "ABS", mat: "Yes", boot: "Available" }),
   scooter({ name: "UKAVA Vega", speed: "55 KMPH", motor: "1500 WATT", brake: "DOUBLE DISC", tyre: "12-12 Tubeless", load: "200 KG", body: "ABS", mat: "Yes", boot: "Available" }),
