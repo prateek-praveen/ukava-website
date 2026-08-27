@@ -9,11 +9,6 @@ export default function ClosingCta({ id }: { id?: string }) {
 
   return (
     <section id={id} className={styles.section}>
-      <div aria-hidden="true" className={styles.scene}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/img/cta-scene-2.png" alt="" />
-      </div>
-      <div aria-hidden="true" className={styles.veil} />
       <div className={styles.inner}>
         <p className={styles.kicker}>
           <span aria-hidden="true" className={styles.rule} />
@@ -32,6 +27,10 @@ export default function ClosingCta({ id }: { id?: string }) {
             Explore Products
           </Link>
         </div>
+      </div>
+      <div aria-hidden="true" className={styles.scene}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/img/cta-scene-2.png" alt="" />
       </div>
     </section>
   );
