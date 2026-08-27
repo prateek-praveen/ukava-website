@@ -155,14 +155,14 @@
   }
 
   .value {
-    font-size: 26px;
-    line-height: 1;
+    font-size: 25px;
+    line-height: 1.05;
     letter-spacing: -0.03em;
   }
 
   .label {
-    margin-top: 5px;
-    font-size: 13px;
+    margin-top: 4px;
+    font-size: 12px;
     line-height: 1.3;
   }
 }

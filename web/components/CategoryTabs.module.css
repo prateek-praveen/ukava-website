@@ -43,7 +43,7 @@
 
   /* Padded to a comfortable tap height without moving the underline. */
   .tab {
-    padding: 12px 0 16px;
-    font-size: 15px;
+    padding: 10px 0 12px;
+    font-size: 14px;
   }
 }

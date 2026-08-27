@@ -264,7 +264,7 @@
   .copyWrap {
     justify-content: flex-start;
     align-items: center;
-    padding: 36px 22px 0;
+    padding: 32px var(--page-pad) 0;
   }
 
   .copy {
@@ -274,18 +274,18 @@
   }
 
   .headline {
-    font-size: clamp(32px, 9.6vw, 40px);
-    line-height: 1.07;
-    letter-spacing: -0.025em;
+    font-size: clamp(28px, 8.2vw, 32px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
     margin: 0 auto 12px;
-    max-width: 18ch;
+    max-width: 20ch;
   }
 
   .lede {
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 0 auto 22px;
-    max-width: 34ch;
+    font-size: 14px;
+    line-height: 1.45;
+    margin: 0 auto 16px;
+    max-width: 38ch;
   }
 
   /* Both CTAs share one row; the label scales down rather than stacking
@@ -294,21 +294,23 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
-    gap: 11px;
+    gap: 10px;
     width: 100%;
-    max-width: 420px;
+    max-width: 400px;
     margin-inline: auto;
   }
 
-  .primary,
-  .secondary {
+  /* 40px tall, equal width; the gutter shrinks before the pair stacks. */
+  .actions .primary,
+  .actions .secondary {
     flex: 1 1 0;
     min-width: 0;
     width: auto;
     justify-content: center;
-    min-height: 50px;
-    padding: 14px 10px;
-    font-size: clamp(13px, 3.9vw, 15px);
+    min-height: 40px;
+    padding: 9px clamp(12px, 4.4vw, 20px);
+    font-size: clamp(13px, 3.5vw, 14px);
+    font-weight: 600;
     white-space: nowrap;
   }
 

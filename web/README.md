@@ -87,3 +87,21 @@ style properties for 2539 rendered elements across all four pages at 1024 and 14
 
 The stats marquee needs duplicate cells for a seamless loop; they are `display: none` above the
 breakpoint and their wrapper is `display: contents`, so the desktop grid is unaffected.
+
+### Mobile scale
+
+| Role | Size |
+| --- | --- |
+| Hero / page H1 | 28–32px |
+| Section H2 | 22–24px |
+| H3 | 18–20px |
+| Card title | 15–16px |
+| Body | 14px |
+| Secondary detail | 12–13px |
+| Label / eyebrow | 11–12px |
+| CTA | 13–14px semibold |
+| Stat value | 25px |
+
+Buttons are 40px tall with 12–20px horizontal padding; card actions are text links. Page gutter
+18px, spacing on an 8/12/16/24/32/48 scale. No heading exceeds 32px — enforced by a check that
+walks every h1–h4 at 320/375/390/430/768 on all four pages.

@@ -563,7 +563,7 @@
 /* ── mobile (≤768px) ──────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .hero {
-    padding-block: 20px 44px;
+    padding-block: 16px 32px;
   }
 
   .crumbs {
@@ -594,18 +594,20 @@
   }
 
   .name {
-    font-size: clamp(32px, 9.6vw, 40px);
-    line-height: 1.06;
+    font-size: clamp(28px, 7.6vw, 32px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
   }
 
   .tagline {
-    font-size: 16px;
-    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.45;
+    margin-top: 10px;
   }
 
   .primarySpecs {
-    gap: 18px 28px;
-    margin-top: 24px;
+    gap: 16px 24px;
+    margin-top: 20px;
   }
 
   .primarySpec {
@@ -613,7 +615,7 @@
   }
 
   .primaryValue {
-    font-size: 19px;
+    font-size: 18px;
   }
 
   .primaryLabel {
@@ -626,56 +628,79 @@
   }
 
   .actions {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-    margin-top: 26px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin-top: 20px;
   }
 
-  .primaryCta,
-  .secondaryCta {
-    width: 100%;
+  .actions .primaryCta,
+  .actions .secondaryCta {
+    flex: 1 1 0;
+    min-width: 0;
     justify-content: center;
-    min-height: 52px;
+    min-height: 40px;
+    padding: 9px clamp(12px, 4.4vw, 20px);
+    font-size: clamp(13px, 3.5vw, 14px);
+    font-weight: 600;
+    white-space: nowrap;
   }
 
   .trust {
-    margin-top: 24px;
-    padding-top: 20px;
-    gap: 10px 20px;
+    margin-top: 20px;
+    padding-top: 16px;
+    gap: 8px 20px;
   }
 
   .trustItem {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .section {
-    padding-block: 48px;
+    padding-block: 40px;
   }
 
   .sectionHead {
-    margin-bottom: 26px;
-    gap: 14px;
+    margin-bottom: 24px;
+    gap: 12px;
   }
 
   .sectionTitle {
-    font-size: 26px;
+    font-size: 22px;
     line-height: 1.15;
+    letter-spacing: -0.02em;
   }
 
   .benefits,
   .features {
-    gap: 22px;
+    gap: 20px;
   }
 
   .benefit h3 {
-    font-size: 19px;
+    font-size: 18px;
+    margin-bottom: 6px;
   }
 
   .benefit p,
   .callout,
   .calloutRows {
-    font-size: 16px;
+    font-size: 14px;
+  }
+
+  .benefit p {
+    line-height: 1.45;
+  }
+
+  .feature h3 {
+    font-size: 15px;
+  }
+
+  .feature p {
+    font-size: 12px;
+  }
+
+  .calloutLabel {
+    font-size: 13px;
   }
 
   .callout {
@@ -691,11 +716,20 @@
   }
 
   .specToggle {
-    padding: 18px 2px;
+    padding: 15px 2px;
   }
 
   .specToggle span:first-child {
-    font-size: 16px;
+    font-size: 15px;
+  }
+
+  .specRow {
+    padding: 10px 0;
+  }
+
+  .specRowLabel,
+  .specRowValue {
+    font-size: 13px;
   }
 
   /* Similar products go two-up, matching the listing grid. */

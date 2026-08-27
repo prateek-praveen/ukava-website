@@ -91,7 +91,7 @@
 /* ── mobile (≤768px) ──────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .section {
-    padding-block: 64px;
+    padding-block: 48px;
   }
 
   /* Heading and CTA share one row; the CTA is dropped rather than wrapped
@@ -104,14 +104,14 @@
   }
 
   .title {
-    font-size: 19px;
-    line-height: 1.2;
-    letter-spacing: -0.015em;
+    font-size: 22px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
   }
 
   .viewAll {
     font-size: 13px;
-    padding: 10px 0 8px;
+    padding: 11px 0 9px;
     white-space: nowrap;
     letter-spacing: 0.06em;
   }
@@ -134,7 +134,10 @@
   .seeAll {
     width: 100%;
     justify-content: center;
-    padding: 15px 20px;
+    min-height: 40px;
+    padding: 9px 20px;
+    font-size: 14px;
+    font-weight: 600;
   }
 }
 

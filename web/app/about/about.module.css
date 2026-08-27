@@ -297,11 +297,11 @@
   }
 
   .story {
-    padding-block: 40px 32px;
+    padding-block: 32px 24px;
   }
 
   .storyGrid {
-    gap: 24px;
+    gap: 20px;
   }
 
   /* Landscape on a portrait viewport keeps the portrait from eating the
@@ -312,19 +312,19 @@
   }
 
   .storyLead {
-    font-size: 20px;
-    line-height: 1.4;
+    font-size: 18px;
+    line-height: 1.35;
   }
 
   .storyBody {
-    margin-top: 22px;
-    font-size: 16px;
-    line-height: 1.55;
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 1.45;
   }
 
   .proofCell {
-    padding: 18px 20px;
-    gap: 14px;
+    padding: 16px var(--page-pad);
+    gap: 12px;
   }
 
   .proofCell svg {
@@ -333,23 +333,27 @@
   }
 
   .proofTitle {
-    font-size: 16px;
+    font-size: 15px;
+    margin-bottom: 4px;
   }
 
   .proofNote {
-    font-size: 14px;
+    font-size: 13px;
+    line-height: 1.4;
   }
 
   .build {
-    padding-block: 64px;
+    padding-block: 48px;
   }
 
   .buildGrid {
-    gap: 26px;
+    gap: 24px;
   }
 
   .buildTitle {
-    font-size: 30px;
+    font-size: 24px;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
   }
 
   .buildCards {
@@ -378,12 +382,14 @@
   }
 
   .work {
-    padding-block: 64px;
+    padding-block: 48px;
   }
 
   .workTitle {
-    font-size: 30px;
-    margin-bottom: 26px;
+    font-size: 24px;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    margin-bottom: 24px;
   }
 
   .workRows,

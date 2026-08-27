@@ -198,3 +198,15 @@
     gap: 5px;
   }
 }
+
+/* On the narrowest phones the detail line is a hair too wide for the
+   two-up column and wraps, making rows uneven. */
+@media (max-width: 359px) {
+  .compact {
+    font-size: 12px;
+  }
+
+  .body {
+    padding: 10px 10px 12px;
+  }
+}
