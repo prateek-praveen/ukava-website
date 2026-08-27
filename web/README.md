@@ -21,7 +21,7 @@ npm run typecheck
 | `/products/[category]/[slug]` | Product detail — 20 products |
 | `/about` | About UKAVA |
 
-The prototype used hash routes (`#/products/electric-scooters`, `#/p/ukava-strom`). Those became
+The prototype used hash routes (`#/products/electric-scooters`, `#/p/ukava-storm`). Those became
 real URLs, with the product's category in the path so breadcrumbs and canonical links line up.
 All 29 pages prerender at build time.
 
@@ -50,7 +50,6 @@ All 29 pages prerender at build time.
 3. **Missing photography.** These slots render a captioned grey frame until filled — add the file
    to `public/img/slots/` and register it in `slots.manifest.json`:
    - `ukava-why-1` … `ukava-why-4` (Why UKAVA visuals)
-   - `ukava-about-facility`, `ukava-about-dealer`
    - product shots for the Lithium Batteries, Inverter & Battery and Solar Solutions ranges
      (`ukava-p-<slug>-0`, plus `-1`…`-4` for the gallery and `-detail` for the callout)
 4. **Pending links.** Social handles, the registered address, the email address, and the Privacy
