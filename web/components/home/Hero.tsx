@@ -7,6 +7,11 @@ import { useContact } from "@/components/ContactProvider";
 
 type Slide = {
   image: string;
+  /** Optional purpose-built banner for ≤768px. Drop the file in
+   *  `public/img/` and name it here; desktop keeps `image` untouched.
+   *  When it is set the slide stops reframing the desktop crop and lets
+   *  the mobile artwork fill the stage as authored. */
+  mobileImage?: string;
   alt: string;
   headline: string;
   highlightedText: string;
@@ -18,6 +23,7 @@ type Slide = {
 const SLIDES: Slide[] = [
   {
     image: "/img/hero-scooters.webp",
+    // mobileImage: "/img/hero-scooters-mobile.webp",
     alt: "UKAVA electric scooters parked at a home charging point",
     headline: "Powering everyday life.",
     highlightedText: "Moving India forward.",
@@ -28,6 +34,7 @@ const SLIDES: Slide[] = [
   },
   {
     image: "/img/hero-batteries.png",
+    // mobileImage: "/img/hero-batteries-mobile.webp",
     alt: "UKAVA lithium battery stack and inverter outside a modern home",
     headline: "Reliable energy.",
     highlightedText: "Built to go further.",
@@ -39,6 +46,9 @@ const SLIDES: Slide[] = [
 ];
 
 const INTERVAL = 5000;
+
+/** Must stay in step with the ≤768px block in Hero.module.css. */
+const MOBILE_QUERY = "(max-width: 768px)";
 
 export default function Hero() {
   const { openContact } = useContact();
@@ -85,7 +95,9 @@ export default function Hero() {
           return (
             <div
               key={slide.image}
-              className={styles.slide}
+              className={[styles.slide, slide.mobileImage && styles.hasMobileArt]
+                .filter(Boolean)
+                .join(" ")}
               aria-hidden={!on}
               style={{
                 opacity: on ? 1 : 0,
@@ -96,8 +108,17 @@ export default function Hero() {
                   : `opacity ${on ? "420ms" : "340ms"} cubic-bezier(.4,0,.2,1)`,
               }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={slide.image} alt={slide.alt} fetchPriority={i === 0 ? "high" : "auto"} />
+              {/* The browser picks the source before it fetches, so a phone
+                  never downloads the desktop banner and vice versa. With no
+                  mobileImage the <source> is absent and this is the plain
+                  <img> it has always been. */}
+              <picture>
+                {slide.mobileImage ? (
+                  <source media={MOBILE_QUERY} srcSet={slide.mobileImage} />
+                ) : null}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={slide.image} alt={slide.alt} fetchPriority={i === 0 ? "high" : "auto"} />
+              </picture>
               <div aria-hidden="true" className={styles.scrim} />
               <div aria-hidden="true" className={styles.fade} />
 

@@ -60,7 +60,24 @@ All 29 pages prerender at build time.
 6. **The `../project/` bundle is a frozen snapshot from the handoff export.** Design changes made
    in Claude Design since then do not reach this repo; re-export ("Send to Claude Code Web") to
    pick them up.
-7. **The desktop testimonial marquee is inert and awaiting a decision.**
+7. **Mobile hero banners.** The hero can carry a separate, mobile-only banner per slide —
+   the plumbing is in, the artwork is not. Drop the file in `public/img/` and uncomment the
+   `mobileImage` line on that slide in `components/home/Hero.tsx`:
+
+   ```ts
+   { image: "/img/hero-scooters.webp",          // desktop, unchanged
+     mobileImage: "/img/hero-scooters-mobile.webp", ... }
+   ```
+
+   `<source media="(max-width: 768px)">` does the switch, so a phone never downloads the
+   desktop file and a desktop never downloads the mobile one. A slide with a `mobileImage`
+   also drops the ≤768px reframing (the desktop crop is currently pinned to the lower 64% of
+   the stage) and lets the artwork fill the frame instead — see `.hasMobileArt` in
+   `Hero.module.css`. What the artwork needs: **portrait, about 3:4** (e.g. 900×1200,
+   ≥828px wide for 3× screens), product low in the frame, top third quiet — the white scrim
+   runs down to roughly 45% of the stage and the headline sits over it. WebP, ideally under
+   250KB. Per slide: `hero-scooters-mobile` and `hero-batteries-mobile`.
+8. **The desktop testimonial marquee is inert and awaiting a decision.**
    `components/home/PartnerStories.module.css` declares
    `animation: ukavaMarquee 64s linear infinite` on `.track`, but CSS Modules scope the
    identifier used in `animation`, and no `@keyframes ukavaMarquee` exists in that module — so

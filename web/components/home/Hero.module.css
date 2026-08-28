@@ -18,6 +18,13 @@
   will-change: opacity;
 }
 
+/* <picture> exists only to let the browser choose between the desktop and
+   the mobile banner; it generates no box, so the slide's layout is exactly
+   what it was when the <img> was a direct child. */
+.slide picture {
+  display: contents;
+}
+
 .slide img {
   position: absolute;
   inset: 0;
@@ -236,6 +243,18 @@
     bottom: 0;
     height: 64%;
     object-position: 58% center;
+  }
+
+  /* A slide carrying its own mobile artwork needs none of that reframing —
+     the crop was made for this viewport, so it fills the stage. Give the
+     asset roughly a 3:4 portrait shape with the product low and the top
+     third quiet, and the scrim below will sit over clean sky. */
+  .hasMobileArt img {
+    top: 0;
+    bottom: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
   }
 
   /* White down to the headline zone, clearing to the product below. */
