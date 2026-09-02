@@ -75,25 +75,6 @@
   color: var(--color-text);
 }
 
-.meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: clamp(14px, 1.6vw, 26px);
-  margin-top: 26px;
-}
-
-.meta span {
-  font-size: 15px;
-  color: var(--color-neutral-700);
-}
-
-.metaRule {
-  width: 1px;
-  height: 18px;
-  background: var(--color-neutral-300);
-}
-
 .partnerCta {
   font-weight: 700;
   font-size: 16px;
@@ -110,11 +91,18 @@
   transform: translateY(-2px);
 }
 
+/* `clip`, not `hidden`: when overflow-x is hidden the y axis can no longer
+   stay `visible` — CSS resolves it to `auto` — and the rail then slices the
+   cards' soft shadow off at its own edge, leaving a hard horizontal seam
+   across the photograph. `clip` is allowed to sit beside a visible y axis,
+   so the marquee is still contained sideways while the shadow spills and
+   dissolves into the scene the way it was drawn to. */
 .rail {
   position: relative;
   width: 100%;
   height: 360px;
-  overflow-x: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
   padding-block: 18px 40px;
 }
 
@@ -201,8 +189,15 @@
 /* Below the desktop breakpoint the marquee becomes a snap scroller the
    visitor drives with a thumb, and the duplicate run is dropped. */
 @media (max-width: 1079px) {
+  /* A thumb scroller has to be a real scroll container, so the y axis is
+     `auto` here whatever we ask for and the shadow can only be saved by
+     giving it room inside the box: the blur reaches 50px, offset 18px
+     down, so 32px above the card and 68px below. */
   .rail {
+    height: auto;
     overflow-x: auto;
+    overflow-y: hidden;
+    padding-block: 34px 70px;
     scroll-snap-type: x mandatory;
   }
 
@@ -221,7 +216,10 @@
 
 @media (prefers-reduced-motion: reduce) {
   .rail {
+    height: auto;
     overflow-x: auto;
+    overflow-y: hidden;
+    padding-block: 34px 70px;
   }
 
   .track {
@@ -266,15 +264,6 @@
     margin-bottom: 12px;
   }
 
-  .meta {
-    margin-top: 14px;
-    gap: 12px;
-  }
-
-  .meta span {
-    font-size: 13px;
-  }
-
   .partnerCta {
     width: 100%;
     justify-content: center;
@@ -284,10 +273,12 @@
     font-weight: 600;
   }
 
-  /* Content-driven height rather than the fixed desktop rail. */
+  /* Content-driven height rather than the fixed desktop rail. The phone
+     shadow is 28px of blur offset 10px down, so it wants 18px above and
+     38px below to land inside the box when the rail has to scroll. */
   .rail {
     height: auto;
-    padding-block: 12px 20px;
+    padding-block: 18px 38px;
   }
 
   .track {
@@ -340,7 +331,8 @@
    width each — with it, -50% lands 18px out and the loop visibly jumps. */
 @media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
   .rail {
-    overflow-x: hidden;
+    overflow-x: clip;
+    overflow-y: visible;
     scroll-snap-type: none;
   }
 

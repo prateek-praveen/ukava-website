@@ -131,11 +131,12 @@
     margin-top: 24px;
   }
 
+  /* Hugs its label rather than spanning the column — a full-bleed pill at
+     this size reads as a page action, not a section one. */
   .seeAll {
-    width: 100%;
-    justify-content: center;
+    width: auto;
     min-height: 40px;
-    padding: 9px 20px;
+    padding: 9px 16px;
     font-size: 14px;
     font-weight: 600;
   }

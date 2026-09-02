@@ -168,18 +168,16 @@
 
   .compact {
     display: block;
-    margin: 0 0 2px;
+    margin: 0 0 10px;
     font-size: 13px;
     line-height: 1.35;
     color: var(--color-neutral-700);
   }
 
+  /* Every card in a category grid repeats the same product type, so the
+     line adds nothing on a phone — the specs above it do the work. */
   .type {
-    display: block;
-    margin: 0 0 10px;
-    font-size: 12px;
-    line-height: 1.35;
-    color: var(--color-neutral-600);
+    display: none;
   }
 
   /* The long label is replaced, not duplicated. */

@@ -89,11 +89,6 @@ export default function PartnerStories({ onPartnerEnquiry }: { onPartnerEnquiry:
               <br />
               growing with UKAVA.
             </h2>
-            <div className={styles.meta}>
-              <span>6 partner businesses</span>
-              <span className={styles.metaRule} aria-hidden="true" />
-              <span>Across 6 states</span>
-            </div>
           </div>
           <button
             type="button"

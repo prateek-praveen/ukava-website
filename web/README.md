@@ -106,8 +106,9 @@ All 29 pages prerender at build time.
 
 Screens `<=768px` get a purpose-built layer rather than a shrunk desktop: the hero banner is
 pinned low so the product sits below the copy, products run two-up with compact cards
-(`object-fit: contain`, descriptor and specs hidden), and the stats row becomes a seamless
-marquee. Every mobile rule lives in a `@media (max-width: 768px)` block at the end of the
+(`object-fit: contain`; the descriptor, the spec list and the product-type line are hidden —
+every card in a category grid repeats the same type, so it carries nothing), and the stats row
+becomes a seamless marquee. Every mobile rule lives in a `@media (max-width: 768px)` block at the end of the
 component'''s own module, so desktop is untouched — verified by comparing geometry and 60 computed
 style properties for 2539 rendered elements across all four pages at 1024 and 1440.
 
