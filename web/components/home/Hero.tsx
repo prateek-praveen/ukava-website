@@ -28,7 +28,7 @@ const SLIDES: Slide[] = [
     headline: "Powering everyday life.",
     highlightedText: "Moving India forward.",
     description:
-      "Lithium-powered energy and electric mobility solutions for homes, businesses and roads.",
+      "From electric scooters and lithium batteries to solar and power backup \u2014 dependable energy solutions for homes and businesses.",
     primaryLink: "/products/electric-scooters",
     secondaryCTA: "Contact Us",
   },
@@ -36,10 +36,10 @@ const SLIDES: Slide[] = [
     image: "/img/hero-batteries.png",
     // mobileImage: "/img/hero-batteries-mobile.webp",
     alt: "UKAVA lithium battery stack and inverter outside a modern home",
-    headline: "Reliable energy.",
-    highlightedText: "Built to go further.",
+    headline: "Power that lasts.",
+    highlightedText: "Built for everyday use.",
     description:
-      "Advanced lithium battery solutions designed for everyday reliability and longer-lasting performance.",
+      "Lithium battery solutions built for reliable performance, longer life and everyday energy needs.",
     primaryLink: "/products/lithium-batteries",
     secondaryCTA: "Contact Us",
   },

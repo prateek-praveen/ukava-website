@@ -84,12 +84,8 @@ export default function PartnerStories() {
       <div className={styles.inner}>
         <Reveal className={styles.head}>
           <div>
-            <p className={styles.kicker}>Customer stories</p>
-            <h2 className={styles.title}>
-              Hear from partners
-              <br />
-              growing with UKAVA.
-            </h2>
+            <p className={styles.kicker}>Our partners</p>
+            <h2 className={styles.title}>Growing together with our partners.</h2>
           </div>
           <ContactCta className={`btn btn-primary ${styles.partnerCta}`}>
             Become a UKAVA Partner &nbsp;→

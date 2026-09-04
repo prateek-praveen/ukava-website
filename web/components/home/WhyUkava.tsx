@@ -6,26 +6,26 @@ import ImageSlot from "@/components/ImageSlot";
 
 const STORIES = [
   {
-    title: "Made in India, Built for India",
-    body: "Designed and made for Indian homes, businesses and roads. Built to perform reliably in everyday Indian conditions.",
+    title: "Made in India",
+    body: "Designed and built for Indian homes, businesses and roads, with products made for everyday Indian conditions.",
     slot: "ukava-why-1",
     caption: "Manufacturing floor / assembly line · square",
   },
   {
-    title: "Decades of Expertise in Battery Technology",
-    body: "From lithium batteries to advanced energy solutions. Engineered for reliable performance, safety and longer life.",
+    title: "25+ Years of Energy Experience",
+    body: "Our journey began with power backup. Today, that experience extends across batteries, solar, lithium technology and electric mobility.",
     slot: "ukava-why-2",
     caption: "Cells, BMS or battery testing · square",
   },
   {
-    title: "All Your Energy Solutions, Under One Brand",
-    body: "From electric mobility and batteries to power backup and solar. One connected portfolio for your everyday energy needs.",
+    title: "More Solutions. One Trusted Partner.",
+    body: "Electric scooters, lithium batteries, power backup and solar, a growing portfolio for homes, businesses and mobility.",
     slot: "ukava-why-3",
     caption: "Scooter + battery + inverter + solar + ESS together · square",
   },
   {
-    title: "Reliable Support, Even After Your Purchase",
-    body: "Backed by warranty and dependable after-sales support. So help is there when you need it.",
+    title: "Support Beyond the Sale",
+    body: "From product guidance to after-sales support, our team is here when you need us.",
     slot: "ukava-why-4",
     caption: "Technician / installation / support · square",
   },

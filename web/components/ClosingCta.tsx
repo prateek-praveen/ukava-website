@@ -9,14 +9,9 @@ export default function ClosingCta({ id }: { id?: string }) {
   return (
     <section id={id} className={styles.section}>
       <div className={styles.inner}>
-        <p className={styles.kicker}>
-          <span aria-hidden="true" className={styles.rule} />
-          Need help choosing?
-          <span aria-hidden="true" className={styles.rule} />
-        </p>
-        <h2 className={styles.title}>Not sure which product is right for you?</h2>
+        <h2 className={styles.title}>Need help choosing?</h2>
         <p className={styles.lede}>
-          Tell us what you need and we’ll help you find the right UKAVA solution.
+          Talk to us about your requirement and we’ll help you find the right solution.
         </p>
         <div className={styles.actions}>
           <ContactCta className={`btn btn-primary ${styles.primary}`}>
