@@ -1,4 +1,6 @@
-export type LeadKind = "product" | "callback" | "partner";
+/* "partner" was retired with the dealer form — dealers now call the
+   toll-free number through the shared contact action. */
+export type LeadKind = "product" | "callback";
 
 export type Lead = {
   kind: LeadKind;
@@ -14,7 +16,6 @@ export type Lead = {
 const TYPE: Record<LeadKind, string> = {
   product: "consumer_product",
   callback: "callback",
-  partner: "partner_dealer",
 };
 
 /**

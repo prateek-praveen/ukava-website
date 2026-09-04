@@ -2,7 +2,6 @@
 
 import { useEffect, useId, useState } from "react";
 import styles from "./LeadModal.module.css";
-import { CATEGORIES } from "@/lib/catalogue";
 import { submitLead, type LeadKind } from "@/lib/leads";
 
 export type LeadRequest = {
@@ -14,7 +13,7 @@ export type LeadRequest = {
   source: string;
 };
 
-type Errors = Partial<Record<"name" | "mobile" | "city" | "business" | "category", string>>;
+type Errors = Partial<Record<"name" | "mobile" | "city", string>>;
 
 const COPY: Record<LeadKind, { kicker: string; sub: string; cta: string; okTitle: string; okSub: string }> = {
   product: {
@@ -31,18 +30,10 @@ const COPY: Record<LeadKind, { kicker: string; sub: string; cta: string; okTitle
     okTitle: "Thanks. Our team will get in touch shortly.",
     okSub: "We've received your details. Expect a call from a UKAVA representative soon.",
   },
-  partner: {
-    kicker: "Partner with UKAVA",
-    sub: "Tell us about your business and our team will explore the opportunity with you.",
-    cta: "Become a Partner",
-    okTitle: "Thanks. Our business team will reach out shortly.",
-    okSub: "We've received your partnership enquiry and will contact you to discuss next steps.",
-  },
 };
 
 const titleFor = (req: LeadRequest): string => {
   if (req.kind === "product") return `Get price & details for ${req.product || "this product"}`;
-  if (req.kind === "partner") return "Become a UKAVA partner";
   return "Request a callback";
 };
 
@@ -57,8 +48,6 @@ export default function LeadModal({
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [city, setCity] = useState("");
-  const [business, setBusiness] = useState("");
-  const [category, setCategory] = useState("");
   const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
 
@@ -68,8 +57,6 @@ export default function LeadModal({
     setName("");
     setMobile("");
     setCity("");
-    setBusiness("");
-    setCategory("");
     setErrors({});
     setSent(false);
   }, [request]);
@@ -93,7 +80,6 @@ export default function LeadModal({
   if (!request) return null;
 
   const copy = COPY[request.kind];
-  const isPartner = request.kind === "partner";
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -101,10 +87,6 @@ export default function LeadModal({
     if (name.trim().length < 2) next.name = "Please enter your name.";
     if (mobile.replace(/\D/g, "").length !== 10) next.mobile = "Enter a valid 10-digit mobile number.";
     if (!city.trim()) next.city = "Please enter your city.";
-    if (isPartner) {
-      if (!business.trim()) next.business = "Tell us about your current business.";
-      if (!category) next.category = "Select a category.";
-    }
     if (Object.keys(next).length) {
       setErrors(next);
       return;
@@ -115,8 +97,8 @@ export default function LeadModal({
       name: name.trim(),
       mobile: `+91${mobile.replace(/\D/g, "")}`,
       city: city.trim(),
-      business: business.trim() || null,
-      category: category || null,
+      business: null,
+      category: null,
       source: request.source,
     });
     setErrors({});
@@ -197,39 +179,6 @@ export default function LeadModal({
               <div className={styles.error}>{errors.city || ""}</div>
             </div>
 
-            {isPartner ? (
-              <>
-                <div className={`field ${styles.row}`}>
-                  <label htmlFor={`${uid}-business`}>Current business</label>
-                  <input
-                    className="input"
-                    id={`${uid}-business`}
-                    placeholder="e.g. battery dealer, EV retailer"
-                    value={business}
-                    onChange={(e) => setBusiness(e.target.value)}
-                  />
-                  <div className={styles.error}>{errors.business || ""}</div>
-                </div>
-                <div className={`field ${styles.row}`}>
-                  <label htmlFor={`${uid}-category`}>Category interested in</label>
-                  <select
-                    className="input"
-                    id={`${uid}-category`}
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                  >
-                    <option value="">Select a category</option>
-                    {CATEGORIES.map((c) => (
-                      <option key={c.key} value={c.label}>
-                        {c.label}
-                      </option>
-                    ))}
-                    <option value="Full portfolio">Full portfolio</option>
-                  </select>
-                  <div className={styles.error}>{errors.category || ""}</div>
-                </div>
-              </>
-            ) : null}
 
             <button type="submit" className={`btn btn-primary ${styles.submit}`}>
               {copy.cta}

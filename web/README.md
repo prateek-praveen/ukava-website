@@ -35,15 +35,16 @@ All 29 pages prerender at build time.
 - `lib/slots.ts` + `slots.manifest.json` — product photography, keyed by the slot ids the design
   used. `components/ImageSlot.tsx` reproduces the per-slot crop the designer set.
 - `components/` — header, footer, closing CTA, lead modal, contact dialog, product card, tabs.
+- `components/ContactProvider.tsx` + `ContactModal.tsx` + `ContactAction.tsx` — the contact
+  behaviour (see below).
 - `components/home/` — the homepage sections.
 
 ## Outstanding — needs UKAVA to supply
 
-1. **Lead delivery is not wired up.** Every form validates, captures the product interest
-   automatically and shows its success state, but `submitLead()` in `lib/leads.ts` only logs.
-   Point it at the CRM endpoint (or a route handler forwarding to one) and all three forms —
-   product enquiry, callback, partner — start delivering. Consumer and dealer leads stay
-   separable via the payload's `type`.
+1. **Lead delivery is not wired up.** The product-enquiry form validates, captures the product
+   interest automatically and shows its success state, but `submitLead()` in `lib/leads.ts` only
+   logs. Point it at the CRM endpoint (or a route handler forwarding to one) and it starts
+   delivering; the payload's `type` keeps lead sources separable.
 2. **Placeholder dealer testimonials.** The six names, businesses, cities and quotes in
    `components/home/PartnerStories.tsx` were invented for layout only. Replace with real,
    signed-off partner stories and photographs before launch.
@@ -89,6 +90,37 @@ All 29 pages prerender at build time.
    one-line change, but it alters the approved desktop, so it is left off pending sign-off.
    Note the desktop track carries a `padding-inline` gutter, which offsets the -50% loop point;
    that padding has to come off at the same time or the loop will visibly jump.
+
+## Contact CTAs
+
+Every contact CTA on the site — "Contact Us" in the hero and the closing band, "Become a UKAVA
+Partner", and the toll-free number in the header and footer — goes through one path.
+
+`ContactProvider` (mounted once in `app/layout.tsx`) owns the state, the single `ContactModal`
+instance and one page-level toast; `ContactAction.tsx` exports the two wrappers call sites use:
+
+- `<ContactCta>` — the CTAs. Desktop opens the dialog ("Contact UKAVA" / "Call us on our
+  toll-free number" / the number / **Copy number**), mobile dials.
+- `<ContactNumber>` — a number rendered on the page. Desktop copies it and toasts
+  "Number copied", mobile dials.
+
+Both render `<a href="tel:…">`, not `<button>`. The href is the real number, so a phone dials
+before React hydrates and with scripting off, and no CTA can land on a blank route or a `#`; on
+desktop the shared handler cancels the navigation and opens the dialog instead. That handler
+reads `(min-width: 1080px)` — the desktop edge of the existing breakpoint ladder — at click
+time, so a resize can never strand a CTA in the wrong mode, and nothing sniffs the user agent.
+
+The dialog traps Tab, restores focus to whatever opened it, closes on Escape or an outside
+click, and locks body scroll while open. Copying falls back to a hidden textarea and
+`execCommand` where `navigator.clipboard` is missing or blocked; if both fail the toast says so
+and reads the number back rather than claiming a copy that did not happen.
+
+The toast layer is always mounted (a live region has to exist before its message to be
+announced), so every page carries two extra inert nodes at `opacity: 0` with
+`pointer-events: none`.
+
+**The dealer/partner form is gone.** "Become a UKAVA Partner" used to open a five-field lead
+form; it now uses the same contact action. `LeadKind` lost its `partner` member with it.
 
 ## Deliberate departures from the prototype
 

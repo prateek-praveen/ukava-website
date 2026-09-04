@@ -6,7 +6,7 @@ import Hero from "@/components/home/Hero";
 import StatsRow from "@/components/home/StatsRow";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import WhyUkava from "@/components/home/WhyUkava";
-import PartnerSection from "@/components/home/PartnerSection";
+import PartnerStories from "@/components/home/PartnerStories";
 
 export const metadata: Metadata = {
   title: "UKAVA — Energy + Electric Mobility",
@@ -23,7 +23,7 @@ export default function HomePage() {
         <StatsRow />
         <FeaturedProducts />
         <WhyUkava />
-        <PartnerSection />
+        <PartnerStories />
         <ClosingCta id="contact" />
       </main>
       <SiteFooter />

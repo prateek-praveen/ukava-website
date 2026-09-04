@@ -92,18 +92,59 @@
   color: var(--color-neutral-600);
 }
 
+/* Matches the site's secondary pill so the dialog reads as one piece. */
+.copyCta {
+  margin-top: 22px;
+  width: 100%;
+  justify-content: center;
+  min-height: 44px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  border-radius: 999px;
+  border: 1px solid rgba(29, 29, 27, 0.16);
+  background: #fff;
+  color: var(--color-text);
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.copyCta:hover {
+  background: var(--color-neutral-100);
+  border-color: rgba(29, 29, 27, 0.28);
+  color: var(--color-text);
+}
+
+.copyCta:active {
+  background: var(--color-neutral-200);
+}
+
+/* The number can be copied from the header and footer too, so the toast
+   lives at page level rather than inside the dialog. Above the dialog's
+   z-index, and inert to the pointer so it never eats a click. */
+.toastLayer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 24px;
+  z-index: 120;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
 .toast {
-  position: absolute;
-  left: 50%;
-  bottom: 16px;
   background: var(--color-text);
   color: #fff;
   font-size: 13px;
   font-weight: 600;
-  padding: 8px 14px;
+  padding: 9px 16px;
   border-radius: 999px;
-  pointer-events: none;
   white-space: nowrap;
+  box-shadow: var(--shadow-md);
   transition:
     opacity 0.25s ease,
     transform 0.25s ease;

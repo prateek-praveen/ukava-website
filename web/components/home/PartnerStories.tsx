@@ -3,6 +3,7 @@
 import styles from "./PartnerStories.module.css";
 import ImageSlot from "@/components/ImageSlot";
 import Reveal from "@/components/Reveal";
+import { ContactCta } from "@/components/ContactAction";
 
 /**
  * PLACEHOLDER CONTENT — these six dealer identities and quotes were invented
@@ -71,7 +72,7 @@ function Card({ story, duplicate }: { story: (typeof STORIES)[number]; duplicate
   );
 }
 
-export default function PartnerStories({ onPartnerEnquiry }: { onPartnerEnquiry: () => void }) {
+export default function PartnerStories() {
   return (
     <section id="partner" className={styles.section}>
       <div aria-hidden="true" className={styles.scene}>
@@ -90,13 +91,9 @@ export default function PartnerStories({ onPartnerEnquiry }: { onPartnerEnquiry:
               growing with UKAVA.
             </h2>
           </div>
-          <button
-            type="button"
-            onClick={onPartnerEnquiry}
-            className={`btn btn-primary ${styles.partnerCta}`}
-          >
+          <ContactCta className={`btn btn-primary ${styles.partnerCta}`}>
             Become a UKAVA Partner &nbsp;→
-          </button>
+          </ContactCta>
         </Reveal>
       </div>
 

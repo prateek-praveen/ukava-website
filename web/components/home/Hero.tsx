@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./Hero.module.css";
-import { useContact } from "@/components/ContactProvider";
+import { ContactCta } from "@/components/ContactAction";
 
 type Slide = {
   image: string;
@@ -51,7 +51,6 @@ const INTERVAL = 5000;
 const MOBILE_QUERY = "(max-width: 768px)";
 
 export default function Hero() {
-  const { openContact } = useContact();
   const [index, setIndex] = useState(0);
   const [reduceMotion, setReduceMotion] = useState(false);
   const paused = useRef(false);
@@ -147,14 +146,12 @@ export default function Hero() {
                     >
                       Explore products
                     </Link>
-                    <button
-                      type="button"
-                      onClick={openContact}
+                    <ContactCta
                       className={`btn ${styles.secondary}`}
                       tabIndex={on ? undefined : -1}
                     >
                       {slide.secondaryCTA}
-                    </button>
+                    </ContactCta>
                   </div>
                 </div>
               </div>

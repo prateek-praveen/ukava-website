@@ -137,8 +137,11 @@
   transform: translateY(-2px);
 }
 
+/* The CTA is an <a href="tel:…"> so it dials with JS off; anchors pick up
+   the global link hover colour, which would repaint the label. */
 .secondary:hover {
   background: #fff;
+  color: var(--color-text);
 }
 
 .dots {

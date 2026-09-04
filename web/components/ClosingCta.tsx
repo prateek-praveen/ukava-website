@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 import styles from "./ClosingCta.module.css";
-import { useContact } from "./ContactProvider";
+import { ContactCta } from "./ContactAction";
 
 export default function ClosingCta({ id }: { id?: string }) {
-  const { openContact } = useContact();
 
   return (
     <section id={id} className={styles.section}>
@@ -20,9 +19,9 @@ export default function ClosingCta({ id }: { id?: string }) {
           Tell us what you need and we’ll help you find the right UKAVA solution.
         </p>
         <div className={styles.actions}>
-          <button type="button" onClick={openContact} className={`btn btn-primary ${styles.primary}`}>
+          <ContactCta className={`btn btn-primary ${styles.primary}`}>
             Contact Us &nbsp;→
-          </button>
+          </ContactCta>
           <Link href="/products" className={`btn ${styles.secondary}`}>
             Explore Products
           </Link>

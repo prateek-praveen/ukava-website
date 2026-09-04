@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./SiteHeader.module.css";
-import { PHONE_DISPLAY, PHONE_TEL, PhoneIcon } from "./contact";
+import { PHONE_DISPLAY, PhoneIcon } from "./contact";
+import { ContactNumber } from "./ContactAction";
 
 type Props = {
   active: "home" | "products" | "about";
@@ -57,19 +58,15 @@ export default function SiteHeader({ active, variant = "solid" }: Props) {
           <Link href="/about" className={`${styles.link} ${active === "about" ? styles.active : ""}`}>
             About Us
           </Link>
-          <a href={PHONE_TEL} className={styles.phone}>
+          <ContactNumber className={styles.phone}>
             <PhoneIcon stroke="var(--color-accent)" />
             <span>{PHONE_DISPLAY}</span>
-          </a>
+          </ContactNumber>
         </nav>
 
-        <a
-          href={PHONE_TEL}
-          aria-label={`Call UKAVA on ${PHONE_DISPLAY}`}
-          className={styles.callButton}
-        >
+        <ContactNumber className={styles.callButton}>
           <PhoneIcon stroke="#fff" />
-        </a>
+        </ContactNumber>
         <button
           type="button"
           onClick={() => setMenuOpen((v) => !v)}

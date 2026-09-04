@@ -1,7 +1,8 @@
 import Link from "next/link";
 import styles from "./SiteFooter.module.css";
 import { CATEGORIES, categoryHref } from "@/lib/catalogue";
-import { PHONE_DISPLAY, PHONE_TEL, PhoneIcon } from "./contact";
+import { PHONE_DISPLAY, PhoneIcon } from "./contact";
+import { ContactNumber } from "./ContactAction";
 
 /* The legal pages have not been supplied yet, so those render as inert
    marks rather than links to nowhere. The three social accounts below are
@@ -55,10 +56,10 @@ export default function SiteFooter() {
             <p className={styles.blurb}>
               Lithium-powered products for homes, businesses and roads across India.
             </p>
-            <a href={PHONE_TEL} className={styles.phonePill}>
+            <ContactNumber className={styles.phonePill}>
               <PhoneIcon size={16} stroke="var(--color-accent)" />
               {PHONE_DISPLAY}
-            </a>
+            </ContactNumber>
           </div>
 
           <div>
