@@ -20,13 +20,19 @@ type Props = {
  * scripting off entirely, and it can never land on a blank route or a `#`.
  * On desktop the shared handler cancels the navigation and opens the dialog
  * instead.
+ *
+ * Deliberately no `target`. Measured across iframe sandbox configurations,
+ * a bare anchor is the most permissive form there is: it survives a sandbox
+ * granting `allow-popups`, and one granting `allow-top-navigation-by-user-
+ * activation`. `_top` is blocked by the first ("Unsafe attempt to initiate
+ * navigation") and `_blank` by the second ("Blocked opening"). Unframed —
+ * the deployed site — every form works, so the bare one costs nothing.
  */
 export function ContactCta({ className, children, tabIndex, ...rest }: Props) {
   const { onContactClick, isDesktop } = useContact();
   return (
     <a
       href={PHONE_TEL}
-      target="_top"
       onClick={onContactClick}
       tabIndex={tabIndex}
       aria-haspopup={isDesktop ? "dialog" : undefined}
@@ -47,7 +53,6 @@ export function ContactNumber({ className, children, tabIndex, ...rest }: Props)
   return (
     <a
       href={PHONE_TEL}
-      target="_top"
       onClick={onNumberClick}
       tabIndex={tabIndex}
       aria-label={

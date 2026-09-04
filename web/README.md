@@ -104,17 +104,27 @@ instance and one page-level toast; `ContactAction.tsx` exports the two wrappers 
 - `<ContactNumber>` — a number rendered on the page. Desktop copies it and toasts
   "Number copied", mobile dials.
 
-Both render `<a href="tel:…" target="_top">`, not `<button>`. The href is the real number, so a
-phone dials before React hydrates and with scripting off, and no CTA can land on a blank route
-or a `#`; on desktop the shared handler cancels the navigation and opens the dialog instead.
-That handler reads `(min-width: 1080px)` — the desktop edge of the existing breakpoint ladder —
-at click time, so a resize can never strand a CTA in the wrong mode, and nothing sniffs the user
-agent.
+Both render a bare `<a href="tel:…">`, not `<button>` and with no `target`. The href is the real
+number, so a phone dials before React hydrates and with scripting off, and no CTA can land on a
+blank route or a `#`; on desktop the shared handler cancels the navigation and opens the dialog
+instead. That handler reads `(min-width: 1080px)` — the desktop edge of the existing breakpoint
+ladder — at click time, so a resize can never strand a CTA in the wrong mode, and nothing sniffs
+the user agent.
 
-`target="_top"` matters when the site is framed: a `tel:` navigation started inside a sandboxed
-cross-origin iframe is silently dropped, which is why taps did nothing in the shared preview
-while the markup was correct. `_top` hands it to the top-level browsing context. On the deployed
-site the page *is* the top frame, so it changes nothing.
+**The missing `target` is deliberate**, and matters only when the site is framed. Measured in
+Chromium against a `tel:` tap:
+
+| iframe sandbox | no target | `_top` | `_blank` |
+| --- | --- | --- | --- |
+| `allow-scripts allow-same-origin` | blocked | blocked | blocked |
+| …`allow-popups` | **dials** | blocked | dials |
+| …`allow-top-navigation-by-user-activation` | **dials** | dials | blocked |
+| not framed (the deployed site) | **dials** | dials | dials |
+
+A bare anchor is the only form that survives every case a sandbox permits at all. `_top` trips
+"Unsafe attempt to initiate navigation" wherever top navigation is not granted; `_blank` trips
+"Blocked opening" wherever popups are not. Nothing the page can do reaches the dialer from a
+frame granted neither — that row is a property of the embedder, not of this site.
 
 Contact CTAs paint 40px tall on mobile per the design scale, which is under the 44px touch
 minimum. Rather than resize them, each carries an `::after` at `inset: -4px 0` that lifts the
