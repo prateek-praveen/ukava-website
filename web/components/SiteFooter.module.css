@@ -98,6 +98,8 @@
   gap: 10px;
 }
 
+/* Real links now, so they get the site's button behaviour: the accent fill
+   and the -2px lift every other CTA uses. */
 .socialDot {
   width: 38px;
   height: 38px;
@@ -106,6 +108,31 @@
   place-items: center;
   background: rgba(29, 29, 27, 0.08);
   color: var(--color-text);
+  text-decoration: none;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+/* Only where a pointer can actually hover — on touch the state would stick
+   after a tap. The press state below carries the feedback there. */
+@media (hover: hover) {
+  .socialDot:hover {
+    background: var(--color-accent);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+}
+
+.socialDot:active {
+  background: var(--color-accent-700);
+  color: #fff;
+  transform: none;
+}
+
+.socialDot:focus-visible {
+  outline-offset: 3px;
 }
 
 .pending {
@@ -171,6 +198,16 @@
   .phonePill {
     padding: 9px 16px;
     font-size: 14px;
+  }
+
+  /* 40px, so the tap target clears the minimum. */
+  .social {
+    gap: 12px;
+  }
+
+  .socialDot {
+    width: 40px;
+    height: 40px;
   }
 
   .legal {

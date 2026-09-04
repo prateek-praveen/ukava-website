@@ -52,8 +52,11 @@ All 29 pages prerender at build time.
    - `ukava-why-1` … `ukava-why-4` (Why UKAVA visuals)
    - product shots for the Lithium Batteries, Inverter & Battery and Solar Solutions ranges
      (`ukava-p-<slug>-0`, plus `-1`…`-4` for the gallery and `-detail` for the callout)
-4. **Pending links.** Social handles, the registered address, the email address, and the Privacy
-   Policy / Terms of Use pages render as inert marks rather than links to nowhere.
+4. **Pending links.** The registered address, the email address, and the Privacy Policy / Terms
+   of Use pages render as inert marks rather than links to nowhere. Instagram, Facebook and
+   LinkedIn are live in the footer; the YouTube icon was removed with them — no channel URL was
+   supplied, and a dead icon beside three working ones reads as broken. Send the URL and it goes
+   back (`SOCIALS` in `components/SiteFooter.tsx`).
 5. **About page photography.** Eleven new slots render captioned frames until filled:
    `ukava-about-founder`, four `ukava-about-build-*` category cards, and six
    `ukava-about-work-*` gallery shots.
