@@ -141,6 +141,17 @@
   color: var(--color-neutral-600);
 }
 
+.email {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.email:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
 .legal {
   display: flex;
   flex-wrap: wrap;

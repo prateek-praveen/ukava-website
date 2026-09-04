@@ -114,7 +114,9 @@ export default function SiteFooter() {
               ))}
             </div>
             <p className={styles.pending}>
-              Email TBD
+              <a href="mailto:contact@ukava.co" className={styles.email}>
+                contact@ukava.co
+              </a>
               <br />
               Registered address TBD
             </p>
