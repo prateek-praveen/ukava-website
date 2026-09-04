@@ -104,11 +104,23 @@ instance and one page-level toast; `ContactAction.tsx` exports the two wrappers 
 - `<ContactNumber>` — a number rendered on the page. Desktop copies it and toasts
   "Number copied", mobile dials.
 
-Both render `<a href="tel:…">`, not `<button>`. The href is the real number, so a phone dials
-before React hydrates and with scripting off, and no CTA can land on a blank route or a `#`; on
-desktop the shared handler cancels the navigation and opens the dialog instead. That handler
-reads `(min-width: 1080px)` — the desktop edge of the existing breakpoint ladder — at click
-time, so a resize can never strand a CTA in the wrong mode, and nothing sniffs the user agent.
+Both render `<a href="tel:…" target="_top">`, not `<button>`. The href is the real number, so a
+phone dials before React hydrates and with scripting off, and no CTA can land on a blank route
+or a `#`; on desktop the shared handler cancels the navigation and opens the dialog instead.
+That handler reads `(min-width: 1080px)` — the desktop edge of the existing breakpoint ladder —
+at click time, so a resize can never strand a CTA in the wrong mode, and nothing sniffs the user
+agent.
+
+`target="_top"` matters when the site is framed: a `tel:` navigation started inside a sandboxed
+cross-origin iframe is silently dropped, which is why taps did nothing in the shared preview
+while the markup was correct. `_top` hands it to the top-level browsing context. On the deployed
+site the page *is* the top frame, so it changes nothing.
+
+Contact CTAs paint 40px tall on mobile per the design scale, which is under the 44px touch
+minimum. Rather than resize them, each carries an `::after` at `inset: -4px 0` that lifts the
+*hit* area to 46px while the painted box, spacing and layout stay exactly as designed. The
+header's round call button is already 44×44. Verified that no other control sits inside any
+CTA's 4px halo.
 
 The dialog traps Tab, restores focus to whatever opened it, closes on Escape or an outside
 click, and locks body scroll while open. Copying falls back to a hidden textarea and

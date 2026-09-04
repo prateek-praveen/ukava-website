@@ -200,6 +200,18 @@
     font-size: 14px;
   }
 
+  /* 44px minimum touch target. The pill still paints 40px — this only
+     extends the hit area, so spacing and layout are untouched. */
+  .phonePill {
+    position: relative;
+  }
+
+  .phonePill::after {
+    content: "";
+    position: absolute;
+    inset: -4px 0;
+  }
+
   /* 40px, so the tap target clears the minimum. */
   .social {
     gap: 12px;

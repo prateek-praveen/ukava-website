@@ -26,6 +26,7 @@ export function ContactCta({ className, children, tabIndex, ...rest }: Props) {
   return (
     <a
       href={PHONE_TEL}
+      target="_top"
       onClick={onContactClick}
       tabIndex={tabIndex}
       aria-haspopup={isDesktop ? "dialog" : undefined}
@@ -46,6 +47,7 @@ export function ContactNumber({ className, children, tabIndex, ...rest }: Props)
   return (
     <a
       href={PHONE_TEL}
+      target="_top"
       onClick={onNumberClick}
       tabIndex={tabIndex}
       aria-label={

@@ -236,4 +236,16 @@
     font-weight: 600;
     white-space: nowrap;
   }
+
+  /* 44px minimum touch target. The pill still paints 40px — this only
+     extends the hit area, so spacing and layout are untouched. */
+  .primary {
+    position: relative;
+  }
+
+  .primary::after {
+    content: "";
+    position: absolute;
+    inset: -4px 0;
+  }
 }

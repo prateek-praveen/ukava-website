@@ -279,6 +279,18 @@
     font-weight: 600;
   }
 
+  /* 44px minimum touch target. The pill still paints 40px — this only
+     extends the hit area, so spacing and layout are untouched. */
+  .partnerCta {
+    position: relative;
+  }
+
+  .partnerCta::after {
+    content: "";
+    position: absolute;
+    inset: -4px 0;
+  }
+
   /* Content-driven height rather than the fixed desktop rail. The phone
      shadow is 28px of blur offset 10px down, so it wants 18px above and
      38px below to land inside the box when the rail has to scroll. */
