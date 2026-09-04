@@ -97,14 +97,17 @@
   background: var(--color-accent);
 }
 
+/* The handoff's measure: a flat 40px on a 760px line. An earlier pass
+   swapped that for clamp(28px, 3vw, 40px) on a 16ch measure, which is
+   barely half as wide — the heading broke over three lines and shrank on
+   anything under ~1334px. Mobile sets its own size below. */
 .title {
-  font-size: clamp(28px, 3vw, 40px);
+  font-size: 40px;
   letter-spacing: 0;
   line-height: 1.06;
   margin: 0 auto;
-  max-width: 16ch;
+  max-width: 760px;
   color: var(--color-text);
-  text-wrap: balance;
 }
 
 .lede {
