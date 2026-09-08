@@ -250,12 +250,6 @@
     object-position: 62% center;
   }
 
-  /* Artwork cut for this viewport needs no such window — it is composed
-     for the frame, so it sits centred. */
-  .hasMobileArt img {
-    object-position: center center;
-  }
-
   .scrim {
     background: linear-gradient(
       180deg,
@@ -346,5 +340,36 @@
 
   .dots {
     bottom: 16px;
+  }
+}
+
+/* ── purpose-built portrait banners (≤600px) ───────────────────────
+   Scoped tighter than the mobile layout above, and deliberately so: the
+   artwork is 0.563:1, so a frame wider than that crops it top and bottom
+   rather than at the sides, and past ~620px the crop reaches the product.
+   601-768px therefore keeps the desktop banner and the reframing above,
+   exactly as it shipped. Must stay in step with MOBILE_QUERY in Hero.tsx. */
+@media (max-width: 600px) {
+  /* Composed for this frame, so it sits centred rather than taking the 62%
+     window. At 941x1672 in a 390x660 frame that is a 4.7% crop, off empty
+     sky and empty floor. */
+  .hasMobileArt img {
+    object-position: center center;
+  }
+
+  /* The heavy wash above exists because the desktop banner, reframed to a
+     portrait crop, puts a dark treeline directly behind the headline.
+     Artwork composed for this frame does not: measured across the band the
+     copy occupies, the darkest pixel still gives the text 9:1 — past AAA —
+     before any scrim at all. So this is insurance, not legibility, and it
+     clears well before the product. */
+  .hasMobileArt .scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0.26) 28%,
+      rgba(255, 255, 255, 0.14) 42%,
+      rgba(255, 255, 255, 0) 56%
+    );
   }
 }

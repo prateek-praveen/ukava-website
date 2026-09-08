@@ -23,7 +23,7 @@ type Slide = {
 const SLIDES: Slide[] = [
   {
     image: "/img/hero-scooters.webp",
-    // mobileImage: "/img/hero-scooters-mobile.webp",
+    mobileImage: "/img/hero-scooters-mobile.webp",
     alt: "UKAVA electric scooters parked at a home charging point",
     headline: "Powering everyday life.",
     highlightedText: "Moving India forward.",
@@ -34,7 +34,7 @@ const SLIDES: Slide[] = [
   },
   {
     image: "/img/hero-batteries.png",
-    // mobileImage: "/img/hero-batteries-mobile.webp",
+    mobileImage: "/img/hero-batteries-mobile.webp",
     alt: "UKAVA lithium battery stack and inverter outside a modern home",
     headline: "Power that lasts.",
     highlightedText: "Built for everyday use.",
@@ -47,8 +47,16 @@ const SLIDES: Slide[] = [
 
 const INTERVAL = 5000;
 
-/** Must stay in step with the ≤768px block in Hero.module.css. */
-const MOBILE_QUERY = "(max-width: 768px)";
+/**
+ * Where the portrait banners take over. Not the 768px mobile breakpoint: the
+ * artwork is 0.563:1, so a frame wider than that crops it top and bottom, and
+ * past ~620px the crop starts eating the product — the scooters' wheels go
+ * first. At 600px they are still fully in frame. Above this the slide falls
+ * back to the desktop banner and its existing reframing, unchanged.
+ *
+ * Must stay in step with the ≤600px block in Hero.module.css.
+ */
+const MOBILE_QUERY = "(max-width: 600px)";
 
 export default function Hero() {
   const [index, setIndex] = useState(0);

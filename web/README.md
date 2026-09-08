@@ -64,23 +64,38 @@ All 29 pages prerender at build time.
 6. **The `../project/` bundle is a frozen snapshot from the handoff export.** Design changes made
    in Claude Design since then do not reach this repo; re-export ("Send to Claude Code Web") to
    pick them up.
-7. **Mobile hero banners.** The hero can carry a separate, mobile-only banner per slide —
-   the plumbing is in, the artwork is not. Drop the file in `public/img/` and uncomment the
-   `mobileImage` line on that slide in `components/home/Hero.tsx`:
+7. **Mobile hero banners.** Each hero slide carries its own portrait banner for ≤600px,
+   set by the `mobileImage` key in `components/home/Hero.tsx`:
 
-   ```ts
-   { image: "/img/hero-scooters.webp",          // desktop, unchanged
-     mobileImage: "/img/hero-scooters-mobile.webp", ... }
-   ```
+   | Slide | Desktop | Mobile (≤768px) |
+   | --- | --- | --- |
+   | Scooters | `hero-scooters.webp` | `hero-scooters-mobile.webp` — 941×1672, 109KB |
+   | Batteries | `hero-batteries.png` | `hero-batteries-mobile.webp` — 941×1672, 102KB |
 
-   `<source media="(max-width: 768px)">` does the switch, so a phone never downloads the
-   desktop file and a desktop never downloads the mobile one. A slide with a `mobileImage`
-   also drops the ≤768px reframing (the desktop crop is currently pinned to the lower 64% of
-   the stage) and lets the artwork fill the frame instead — see `.hasMobileArt` in
-   `Hero.module.css`. What the artwork needs: **portrait, about 3:4** (e.g. 900×1200,
-   ≥828px wide for 3× screens), product low in the frame, top third quiet — the white scrim
-   runs down to roughly 45% of the stage and the headline sits over it. WebP, ideally under
-   250KB. Per slide: `hero-scooters-mobile` and `hero-batteries-mobile`.
+   `<source media="(max-width: 600px)">` does the switch, so a phone never downloads the
+   desktop file and a desktop never downloads the mobile one; the breakpoint is exact at
+   600/601.
+
+   **600px, not the 768px mobile breakpoint**, because the artwork is 0.563:1 and a frame
+   wider than that crops it top and bottom instead of at the sides. The crop reaches the
+   product at about 620px — the scooters' wheels go first — so 601–768px keeps the desktop
+   banner and the reframing it already had. `MOBILE_QUERY` in `Hero.tsx` and the ≤600px
+   block in `Hero.module.css` have to move together.
+
+   A slide with a `mobileImage` also gets `.hasMobileArt`, which below 600px drops that
+   reframing — the desktop crop has to be pinned to the right of the frame to keep the
+   product in shot — and centres the artwork instead. In a 390×660 stage that leaves a 4.7%
+   crop, taken off empty sky and empty floor.
+
+   `.hasMobileArt .scrim` also replaces the white wash. The heavy one (down to 97%) exists
+   because the reframed desktop banner puts a dark treeline behind the headline; artwork cut
+   for this frame does not, and measured across the band the copy occupies the darkest pixel
+   gives the text 9:1 unaided. The lighter scrim renders at 14–16:1 at every width from 320
+   to 600 while leaving the photograph visible.
+
+   To replace either banner: **portrait, roughly 0.56:1**, ≥900px wide, product in the lower
+   half (and above ~0.80 of the height, or it will clip near the 600px edge), top third
+   quiet. WebP, under 250KB.
 8. **The desktop testimonial marquee is inert and awaiting a decision.**
    `components/home/PartnerStories.module.css` declares
    `animation: ukavaMarquee 64s linear infinite` on `.track`, but CSS Modules scope the
