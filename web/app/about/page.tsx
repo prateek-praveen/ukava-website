@@ -124,7 +124,9 @@ export default function AboutPage() {
           <div className={styles.inner}>
             <div className={styles.storyGrid}>
               <div>
-                <p className={styles.eyebrow}>Our Story</p>
+                {/* The "Our Story" eyebrow is gone: the banner above it has
+                    already said where you are, and it was one more thing
+                    between the top of the page and the first sentence. */}
                 <p className={styles.storyLead}>
                   UKAVA is an Indian energy and electric mobility company building solutions across
                   power backup, solar, lithium batteries and electric vehicles.

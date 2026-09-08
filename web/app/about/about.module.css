@@ -17,25 +17,25 @@
 }
 
 /* ── our story ───────────────────────────────────────────────────── */
+/* Tighter than the other sections on purpose: the banner already occupies
+   the top of the page, and this padding decides whether the story is on the
+   first screen or under it. */
 .story {
   background: #fff;
-  padding-block: clamp(48px, 5.5vw, 96px) clamp(40px, 4.5vw, 76px);
+  padding-block: clamp(28px, 2.6vw, 44px) clamp(40px, 4.5vw, 76px);
 }
 
-/* Full-bleed: the plant runs edge to edge, so it is deliberately outside
-   the page gutter every other section sits inside. The ratio is capped by
-   max-height so a very wide screen widens the crop rather than growing a
-   band that pushes the story off the first screen. */
-/* 12/5 = 2.4, just wider than the 2:1 artwork, so the crop is about 17% and
-   the height is capped besides. Anchored to the bottom in both directions:
-   both cuts fade to white at their base, and that fade is what dissolves the
-   band into the page — crop it and the banner ends on a hard edge. What goes
-   instead is sky, which costs nothing. */
+/* Full-bleed, so deliberately outside the page gutter the rest sits inside.
+   12/5 is just wider than the 2:1 artwork; the cap then decides how tall the
+   band actually gets, and it is set so the story clears the fold on a laptop
+   rather than to flatter the photograph. Anchored bottom in both cuts: each
+   fades to white at its base and that fade dissolves the band into the page,
+   so what the cap crops is sky, which costs nothing. */
 .banner {
   position: relative;
   width: 100%;
   aspect-ratio: 12 / 5;
-  max-height: 640px;
+  max-height: 470px;
   overflow: hidden;
   background: var(--color-neutral-200);
 }
@@ -56,9 +56,9 @@
 .storyGrid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  /* The copy no longer shares the row with a portrait, and a 1680px line is
-     unreadable, so it keeps a measure of its own. */
-  max-width: 74ch;
+  /* Wide, but not the full 1680: a line that long is genuinely hard to track
+     back from at this type size. This lands around 80 characters. */
+  max-width: 1100px;
 }
 
 .storyLead {
@@ -71,7 +71,7 @@
 }
 
 .storyBody {
-  margin: clamp(40px, 4vw, 72px) 0 0;
+  margin: clamp(22px, 2.2vw, 34px) 0 0;
   font-size: clamp(18px, 1.7vw, 26px);
   line-height: 1.5;
   letter-spacing: -0.01em;
@@ -355,10 +355,12 @@
     line-height: 1.35;
   }
 
+  /* Same size as the lead: two sizes this close read as an accident rather
+     than a hierarchy at phone scale. */
   .storyBody {
     margin-top: 16px;
-    font-size: 14px;
-    line-height: 1.45;
+    font-size: 18px;
+    line-height: 1.35;
   }
 
   .proofCell {
