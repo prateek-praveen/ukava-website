@@ -117,18 +117,16 @@ export default function SiteFooter() {
               <a href="mailto:contact@ukava.co" className={styles.email}>
                 contact@ukava.co
               </a>
-              <br />
-              Registered address TBD
             </p>
           </div>
         </div>
 
+        {/* Privacy Policy and Terms of Use sat here as inert spans with a
+            "Page pending" tooltip — there are no such pages to link to yet.
+            They belong back once the pages exist; until then the row is the
+            copyright and the origin line. */}
         <div className={styles.legal}>
           <span>© {new Date().getFullYear()} UKAVA. All rights reserved.</span>
-          <span className={styles.legalLinks}>
-            <span title="Page pending">Privacy Policy</span>
-            <span title="Page pending">Terms of Use</span>
-          </span>
           <span>Made in India. Made for India.</span>
         </div>
       </div>

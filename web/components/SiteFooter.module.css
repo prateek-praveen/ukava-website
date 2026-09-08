@@ -164,21 +164,6 @@
   color: var(--color-neutral-600);
 }
 
-.legalLinks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(16px, 2vw, 28px);
-}
-
-.legalLinks a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.legalLinks a:hover {
-  color: var(--color-accent);
-}
-
 /* ── mobile (≤768px) ──────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .footer {
