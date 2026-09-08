@@ -58,16 +58,19 @@ const BUILDS = [
   { title: "Solar Solutions", slot: "ukava-about-build-solar-solutions", caption: "Solar solutions photo" },
 ];
 
+/* Five photographs rather than the six the layout was drafted for, and the
+   captions name what is actually in each frame — they are the alt text, so
+   an invented one would describe a picture nobody is looking at. The rows
+   repeat their run four times, so an uneven split still drifts evenly. */
 const WORK_TOP = [
-  { slot: "ukava-about-work-battery-assembly", caption: "Battery assembly" },
-  { slot: "ukava-about-work-hands-on-components", caption: "Hands on components" },
-  { slot: "ukava-about-work-product-testing", caption: "Product testing" },
+  { slot: "ukava-about-work-battery-assembly", caption: "Assembling a battery pack" },
+  { slot: "ukava-about-work-product-testing", caption: "Testing a pack before it ships" },
+  { slot: "ukava-about-work-production-line", caption: "Scooters ready for dispatch" },
 ];
 
 const WORK_BOTTOM = [
-  { slot: "ukava-about-work-production-line", caption: "Production line" },
-  { slot: "ukava-about-work-assembly-detail", caption: "Assembly detail" },
-  { slot: "ukava-about-work-quality-inspection", caption: "Quality inspection" },
+  { slot: "ukava-about-work-product-range", caption: "The full product range" },
+  { slot: "ukava-about-work-team", caption: "The UKAVA team" },
 ];
 
 /** Doubled so each drifting row wraps seamlessly at -50%. */
@@ -97,15 +100,24 @@ export default function AboutPage() {
     <>
       <SiteHeader active="about" />
       <main>
-        {/* Full-bleed plant exterior. It replaces the founder portrait that
-            used to sit beside the copy: the company, not a person. */}
+        {/* Full-bleed plant exterior, replacing the founder portrait that used
+            to sit beside the copy: the company, not a person.
+
+            A <picture> rather than an ImageSlot, which carries one asset per
+            slot. The two cuts are far apart — 2:1 across on a desktop, 2:3
+            upright on a phone — and either one forced into the other frame
+            would lose about a third of itself. The browser picks before it
+            fetches, so a phone never downloads the wide file. */}
         <div className={styles.banner}>
-          <ImageSlot
-            id="ukava-about-banner"
-            placeholder="UKAVA plant exterior · wide"
-            alt="The UKAVA manufacturing plant"
-            priority
-          />
+          <picture>
+            <source media="(max-width: 768px)" srcSet="/img/about-banner-mobile.webp" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/img/about-banner.webp"
+              alt="The UKAVA manufacturing plant"
+              fetchPriority="high"
+            />
+          </picture>
         </div>
 
         <section className={styles.story}>
