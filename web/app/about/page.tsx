@@ -97,29 +97,30 @@ export default function AboutPage() {
     <>
       <SiteHeader active="about" />
       <main>
+        {/* Full-bleed plant exterior. It replaces the founder portrait that
+            used to sit beside the copy: the company, not a person. */}
+        <div className={styles.banner}>
+          <ImageSlot
+            id="ukava-about-banner"
+            placeholder="UKAVA plant exterior · wide"
+            alt="The UKAVA manufacturing plant"
+            priority
+          />
+        </div>
+
         <section className={styles.story}>
           <div className={styles.inner}>
             <div className={styles.storyGrid}>
-              <div className={styles.portrait}>
-                <ImageSlot
-                  id="ukava-about-founder"
-                  placeholder="Founder portrait · 4:5"
-                  alt="UKAVA founder"
-                />
-              </div>
               <div>
                 <p className={styles.eyebrow}>Our Story</p>
                 <p className={styles.storyLead}>
                   UKAVA is an Indian energy and electric mobility company building solutions across
-                  power backup, solar energy, lithium batteries and electric vehicles.
+                  power backup, solar, lithium batteries and electric vehicles.
                 </p>
                 <p className={styles.storyBody}>
-                  Our journey started over 25 years ago with inverters and batteries as people&apos;s
-                  use of energy changed.
-                  <br />
-                  Through all these years, one thing has stayed the same — our focus on building
-                  dependable energy solutions that move with changing needs. With decades of
-                  experience behind us, we&apos;re now taking that journey forward —{" "}
+                  What began over 25 years ago with inverters and batteries has grown with
+                  India’s changing energy needs. Today, we’re taking that experience forward —{" "}
+                  {/* The closing clause keeps the weight the design gave it. */}
                   <strong>
                     from powering homes and businesses to powering everyday journeys.
                   </strong>

@@ -22,19 +22,25 @@
   padding-block: clamp(48px, 5.5vw, 96px) clamp(40px, 4.5vw, 76px);
 }
 
-.storyGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: clamp(36px, 5vw, 104px);
-  align-items: start;
-}
-
-.portrait {
+/* Full-bleed: the plant runs edge to edge, so it is deliberately outside
+   the page gutter every other section sits inside. The ratio is capped by
+   max-height so a very wide screen widens the crop rather than growing a
+   band that pushes the story off the first screen. */
+.banner {
   position: relative;
-  aspect-ratio: 4 / 5;
-  border-radius: 16px;
+  width: 100%;
+  aspect-ratio: 24 / 10;
+  max-height: clamp(300px, 34vw, 560px);
   overflow: hidden;
   background: var(--color-neutral-200);
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  /* The copy no longer shares the row with a portrait, and a 1680px line is
+     unreadable, so it keeps a measure of its own. */
+  max-width: 74ch;
 }
 
 .storyLead {
@@ -235,13 +241,8 @@
 }
 
 @media (max-width: 1119px) {
-  .storyGrid,
   .buildGrid {
     grid-template-columns: 1fr;
-  }
-
-  .portrait {
-    max-width: 460px;
   }
 
   .buildTitle {
@@ -300,15 +301,11 @@
     padding-block: 32px 24px;
   }
 
-  .storyGrid {
-    gap: 20px;
-  }
-
-  /* Landscape on a portrait viewport keeps the portrait from eating the
-     first screen before any copy is reached. */
-  .portrait {
-    max-width: none;
-    aspect-ratio: 4 / 3;
+  /* Taller on a phone: a 2.4:1 band is only ~160px there, too thin to read
+     as a photograph of a building. */
+  .banner {
+    aspect-ratio: 16 / 10;
+    max-height: none;
   }
 
   .storyLead {
