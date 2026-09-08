@@ -49,13 +49,17 @@
   object-position: center bottom;
 }
 
-/* Dissolves the scene into the white above and below it. */
+/* Dissolves the scene into the white above and below it.
+   The z-index matters: on mobile the image is positioned (so it can be
+   oversized and pinned to the bottom), and a positioned image would
+   otherwise paint over ::before, which precedes it in tree order. */
 .scene::before,
 .scene::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -149,10 +153,6 @@
 }
 
 @media (max-width: 560px) {
-  .scene {
-    aspect-ratio: 5 / 4;
-  }
-
   .actions {
     flex-direction: column;
     align-items: stretch;
@@ -168,12 +168,53 @@
 /* ── mobile (≤768px) ──────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .section {
-    padding-top: 48px;
-    padding-bottom: 48px;
+    padding-top: 32px;
+    padding-bottom: 40px;
   }
 
   .inner {
     padding-bottom: 24px;
+  }
+
+  /* The scene is 2:1. Desktop frames it at 3.13:1 — wider than the image —
+     so `cover` scales by width and crops 36% of empty sky off the top. The
+     phone frame was 1.25:1, narrower, so `cover` scaled by height instead
+     and the sky came through in full: 170px of pale nothing between the
+     buttons and the products, which is what made the scene read as small.
+
+     Cropping the sky here needs the rendered image to be relatively wider
+     than the frame, so it is oversized and pinned to the bottom edge. 5/3
+     with 132% keeps the whole composition — batteries through to the solar
+     array — while showing the products about 1.6x larger than fitting the
+     full width would. The percentage is against the frame's own height, so
+     the framing is identical at every width in this range. */
+  .scene {
+    aspect-ratio: 5 / 3;
+  }
+
+  .scene img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 132%;
+  }
+
+  /* With less sky to hide, the top fade no longer needs to run to 42%. */
+  .scene::before {
+    height: 24%;
+    background: linear-gradient(
+      180deg,
+      #fff 0%,
+      rgba(255, 255, 255, 0.72) 34%,
+      rgba(255, 255, 255, 0.24) 68%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  .scene::after {
+    height: 12%;
   }
 
   .title {

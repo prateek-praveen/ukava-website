@@ -250,8 +250,12 @@
 
 /* ── mobile (≤768px) ──────────────────────────────────────────────── */
 @media (max-width: 768px) {
+  /* Almost no bottom padding on purpose. The rail below already carries
+     38px so the card shadow lands inside its box, and that reads as the
+     gap; adding a section padding on top of it stacked into 134px of
+     white between the last card and the closing heading. */
   .section {
-    padding-block: 48px;
+    padding-block: 48px 8px;
   }
 
   .head {
