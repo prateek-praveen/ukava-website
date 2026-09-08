@@ -5,7 +5,7 @@ import styles from "./StatsRow.module.css";
 const STATS = [
   { value: "50+", label: "Products" },
   { value: "10L+", label: "Markets served" },
-  { value: "25+", label: "Experience" },
+  { value: "25+ yrs", label: "Experience" },
   { value: "1K+", label: "Partners" },
 ];
 

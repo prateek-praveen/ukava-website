@@ -118,10 +118,14 @@
     box-shadow: none;
   }
 
+  /* The duration is tied to how far the run is, not picked by feel: one
+     run is 506px, so 14.4s holds the 35px/s the 12s/421px version set.
+     Widening the cells or changing a figure lengthens the run — rescale
+     this with it or the marquee silently speeds up. */
   .track {
     display: flex;
     width: max-content;
-    animation: ukavaStats 12s linear infinite;
+    animation: ukavaStats 14.4s linear infinite;
   }
 
   .dup {
@@ -129,10 +133,12 @@
   }
 
   /* Content-width cells: every figure and label stays on one line, so the
-     rule sits at a predictable distance from each. */
+     rule sits at a predictable distance from each. Cell boxes butt up
+     against each other, so this padding is half the space between two
+     figures — 30px a side puts 60px between them, with the rule centred. */
   .track .cell {
     flex: 0 0 auto;
-    padding: 4px 22px;
+    padding: 4px 30px;
     border-top: 0;
   }
 
