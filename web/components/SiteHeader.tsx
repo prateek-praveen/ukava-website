@@ -64,8 +64,10 @@ export default function SiteHeader({ active, variant = "solid" }: Props) {
           </ContactNumber>
         </nav>
 
+        {/* currentColor so the icon follows the button: white inside the
+            accent chip on tablet, accent on the bare mobile header. */}
         <ContactNumber className={styles.callButton}>
-          <PhoneIcon stroke="#fff" />
+          <PhoneIcon stroke="currentColor" />
         </ContactNumber>
         <button
           type="button"
