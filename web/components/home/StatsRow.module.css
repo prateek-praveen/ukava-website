@@ -119,13 +119,13 @@
   }
 
   /* The duration is tied to how far the run is, not picked by feel: one
-     run is 506px, so 14.4s holds the 35px/s the 12s/421px version set.
-     Widening the cells or changing a figure lengthens the run — rescale
-     this with it or the marquee silently speeds up. */
+     run is 532px, so 15.2s holds the 35px/s the original 12s/421px version
+     set. Widening a cell or editing a figure or label lengthens the run —
+     rescale this with it or the marquee silently speeds up. */
   .track {
     display: flex;
     width: max-content;
-    animation: ukavaStats 14.4s linear infinite;
+    animation: ukavaStats 15.2s linear infinite;
   }
 
   .dup {
