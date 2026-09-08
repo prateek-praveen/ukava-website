@@ -28,7 +28,7 @@ const SLIDES: Slide[] = [
     headline: "Powering everyday life.",
     highlightedText: "Moving India forward.",
     description:
-      "From electric scooters and lithium batteries to solar and power backup \u2014 dependable energy solutions for homes and businesses.",
+      "Electric mobility and dependable energy solutions, built for homes, businesses and everyday journeys.",
     primaryLink: "/products/electric-scooters",
     secondaryCTA: "Contact Us",
   },

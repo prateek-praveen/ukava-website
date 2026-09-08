@@ -318,23 +318,20 @@
 
 .callout {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: 1fr;
   gap: clamp(28px, 3.4vw, 60px);
   align-items: center;
 }
 
-.calloutArt {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  border-radius: 20px;
-  overflow: hidden;
-  background: #faf9f7;
-}
-
+/* The lifestyle shot that used to sit beside these rows is gone, so a single
+   column of five would leave most of the width empty. Two columns keep the
+   measure close to what it was when the image took the other half. */
 .calloutRows {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(18px, 1.8vw, 26px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(28px, 3.4vw, 60px);
+  row-gap: clamp(18px, 1.8vw, 26px);
+  align-content: start;
 }
 
 .calloutRow {
@@ -519,8 +516,7 @@
 }
 
 @media (max-width: 1119px) {
-  .heroGrid,
-  .callout {
+  .heroGrid {
     grid-template-columns: 1fr;
   }
 
@@ -549,6 +545,12 @@
   .benefits,
   .features,
   .similar {
+    grid-template-columns: 1fr;
+  }
+
+  /* Two columns of label-over-value would leave each about 170px wide on a
+     phone, so the pairs stack instead. */
+  .calloutRows {
     grid-template-columns: 1fr;
   }
 

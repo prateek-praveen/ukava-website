@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useState } from "react";
 import styles from "./ProductDetail.module.css";
 import ImageSlot from "@/components/ImageSlot";
-import LeadModal, { type LeadRequest } from "@/components/LeadModal";
+import { ContactCta } from "@/components/ContactAction";
+import { FEATURES } from "@/lib/features";
 import {
   CATEGORY_LABELS,
   byCat,
@@ -13,7 +14,7 @@ import {
   type Product,
 } from "@/lib/catalogue";
 import { productCopy } from "@/lib/productCopy";
-import { productDetailShotId, productShotId, productShots } from "@/lib/slots";
+import { productShotId, productShots } from "@/lib/slots";
 
 const SHOT_LABELS = ["Main angle", "Side profile", "Front", "Rear three-quarter", "Detail shot"];
 
@@ -21,16 +22,12 @@ export default function ProductDetail({ product }: { product: Product }) {
   const [shot, setShot] = useState(0);
   const [colour, setColour] = useState(0);
   const [openGroup, setOpenGroup] = useState(0);
-  const [request, setRequest] = useState<LeadRequest | null>(null);
 
   const copy = productCopy(product);
   const shots = productShots(product.slug);
   const similar = byCat(product.cat)
     .filter((q) => q.slug !== product.slug)
     .slice(0, 3);
-
-  const openEnquiry = () =>
-    setRequest({ kind: "product", product: product.name, source: "product-detail" });
 
   // Sections with nothing catalogue-backed to show are omitted entirely, so
   // the page closes the gap instead of rendering an empty module.
@@ -93,7 +90,8 @@ export default function ProductDetail({ product }: { product: Product }) {
                 ))}
               </div>
 
-              {product.colours.length ? (
+              {/* Dormant behind a switch, not removed — see lib/features.ts. */}
+              {FEATURES.productColourVariants && product.colours.length ? (
                 <div className={styles.colours}>
                   <span className={styles.coloursLabel}>Available colours</span>
                   <div className={styles.swatches}>
@@ -113,21 +111,15 @@ export default function ProductDetail({ product }: { product: Product }) {
                 </div>
               ) : null}
 
+              {/* One CTA, not two. "Enquire Now" and "Request a Callback"
+                  both opened the same form; with no checkout or enquiry
+                  flow behind them they now both mean "talk to us", and two
+                  buttons doing the identical thing is just a choice the
+                  customer has to make for nothing. */}
               <div className={styles.actions}>
-                <button
-                  type="button"
-                  onClick={openEnquiry}
-                  className={`btn btn-primary ${styles.primaryCta}`}
-                >
-                  Enquire Now &nbsp;→
-                </button>
-                <button
-                  type="button"
-                  onClick={openEnquiry}
-                  className={`btn ${styles.secondaryCta}`}
-                >
-                  Request a Callback
-                </button>
+                <ContactCta className={`btn btn-primary ${styles.primaryCta}`}>
+                  Contact Us &nbsp;→
+                </ContactCta>
               </div>
 
               <div className={styles.trust}>
@@ -193,13 +185,6 @@ export default function ProductDetail({ product }: { product: Product }) {
               </div>
             </div>
             <div className={styles.callout}>
-              <div className={styles.calloutArt}>
-                <ImageSlot
-                  id={productDetailShotId(product.slug)}
-                  placeholder={`${product.name} — detail / lifestyle shot`}
-                  alt={`${product.name} detail`}
-                />
-              </div>
               <div className={styles.calloutRows}>
                 {product.module.map((c) => (
                   <div key={c.label} className={styles.calloutRow}>
@@ -306,7 +291,6 @@ export default function ProductDetail({ product }: { product: Product }) {
         </section>
       ) : null}
 
-      <LeadModal request={request} onClose={() => setRequest(null)} />
     </>
   );
 }
