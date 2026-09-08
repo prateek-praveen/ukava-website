@@ -334,5 +334,29 @@
   "src": "/img/slots/ukava-partner-store.webp",
   "x": 0,
   "y": 0
+ },
+ "ukava-why-1": {
+  "s": 1,
+  "src": "/img/slots/ukava-why-1.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-why-2": {
+  "s": 1,
+  "src": "/img/slots/ukava-why-2.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-why-3": {
+  "s": 1,
+  "src": "/img/slots/ukava-why-3.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-why-4": {
+  "s": 1,
+  "src": "/img/slots/ukava-why-4.webp",
+  "x": 0,
+  "y": 0
  }
 }
