@@ -33,7 +33,7 @@ const SLIDES: Slide[] = [
     secondaryCTA: "Contact Us",
   },
   {
-    image: "/img/hero-batteries.png",
+    image: "/img/hero-batteries.webp",
     mobileImage: "/img/hero-batteries-mobile.webp",
     alt: "UKAVA lithium battery stack and inverter outside a modern home",
     headline: "Power that lasts.",

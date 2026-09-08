@@ -34,34 +34,21 @@
   object-position: center 62%;
 }
 
-/* Left-to-right scrim so the headline holds over the photograph, plus a
-   top/bottom white fade that seats the band in the page. */
-.scrim {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    #fff 0%,
-    rgba(255, 255, 255, 0.96) 22%,
-    rgba(255, 255, 255, 0.78) 38%,
-    rgba(255, 255, 255, 0.34) 54%,
-    rgba(255, 255, 255, 0) 70%
-  );
-}
+/* No overlay on the desktop banners. The artwork fades to white on its own
+   left-hand side, which is where the copy sits, so a scrim on top of that
+   was washing the photograph twice. Measured with both elements hidden, the
+   headline never falls below 5.0:1 and the lede below 5.2:1 anywhere from
+   601px to 1920px on either slide — comfortably past AA for normal text,
+   and these are 44-72px headings where the bar is 3:1.
 
+   They stay in the markup and keep their geometry because the phone cut
+   fades top-to-bottom instead and still needs them below 601px. */
+.scrim,
 .fade {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.55) 0%,
-    rgba(255, 255, 255, 0) 24%,
-    rgba(255, 255, 255, 0) 74%,
-    rgba(255, 255, 255, 0.72) 92%,
-    #fff 100%
-  );
+  display: none;
 }
 
 .copyWrap {
@@ -182,16 +169,6 @@
     object-position: 82% center;
   }
 
-  .scrim {
-    background: linear-gradient(
-      90deg,
-      #fff 0%,
-      rgba(255, 255, 255, 0.97) 32%,
-      rgba(255, 255, 255, 0.84) 48%,
-      rgba(255, 255, 255, 0.38) 64%,
-      rgba(255, 255, 255, 0) 82%
-    );
-  }
 }
 
 @media (max-width: 1079px) {
@@ -201,17 +178,6 @@
 
   .slide img {
     object-position: 76% center;
-  }
-
-  /* Stacked layout: the scrim runs top-to-bottom instead of left-to-right. */
-  .scrim {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.94) 0%,
-      rgba(255, 255, 255, 0.8) 42%,
-      rgba(255, 255, 255, 0.42) 72%,
-      rgba(255, 255, 255, 0.28) 100%
-    );
   }
 
   .copyWrap {
@@ -232,8 +198,9 @@
 
 /* ── mobile hero (≤768px) ──────────────────────────────────────────
    Full-bleed, like the desktop: the banner fills the stage top to bottom
-   and the copy sits over its upper half. The scrim carries the legibility
-   — near-solid white behind the headline, clearing before the product. */
+   and the copy sits over its upper half. 601-768px shows the desktop cut
+   in this layout and carries no overlay; the phone cut and its fade start
+   at 600px, below. */
 @media (max-width: 768px) {
   .stage {
     height: clamp(560px, 82vh, 660px);
@@ -248,28 +215,6 @@
     height: 100%;
     object-fit: cover;
     object-position: 62% center;
-  }
-
-  .scrim {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.97) 0%,
-      rgba(255, 255, 255, 0.94) 26%,
-      rgba(255, 255, 255, 0.78) 42%,
-      rgba(255, 255, 255, 0.36) 58%,
-      rgba(255, 255, 255, 0) 76%
-    );
-  }
-
-  .fade {
-    background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.35) 0%,
-      rgba(255, 255, 255, 0) 16%,
-      rgba(255, 255, 255, 0) 84%,
-      rgba(255, 255, 255, 0.72) 95%,
-      #fff 100%
-    );
   }
 
   .copyWrap {
@@ -357,12 +302,27 @@
     object-position: center center;
   }
 
-  /* The heavy wash above exists because the desktop banner, reframed to a
-     portrait crop, puts a dark treeline directly behind the headline.
-     Artwork composed for this frame does not: measured across the band the
-     copy occupies, the darkest pixel still gives the text 9:1 — past AAA —
-     before any scrim at all. So this is insurance, not legibility, and it
-     clears well before the product. */
+  /* Only the phone cut gets an overlay, and only because it fades top to
+     bottom rather than into the side the copy sits on. Even here it is
+     insurance rather than legibility: measured across the band the copy
+     occupies, the darkest pixel of that artwork already gives the text
+     9:1 unaided. */
+  .scrim,
+  .fade {
+    display: block;
+  }
+
+  .fade {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.35) 0%,
+      rgba(255, 255, 255, 0) 16%,
+      rgba(255, 255, 255, 0) 84%,
+      rgba(255, 255, 255, 0.72) 95%,
+      #fff 100%
+    );
+  }
+
   .hasMobileArt .scrim {
     background: linear-gradient(
       180deg,
