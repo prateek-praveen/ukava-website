@@ -253,23 +253,83 @@ a:hover {
   }
 }
 
-/* Scroll-reveal: elements start shifted and are released by an observer.
-   Reduced-motion users get the resting state immediately. */
+/* ── scroll reveal ─────────────────────────────────────────────────
+   Markup opts in with data-reveal="heading|text|image|item"; the observer
+   in RevealProvider is the only thing that sets data-reveal-state.
+
+   The resting state is the default, and only `idle` hides anything. That
+   ordering is the point: with no JavaScript, or a bundle that fails to
+   execute, nothing is ever hidden and the page reads exactly as it shipped.
+   An element is only put into `idle` once the observer has confirmed it is
+   off screen, so that transition is never visible either.
+
+   Only opacity and transform animate — no layout, no paint. */
 [data-reveal] {
-  opacity: 0;
-  transform: translateY(20px);
+  --reveal-shift: 16px;
+  --reveal-scale: 1;
+  --reveal-duration: 580ms;
+  /* Markup sets only a position in the sequence; the length of a step is a
+     CSS decision, so the mobile rule below shortens every stagger on the
+     site at once instead of each component doing its own arithmetic. */
+  --reveal-index: 0;
+  --reveal-step: 90ms;
+  --reveal-delay: calc(var(--reveal-index) * var(--reveal-step));
   transition:
-    opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+    opacity var(--reveal-duration) cubic-bezier(0.22, 0.61, 0.36, 1) var(--reveal-delay),
+    transform var(--reveal-duration) cubic-bezier(0.22, 0.61, 0.36, 1) var(--reveal-delay);
 }
 
-[data-reveal="shown"] {
-  opacity: 1;
-  transform: none;
+[data-reveal][data-reveal-state="idle"] {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-shift), 0) scale(var(--reveal-scale));
 }
 
-@media (prefers-reduced-motion: reduce) {
+/* Subtext follows its heading rather than racing it — one step behind, so
+   it shortens on mobile with everything else. */
+[data-reveal="text"] {
+  --reveal-index: 1;
+}
+
+/* Images settle rather than travel: a shift this small alongside a scale
+   this shallow reads as the photograph coming into focus. */
+[data-reveal="image"] {
+  --reveal-shift: 8px;
+  --reveal-scale: 0.985;
+  --reveal-duration: 700ms;
+}
+
+/* Members of a group carry their own --reveal-delay, set per index in the
+   markup, so a row arrives in sequence rather than all at once. */
+[data-reveal="item"] {
+  --reveal-shift: 14px;
+}
+
+/* Mobile keeps the same vocabulary, more restrained: shorter travel, and
+   the per-item delays are halved in the markup so a list never keeps the
+   reader waiting on a small screen. */
+@media (max-width: 768px) {
   [data-reveal] {
+    --reveal-shift: 12px;
+    --reveal-duration: 520ms;
+  }
+
+  [data-reveal="image"] {
+    --reveal-shift: 6px;
+    --reveal-duration: 600ms;
+  }
+
+  /* Half a step: a list of six on a phone finishes in 225ms rather than
+     450ms, so nothing is still arriving after the reader has got there. */
+  [data-reveal] {
+    --reveal-step: 45ms;
+  }
+}
+
+/* Motion turned down: no transition, no transform, and the provider does not
+   start an observer at all, so nothing is ever hidden in the first place. */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal][data-reveal-state="idle"] {
     opacity: 1;
     transform: none;
     transition: none;

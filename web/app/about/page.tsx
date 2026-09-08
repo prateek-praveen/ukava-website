@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { reveal } from "@/lib/reveal";
 import styles from "./about.module.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -127,11 +128,11 @@ export default function AboutPage() {
                 {/* The "Our Story" eyebrow is gone: the banner above it has
                     already said where you are, and it was one more thing
                     between the top of the page and the first sentence. */}
-                <p className={styles.storyLead}>
+                <p className={styles.storyLead} {...reveal("heading")}>
                   UKAVA is an Indian energy and electric mobility company building solutions across
                   power backup, solar, lithium batteries and electric vehicles.
                 </p>
-                <p className={styles.storyBody}>
+                <p className={styles.storyBody} {...reveal("text")}>
                   What began over 25 years ago with inverters and batteries has grown with
                   India’s changing energy needs. Today, we’re taking that experience forward —{" "}
                   {/* The closing clause keeps the weight the design gave it. */}
@@ -145,8 +146,8 @@ export default function AboutPage() {
         </section>
 
         <div className={styles.proof}>
-          {PROOF.map((p) => (
-            <div key={p.title} className={styles.proofCell}>
+          {PROOF.map((p, i) => (
+            <div key={p.title} className={styles.proofCell} {...reveal("item", i)}>
               <svg
                 width="32"
                 height="32"
@@ -172,16 +173,18 @@ export default function AboutPage() {
           <div className={styles.inner}>
             <div className={styles.buildGrid}>
               <div>
-                <p className={styles.eyebrow}>What we build</p>
-                <h2 className={styles.buildTitle}>
+                <p className={styles.eyebrow} {...reveal("heading")}>
+                  What we build
+                </p>
+                <h2 className={styles.buildTitle} {...reveal("text")}>
                   One energy partner.
                   <br />
                   Many solutions.
                 </h2>
               </div>
               <div className={styles.buildCards}>
-                {BUILDS.map((b) => (
-                  <div key={b.slot} className={styles.buildCard}>
+                {BUILDS.map((b, i) => (
+                  <div key={b.slot} className={styles.buildCard} {...reveal("item", i)}>
                     <ImageSlot id={b.slot} placeholder={b.caption} alt={b.title} />
                     <div className={styles.buildCardHead}>
                       <h3>{b.title}</h3>
@@ -196,7 +199,9 @@ export default function AboutPage() {
 
         <section className={styles.work}>
           <div className={styles.inner}>
-            <h2 className={styles.workTitle}>The work behind what we build.</h2>
+            <h2 className={styles.workTitle} {...reveal("heading")}>
+              The work behind what we build.
+            </h2>
           </div>
           <div className={styles.workRows}>
             <WorkRow items={WORK_TOP} direction="left" />

@@ -114,11 +114,11 @@
   align-items: stretch;
   gap: 24px;
   width: max-content;
-  padding-inline: max(var(--page-pad), calc((100vw - var(--page-max)) / 2 + var(--page-pad)));
-  /* NOTE: this name does not resolve. CSS Modules scope the identifier used
-     in `animation`, and no `@keyframes ukavaMarquee` is declared in this
-     module, so the desktop rail has always rendered static. Left as-is to
-     keep the approved desktop untouched — see README before enabling. */
+  /* No lead-in gutter, and that is load-bearing rather than cosmetic. The
+     loop translates -50%, which equals one run only while the track is
+     exactly two runs wide. A padding-inline made it 2 runs + 2 gutters, so
+     every cycle jumped by a gutter. It also bought nothing: a rail that
+     never stops moving has no resting position to align to. */
   animation: ukavaMarquee 64s linear infinite;
 }
 
@@ -237,8 +237,20 @@
   }
 }
 
-/* Declared in this module so the scoped name actually resolves. Two
-   identical runs, so -50% lands on a seamless repeat. */
+/* Both declared in this module so the scoped names actually resolve —
+   `animation` takes a scoped identifier under CSS Modules, and a name with
+   no matching @keyframes in the same file silently does nothing, which is
+   why the desktop rail rendered static for as long as it did. Two identical
+   runs, so -50% lands on a seamless repeat. */
+@keyframes ukavaMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @keyframes ukavaMarqueeMobile {
   from {
     transform: translateX(0);

@@ -5,6 +5,7 @@ import SiteFooter from "@/components/SiteFooter";
 import ClosingCta from "@/components/ClosingCta";
 import CategoryTabs from "@/components/CategoryTabs";
 import ProductCard from "@/components/ProductCard";
+import { reveal } from "@/lib/reveal";
 import { CATEGORIES, byCat, type CategoryKey } from "@/lib/catalogue";
 
 /**
@@ -37,10 +38,12 @@ export default function ListingPage({ active }: { active: CategoryKey }) {
 
         <section className={styles.gridSection}>
           <div className={styles.gridInner}>
-            <p className={styles.intro}>{category.intro}</p>
+            <p className={styles.intro} {...reveal("text")}>
+              {category.intro}
+            </p>
             <div className={styles.grid}>
-              {products.map((p) => (
-                <ProductCard key={p.slug} product={p} />
+              {products.map((p, i) => (
+                <ProductCard key={p.slug} product={p} index={i} />
               ))}
             </div>
           </div>

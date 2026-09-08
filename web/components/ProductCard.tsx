@@ -3,16 +3,24 @@ import styles from "./ProductCard.module.css";
 import ImageSlot from "./ImageSlot";
 import { productHref, type Product } from "@/lib/catalogue";
 import { productShotId } from "@/lib/slots";
+import { reveal } from "@/lib/reveal";
 
 /**
  * The whole card is the link — the design's rule is that clicking anywhere on
  * a product opens its detail page.
  */
-export default function ProductCard({ product }: { product: Product }) {
+/** `index` is a position in the grid, used only to stagger the reveal. */
+export default function ProductCard({
+  product,
+  index = 0,
+}: {
+  product: Product;
+  index?: number;
+}) {
   const specs = product.primary.slice(0, 3);
 
   return (
-    <Link href={productHref(product)} className={styles.card}>
+    <Link href={productHref(product)} className={styles.card} {...reveal("item", index)}>
       <div className={styles.frame}>
         <div className={styles.zoom}>
           <ImageSlot

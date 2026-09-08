@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import styles from "./ProductDetail.module.css";
 import ImageSlot from "@/components/ImageSlot";
+import { reveal } from "@/lib/reveal";
 import { ContactCta } from "@/components/ContactAction";
 import { FEATURES } from "@/lib/features";
 import {
@@ -140,10 +141,10 @@ export default function ProductDetail({ product }: { product: Product }) {
           <div className={styles.sectionHead}>
             <div className={styles.sectionHeadLeft}>
               <span className={styles.stepNum}>01</span>
-              <h2 className={styles.sectionTitle}>{copy.whyHeading}</h2>
+              <h2 className={styles.sectionTitle} {...reveal("heading")}>{copy.whyHeading}</h2>
             </div>
           </div>
-          <div className={styles.benefits}>
+          <div className={styles.benefits} {...reveal("text")}>
             {copy.benefits.map((b) => (
               <div key={b.title} className={styles.benefit}>
                 <h3>{b.title}</h3>
@@ -160,10 +161,10 @@ export default function ProductDetail({ product }: { product: Product }) {
             <div className={styles.sectionHead}>
               <div className={styles.sectionHeadLeft}>
                 <span className={styles.stepNum}>02</span>
-                <h2 className={styles.sectionTitle}>{copy.featuresHeading}</h2>
+                <h2 className={styles.sectionTitle} {...reveal("heading")}>{copy.featuresHeading}</h2>
               </div>
             </div>
-            <div className={styles.features}>
+            <div className={styles.features} {...reveal("text")}>
               {features.map((f) => (
                 <div key={f.name} className={styles.feature}>
                   <h3>{f.name}</h3>
@@ -181,10 +182,10 @@ export default function ProductDetail({ product }: { product: Product }) {
             <div className={styles.sectionHead}>
               <div className={styles.sectionHeadLeft}>
                 <span className={styles.stepNum}>03</span>
-                <h2 className={styles.sectionTitle}>{product.moduleTitle}</h2>
+                <h2 className={styles.sectionTitle} {...reveal("heading")}>{product.moduleTitle}</h2>
               </div>
             </div>
-            <div className={styles.callout}>
+            <div className={styles.callout} {...reveal("text")}>
               <div className={styles.calloutRows}>
                 {product.module.map((c) => (
                   <div key={c.label} className={styles.calloutRow}>
@@ -203,7 +204,7 @@ export default function ProductDetail({ product }: { product: Product }) {
           <div className={styles.sectionHead}>
             <div className={styles.sectionHeadLeft}>
               <span className={styles.stepNum}>04</span>
-              <h2 className={styles.sectionTitle}>Complete specifications</h2>
+              <h2 className={styles.sectionTitle} {...reveal("heading")}>Complete specifications</h2>
             </div>
             {product.pdf ? (
               <a href={product.pdf} download className={styles.viewAll}>
@@ -211,7 +212,7 @@ export default function ProductDetail({ product }: { product: Product }) {
               </a>
             ) : null}
           </div>
-          <div className={styles.specs}>
+          <div className={styles.specs} {...reveal("text")}>
             {product.groups.map((g, i) => {
               const on = openGroup === i;
               return (
@@ -253,15 +254,20 @@ export default function ProductDetail({ product }: { product: Product }) {
             <div className={styles.sectionHead}>
               <div className={styles.sectionHeadLeft}>
                 <span className={styles.stepNum}>05</span>
-                <h2 className={styles.sectionTitle}>Explore similar products</h2>
+                <h2 className={styles.sectionTitle} {...reveal("heading")}>Explore similar products</h2>
               </div>
               <Link href={categoryHref(product.cat)} className={styles.viewAll}>
                 View all {CATEGORY_LABELS[product.cat]} <span aria-hidden="true">→</span>
               </Link>
             </div>
             <div className={styles.similar}>
-              {similar.map((q) => (
-                <Link key={q.slug} href={productHref(q)} className={styles.similarCard}>
+              {similar.map((q, i) => (
+                <Link
+                  key={q.slug}
+                  href={productHref(q)}
+                  className={styles.similarCard}
+                  {...reveal("item", i)}
+                >
                   <div className={styles.similarArt}>
                     <div className={styles.similarZoom}>
                       <ImageSlot

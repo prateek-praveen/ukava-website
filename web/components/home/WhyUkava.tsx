@@ -3,6 +3,7 @@
 import { useState } from "react";
 import styles from "./WhyUkava.module.css";
 import ImageSlot from "@/components/ImageSlot";
+import { reveal } from "@/lib/reveal";
 
 const STORIES = [
   {
@@ -46,8 +47,10 @@ export default function WhyUkava() {
     <section id="why" className={styles.section}>
       <div className={styles.inner}>
         <div className={styles.head}>
-          <p className={styles.kicker}>Why UKAVA</p>
-          <h2 className={styles.title}>
+          <p className={styles.kicker} {...reveal("heading")}>
+            Why UKAVA
+          </p>
+          <h2 className={styles.title} {...reveal("text")}>
             Built on experience.
             <br />
             Engineered for what’s next.
@@ -59,7 +62,11 @@ export default function WhyUkava() {
             {STORIES.map((s, i) => {
               const on = open === i;
               return (
-                <div key={s.title} className={`${styles.item} ${on ? styles.rowOn : ""}`}>
+                <div
+                  key={s.title}
+                  className={`${styles.item} ${on ? styles.rowOn : ""}`}
+                  {...reveal("item", i)}
+                >
                   <button
                     type="button"
                     onClick={() => pick(i)}
@@ -95,7 +102,11 @@ export default function WhyUkava() {
             })}
           </div>
 
-          <div className={styles.visual} style={{ order: shown * 2 + 3 }}>
+          <div
+            className={styles.visual}
+            style={{ order: shown * 2 + 3 }}
+            {...reveal("image")}
+          >
             {STORIES.map((s, i) => (
               <div
                 key={s.slot}

@@ -96,15 +96,43 @@ All 29 pages prerender at build time.
    To replace either banner: **portrait, roughly 0.56:1**, ≥900px wide, product in the lower
    half (and above ~0.80 of the height, or it will clip near the 600px edge), top third
    quiet. WebP, under 250KB.
-8. **The desktop testimonial marquee is inert and awaiting a decision.**
-   `components/home/PartnerStories.module.css` declares
-   `animation: ukavaMarquee 64s linear infinite` on `.track`, but CSS Modules scope the
-   identifier used in `animation`, and no `@keyframes ukavaMarquee` exists in that module — so
-   the name never resolves and the desktop rail has always rendered static. The mobile rail was
-   given its own in-module `ukavaMarqueeMobile` and now drifts. Enabling it on desktop is a
-   one-line change, but it alters the approved desktop, so it is left off pending sign-off.
-   Note the desktop track carries a `padding-inline` gutter, which offsets the -50% loop point;
-   that padding has to come off at the same time or the loop will visibly jump.
+8. **The desktop testimonial marquee runs.** It did not for a long time: `animation` takes a
+   *scoped* identifier under CSS Modules, and `@keyframes ukavaMarquee` was never declared in
+   `PartnerStories.module.css`, so the name resolved to nothing and the rail rendered static
+   with no error anywhere. Both keyframes now live in that file.
+
+   The `padding-inline` gutter on `.track` came off at the same time, and has to stay off: the
+   loop translates `-50%`, which equals exactly one run only while the track is exactly two
+   runs wide. With a gutter it was two runs *plus two gutters*, so every cycle jumped sideways
+   by a gutter. It bought nothing either — a rail that never stops moving has no resting
+   position to align to. 769–1079px is a thumb scroller by design and stays static, as does
+   `prefers-reduced-motion`.
+
+## Scroll reveal
+
+Sections fade and rise as they enter the viewport, once each. The whole system is
+`components/RevealProvider.tsx` (one IntersectionObserver for the document, mounted in the root
+layout), the `[data-reveal]` rules in `app/globals.css`, and the `reveal()` helper in
+`lib/reveal.ts`.
+
+Markup opts in by spreading `reveal()` onto an element that **already exists** —
+`<h2 {...reveal("heading")}>`, `<div {...reveal("item", i)}>`. Nothing is wrapped, so nothing is
+added to the DOM and the animation cannot move the layout. Verified: 2393 rendered elements
+across four pages at 1024 and 1440 are identical with the system in place.
+
+Two things about it are deliberate and worth not undoing:
+
+- **The resting state is the default; only `idle` hides anything, and only script sets it.**
+  With no JavaScript — or a bundle that fails to execute — nothing is ever hidden and the page
+  reads exactly as it shipped. An element is only put into `idle` after the observer confirms
+  it is off screen, so that transition is never visible either.
+- **Markup sets a position in a sequence, not a duration.** `--reveal-index` is an integer;
+  `--reveal-step` is a CSS decision and halves on mobile, so every stagger on the site shortens
+  at once rather than each component doing its own arithmetic.
+
+Variants: `heading` (16px rise, 580ms), `text` (the same, one step behind), `image` (8px rise
+plus a 0.985→1 scale, 700ms), `item` (14px rise, staggered by index, capped at five steps).
+Only `opacity` and `transform` animate. `prefers-reduced-motion` skips the observer entirely.
 
 ## Contact CTAs
 

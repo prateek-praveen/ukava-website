@@ -6,6 +6,7 @@ import styles from "./FeaturedProducts.module.css";
 import CategoryTabs from "@/components/CategoryTabs";
 import ProductCard from "@/components/ProductCard";
 import Reveal from "@/components/Reveal";
+import { reveal } from "@/lib/reveal";
 import {
   CATEGORIES,
   categoryHref,
@@ -24,7 +25,9 @@ export default function FeaturedProducts() {
     <section id="products" className={styles.section}>
       <div className={styles.inner}>
         <Reveal className={styles.head}>
-          <h2 className={styles.title}>Featured products</h2>
+          <h2 className={styles.title} {...reveal("heading")}>
+            Featured products
+          </h2>
           <Link href="/products" className={styles.viewAll}>
             View all products →
           </Link>
@@ -34,8 +37,8 @@ export default function FeaturedProducts() {
 
         {/* Keyed so the panel replays its entrance on each category change. */}
         <div key={active} className={styles.grid}>
-          {products.map((p) => (
-            <ProductCard key={p.slug} product={p} />
+          {products.map((p, i) => (
+            <ProductCard key={p.slug} product={p} index={i} />
           ))}
         </div>
 

@@ -4,6 +4,7 @@ import styles from "./PartnerStories.module.css";
 import ImageSlot from "@/components/ImageSlot";
 import Reveal from "@/components/Reveal";
 import { ContactCta } from "@/components/ContactAction";
+import { reveal } from "@/lib/reveal";
 
 /**
  * PLACEHOLDER CONTENT — these six dealer identities and quotes were invented
@@ -84,8 +85,12 @@ export default function PartnerStories() {
       <div className={styles.inner}>
         <Reveal className={styles.head}>
           <div>
-            <p className={styles.kicker}>Our partners</p>
-            <h2 className={styles.title}>Growing together with our partners.</h2>
+            <p className={styles.kicker} {...reveal("heading")}>
+              Our partners
+            </p>
+            <h2 className={styles.title} {...reveal("text")}>
+              Growing together with our partners.
+            </h2>
           </div>
           <ContactCta className={`btn btn-primary ${styles.partnerCta}`}>
             Become a UKAVA Partner &nbsp;→
