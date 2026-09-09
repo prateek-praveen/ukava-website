@@ -101,6 +101,24 @@
   "x": 0,
   "y": 0
  },
+ "ukava-p-linva-1000-0": {
+  "s": 1,
+  "src": "/img/slots/ukava-p-linva-1000-0.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-p-linva-1500-0": {
+  "s": 1,
+  "src": "/img/slots/ukava-p-linva-1500-0.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-p-linva-2500-0": {
+  "s": 1,
+  "src": "/img/slots/ukava-p-linva-2500-0.webp",
+  "x": 0,
+  "y": 0
+ },
  "ukava-p-linvasol-1050-0": {
   "s": 1,
   "src": "/img/slots/ukava-p-linvasol-1050-0.webp",
@@ -323,9 +341,45 @@
   "x": 0,
   "y": 0
  },
+ "ukava-partner-evara": {
+  "s": 1,
+  "src": "/img/slots/ukava-partner-evara.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-partner-gridline": {
+  "s": 1,
+  "src": "/img/slots/ukava-partner-gridline.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-partner-motive": {
+  "s": 1,
+  "src": "/img/slots/ukava-partner-motive.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-partner-northstar": {
+  "s": 1,
+  "src": "/img/slots/ukava-partner-northstar.webp",
+  "x": 0,
+  "y": 0
+ },
  "ukava-partner-store": {
   "s": 1,
   "src": "/img/slots/ukava-partner-store.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-partner-suncrest": {
+  "s": 1,
+  "src": "/img/slots/ukava-partner-suncrest.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-partner-voltway": {
+  "s": 1,
+  "src": "/img/slots/ukava-partner-voltway.webp",
   "x": 0,
   "y": 0
  },
