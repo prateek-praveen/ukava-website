@@ -29,6 +29,23 @@ export type Product = {
   /** A solar PCU rather than a mains-first one. Was a category of its own
       until the two proved to be the same unit in two trims. */
   solar?: boolean;
+  /** Variants of one family, shown grouped under the series rather than as
+      unrelated products. */
+  series?: string;
+  /** How the series is positioned, in the supplier's own words. */
+  positioning?: string;
+  /** The values that actually separate one variant from its siblings. The
+      listing leads on these; the shared spec sheet stays on the detail page
+      rather than being repeated on every card. */
+  variant?: Spec[];
+  /** One line of plain benefit for the card. */
+  benefit?: string;
+  /** Panel sizing, LINVASOL only. */
+  panels?: string;
+  /** Spec labels carrying a value the supplied catalogue repeats verbatim
+      across variants of different VA and voltage ratings — see VERIFY below.
+      Recorded, not corrected: the product team confirms before production. */
+  verify?: string[];
   colours: Colour[];
   groups: SpecGroup[];
   /** Optional spec sheet; the download button only renders when present. */
@@ -250,6 +267,20 @@ function battery(o: BatteryInput): Product {
   };
 }
 
+/**
+ * PENDING INTERNAL VERIFICATION — do not "correct" these from the outside.
+ *
+ * The supplied LINVA catalogue prints the same battery capacity, wattage and
+ * backup figure against every model, from the 1000 VA / 12V unit up to the
+ * 2500 VA / 24V one. That is what the source says, so that is what ships; but
+ * one 100 AH pack and one 1.28 kW rating across a 2.5x span of VA is the kind
+ * of thing a spec sheet gets wrong in copy-paste, and it should be confirmed
+ * by the product team before production publication.
+ *
+ * Every product carrying these values lists them in `verify`.
+ */
+const VERIFY_LABELS = ["Battery Capacity", "Wattage", "Battery Backup (Hrs)"];
+
 type LinvaInput = {
   name: string;
   solar?: boolean;
@@ -262,23 +293,42 @@ type LinvaInput = {
 function linva(o: LinvaInput): Product {
   const solar = o.solar === true;
   const panels = o.panels || "";
+  // "1000VA / 12V" — the second half is the only other thing that varies.
+  const voltage = o.config.split("/").pop()!.trim();
   return {
     name: o.name,
     slug: slugify(o.name),
     cat: "inverter-battery",
     solar,
+    series: solar ? "LINVASOL Series" : "LINVA Series",
+    positioning: solar
+      ? "Inbuilt Lithium Battery Solar PCU"
+      : "Inbuilt Lithium Battery PCU",
+    benefit: solar
+      ? "Solar-ready lithium power backup for homes, offices and shops."
+      : "Compact lithium power backup for homes, offices and shops.",
+    panels: solar ? panels : undefined,
+    verify: VERIFY_LABELS,
     type: solar
       ? "MPPT Solar PCU — inverter + inbuilt lithium battery"
       : "MPPT PCU — inverter + inbuilt lithium battery",
+    // Only what separates this variant from its siblings. Everything the
+    // catalogue repeats across the series lives in the spec table below,
+    // once, rather than on every card.
+    variant: [
+      { value: o.power, label: "Power" },
+      { value: voltage, label: "System Voltage" },
+      ...(solar ? [{ value: "Solar Ready", label: "" }] : []),
+    ],
     primary: solar
       ? [
           { value: o.power, label: "Power" },
-          { value: "100 AH", label: "Battery Capacity" },
+          { value: voltage, label: "System Voltage" },
           { value: panels, label: "Recommended Solar Panels" },
         ]
       : [
           { value: o.power, label: "Power" },
-          { value: "100 AH", label: "Battery Capacity" },
+          { value: voltage, label: "System Voltage" },
           { value: "3 Hours at 400 W", label: "Battery Backup" },
         ],
     highlightKicker: "Power & backup",

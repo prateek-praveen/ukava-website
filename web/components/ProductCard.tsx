@@ -17,6 +17,15 @@ export default function ProductCard({
   product: Product;
   index?: number;
 }) {
+  // A variant of a series leads on what separates it from its siblings. The
+  // shared spec sheet — the same battery, wattage and backup on every model —
+  // stays on the detail page instead of being reprinted on all six cards.
+  const isVariant = Boolean(product.series && product.variant?.length);
+
+  /* The catalogue writes panel sizing as "540 W … × 2"; the card leads with
+     the count, the way the supplied brief reads it. Presentation only — the
+     spec table below still shows the catalogue's own string. */
+  const panels = product.panels?.replace(/^(.*?)\s*×\s*(\d+)$/, "$2 × $1");
   const specs = product.primary.slice(0, 3);
 
   return (
@@ -33,27 +42,54 @@ export default function ProductCard({
       <div className={styles.body}>
         <span className={styles.index} aria-hidden="true" />
         <h3 className={styles.name}>{product.name}</h3>
-        {/* Two short details for quick scanning on mobile; the full spec
-            list below carries the same information on desktop. */}
-        <p className={styles.compact}>
-          {specs
-            .slice(0, 2)
-            .map((s) => s.value)
-            .join(" · ")}
-        </p>
-        <p className={styles.type}>{product.type}</p>
-        <div className={styles.specs}>
-          {specs.map((s) => (
-            <span key={s.label} className={styles.spec}>
-              <span className={styles.tick} aria-hidden="true">
-                ✓
-              </span>
-              <span>
-                <b>{s.value}</b> {s.label.toLowerCase()}
-              </span>
-            </span>
-          ))}
-        </div>
+
+        {isVariant ? (
+          <>
+            <p className={styles.type}>{product.positioning}</p>
+            <div className={styles.chips}>
+              {product.variant!.map((s) => (
+                <span
+                  key={s.value}
+                  /* The solar chip carries no label and is the one value a
+                     buyer is scanning the series for, so it takes the accent. */
+                  className={s.label ? styles.chip : `${styles.chip} ${styles.chipSolar}`}
+                >
+                  {s.value}
+                </span>
+              ))}
+            </div>
+            <p className={styles.benefit}>{product.benefit}</p>
+            {product.panels ? (
+              <p className={styles.panels}>
+                <span>Recommended</span> {panels}
+              </p>
+            ) : null}
+          </>
+        ) : (
+          <>
+            {/* Two short details for quick scanning on mobile; the full spec
+                list below carries the same information on desktop. */}
+            <p className={styles.compact}>
+              {specs
+                .slice(0, 2)
+                .map((s) => s.value)
+                .join(" · ")}
+            </p>
+            <p className={styles.type}>{product.type}</p>
+            <div className={styles.specs}>
+              {specs.map((s) => (
+                <span key={s.label} className={styles.spec}>
+                  <span className={styles.tick} aria-hidden="true">
+                    ✓
+                  </span>
+                  <span>
+                    <b>{s.value}</b> {s.label.toLowerCase()}
+                  </span>
+                </span>
+              ))}
+            </div>
+          </>
+        )}
         <span className={styles.more}>
           <span className={styles.moreLong}>View more details</span>
           <span className={styles.moreShort}>View details</span>
