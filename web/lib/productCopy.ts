@@ -28,7 +28,7 @@ export function productCopy(p: Product) {
 
   const isScooter = p.cat === "electric-scooters";
   const isBattery = p.cat === "lithium-batteries";
-  const isSolar = p.cat === "solar-solutions";
+  const isSolar = p.solar === true;
 
   const tagline = isScooter
     ? "Built for effortless everyday city rides."

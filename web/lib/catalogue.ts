@@ -5,8 +5,7 @@
 export type CategoryKey =
   | "electric-scooters"
   | "lithium-batteries"
-  | "inverter-battery"
-  | "solar-solutions";
+  | "inverter-battery";
 
 export type Spec = { value: string; label: string };
 export type Feature = { name: string; note: string };
@@ -27,6 +26,9 @@ export type Product = {
   /** Label/value pairs rendered beside the detail-page callout visual. */
   module: Spec[];
   features: Feature[];
+  /** A solar PCU rather than a mains-first one. Was a category of its own
+      until the two proved to be the same unit in two trims. */
+  solar?: boolean;
   colours: Colour[];
   groups: SpecGroup[];
   /** Optional spec sheet; the download button only renders when present. */
@@ -193,6 +195,10 @@ function scooter(o: ScooterInput): Product {
 
 type BatteryInput = {
   name: string;
+  /** Overrides the default shelf. "Lithium Inverter Batteries" is a battery
+      *for* an inverter, so it belongs in the category named after that,
+      not beside the two- and three-wheeler packs. */
+  cat?: CategoryKey;
   type: string;
   headline: string;
   headlineLabel: string;
@@ -206,7 +212,7 @@ function battery(o: BatteryInput): Product {
   return {
     name: o.name,
     slug: slugify(o.name),
-    cat: "lithium-batteries",
+    cat: o.cat || "lithium-batteries",
     type: o.type,
     primary: [
       { value: o.headline, label: o.headlineLabel },
@@ -246,7 +252,7 @@ function battery(o: BatteryInput): Product {
 
 type LinvaInput = {
   name: string;
-  cat: Extract<CategoryKey, "inverter-battery" | "solar-solutions">;
+  solar?: boolean;
   power: string;
   config: string;
   mrp: string;
@@ -254,12 +260,13 @@ type LinvaInput = {
 };
 
 function linva(o: LinvaInput): Product {
-  const solar = o.cat === "solar-solutions";
+  const solar = o.solar === true;
   const panels = o.panels || "";
   return {
     name: o.name,
     slug: slugify(o.name),
-    cat: o.cat,
+    cat: "inverter-battery",
+    solar,
     type: solar
       ? "MPPT Solar PCU — inverter + inbuilt lithium battery"
       : "MPPT PCU — inverter + inbuilt lithium battery",
@@ -343,17 +350,18 @@ function linva(o: LinvaInput): Product {
 
 export const PRODUCTS: Product[] = [
   scooter({ name: "UKAVA Storm", speed: "55 KMPH", motor: "1000 WATT", brake: "DISC", tyre: "10-10 Tubeless", load: "200 KG", body: "ABS", mat: "Yes", boot: "Available" }),
-  scooter({ name: "UKAVA Rapid", speed: "55 KMPH", motor: "1000 WATT", brake: "DISC", tyre: "12-12 Tubeless", load: "180 kg", body: "ABS", mat: "Yes", boot: "Available" }),
+  scooter({ name: "UKAVA Rapid", speed: "55 KMPH", motor: "1000 WATT", brake: "DISC", tyre: "12-12 Tubeless", load: "180 KG", body: "ABS", mat: "Yes", boot: "Available" }),
   scooter({ name: "UKAVA Raya", speed: "55 KMPH", motor: "1500 WATT", brake: "DISC", tyre: "12-12 Tubeless", load: "200 KG", body: "ABS", mat: "Yes", boot: "Available" }),
   scooter({ name: "UKAVA Vega", speed: "55 KMPH", motor: "1500 WATT", brake: "DOUBLE DISC", tyre: "12-12 Tubeless", load: "200 KG", body: "ABS", mat: "Yes", boot: "Available" }),
   scooter({ name: "UKAVA Aura", speed: "55 KMPH", motor: "1500 WATT", brake: "DOUBLE DISC", tyre: "12-12 Tubeless", load: "200 KG", body: "ABS", mat: "Yes", boot: "Available" }),
   scooter({ name: "UKAVA Zyro", speed: "55 KMPH", motor: "1500 WATT", brake: "DOUBLE DISC", tyre: "12-12 Tubeless", load: "200 KG", body: "ABS", mat: "Yes", boot: "Available" }),
-  scooter({ name: "UKAVA Torra", speed: "55 KMPH", motor: "1500 WATT", brake: "DOUBLE DISC", tyre: "2-12 Tubeless", load: "200 KG", body: "ABS", mat: "Yes", boot: "Available" }),
+  scooter({ name: "UKAVA Torra", speed: "55 KMPH", motor: "1500 WATT", brake: "DOUBLE DISC", tyre: "12-12 Tubeless", load: "200 KG", body: "ABS", mat: "Yes", boot: "Available" }),
   scooter({ name: "UKAVA Trivolt", speed: "55 KMPH", motor: "1500 WATT", brake: "DRUM", tyre: "10-10 Tubeless", load: "200 KG", body: "ABS", mat: "Yes", boot: "Available" }),
   scooter({ name: "UKAVA Cargo", speed: "55 KMPH", motor: "1500 WATT", brake: "DISC", tyre: "10-10 Tubeless", load: "200 KG", body: "IRON", mat: "No", boot: "No" }),
 
   battery({
     name: "Lithium Inverter Batteries",
+    cat: "inverter-battery",
     type: "Inverter battery",
     headline: "12.8V – 48V",
     headlineLabel: "Models available",
@@ -401,27 +409,25 @@ export const PRODUCTS: Product[] = [
     models: ["12.8V 6AH", "25.6V 12AH", "25.6V 18AH"],
   }),
 
-  linva({ name: "LINVA 1000", cat: "inverter-battery", power: "1000 VA", config: "1000VA / 12V", mrp: "INR 25,555/-" }),
-  linva({ name: "LINVA 1500", cat: "inverter-battery", power: "1500 VA", config: "1500VA / 12V", mrp: "INR 26,666/-" }),
-  linva({ name: "LINVA 2500", cat: "inverter-battery", power: "2500 VA", config: "2500VA / 24V", mrp: "INR 28,888/-" }),
+  linva({ name: "LINVA 1000", power: "1000 VA", config: "1000VA / 12V", mrp: "INR 25,555/-" }),
+  linva({ name: "LINVA 1500", power: "1500 VA", config: "1500VA / 12V", mrp: "INR 26,666/-" }),
+  linva({ name: "LINVA 2500", power: "2500 VA", config: "2500VA / 24V", mrp: "INR 28,888/-" }),
 
-  linva({ name: "LINVASOL 1050", cat: "solar-solutions", power: "1050 VA", config: "1050VA / 12V", mrp: "INR 31,111/-", panels: "540 W Mono half-cut Bifacial × 2" }),
-  linva({ name: "LINVASOL 1550", cat: "solar-solutions", power: "1550 VA", config: "1550VA / 12V", mrp: "INR 32,500/-", panels: "540 W Mono half-cut Bifacial × 2" }),
-  linva({ name: "LINVASOL 2550", cat: "solar-solutions", power: "2550 VA", config: "2550VA / 24V", mrp: "INR 35,500/-", panels: "540 W Mono half-cut Bifacial × 4" }),
+  linva({ name: "LINVASOL 1050", solar: true, power: "1050 VA", config: "1050VA / 12V", mrp: "INR 31,111/-", panels: "540 W Mono half-cut Bifacial × 2" }),
+  linva({ name: "LINVASOL 1550", solar: true, power: "1550 VA", config: "1550VA / 12V", mrp: "INR 32,500/-", panels: "540 W Mono half-cut Bifacial × 2" }),
+  linva({ name: "LINVASOL 2550", solar: true, power: "2550 VA", config: "2550VA / 24V", mrp: "INR 35,500/-", panels: "540 W Mono half-cut Bifacial × 4" }),
 ];
 
 export const CATEGORIES: Category[] = [
   { key: "electric-scooters", label: "Electric Scooters", intro: "Explore UKAVA's range of electric scooters and vehicles." },
-  { key: "lithium-batteries", label: "Lithium Batteries", intro: "Lithium storage for inverters, vehicles and energy systems." },
-  { key: "inverter-battery", label: "Inverter & Battery", intro: "LINVA inverters with inbuilt lithium batteries for homes, offices and shops." },
-  { key: "solar-solutions", label: "Solar Solutions", intro: "LINVASOL solar PCUs with inbuilt lithium batteries and recommended panel sizing." },
+  { key: "lithium-batteries", label: "Lithium Batteries", intro: "Lithium storage for vehicles and energy systems." },
+  { key: "inverter-battery", label: "Inverter & Battery", intro: "LINVA and LINVASOL units with inbuilt lithium batteries, plus the lithium batteries that run a separate inverter." },
 ];
 
 export const CATEGORY_LABELS: Record<CategoryKey, string> = {
   "electric-scooters": "Electric Scooters",
   "lithium-batteries": "Lithium Batteries",
   "inverter-battery": "Inverter & Battery",
-  "solar-solutions": "Solar Solutions",
 };
 
 export const byCat = (key: CategoryKey): Product[] => PRODUCTS.filter((p) => p.cat === key);
