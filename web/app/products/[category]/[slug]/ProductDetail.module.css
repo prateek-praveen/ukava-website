@@ -767,3 +767,105 @@
     padding: 10px 0;
   }
 }
+
+/* ── variant selector ─────────────────────────────────────────────────
+   Picking a model inside a family. Links, not buttons: each variant is a
+   real prerendered page, so the choice is shareable, indexable and works
+   with scripting off. Built from the same tokens as the spec chips above
+   it — no new type scale, radii or colours. */
+.variants {
+  /* The spec block above ends in a wrapped label, so without a gap of its
+     own the selector's caption reads as part of that spec rather than as a
+     new control. */
+  margin-top: clamp(22px, 2.2vw, 30px);
+  margin-bottom: clamp(24px, 2.4vw, 32px);
+}
+
+.variantsLabel {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-neutral-700);
+}
+
+.variantRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.variantBtn {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: 1.5px solid var(--color-neutral-300);
+  background: #fff;
+  color: var(--color-neutral-800);
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.variantName {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.variantMeta {
+  font-size: 12px;
+  color: var(--color-neutral-600);
+}
+
+.variantOn {
+  border-color: var(--color-accent);
+  background: var(--color-accent-100);
+  color: var(--color-accent-700);
+}
+
+.variantOn .variantMeta {
+  color: var(--color-accent-700);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .variantBtn:hover {
+    border-color: var(--color-accent);
+  }
+}
+
+@media (max-width: 768px) {
+  .variants {
+    margin-top: 18px;
+    margin-bottom: 20px;
+  }
+
+  .variantsLabel {
+    margin-bottom: 8px;
+    font-size: 11px;
+  }
+
+  .variantRow {
+    gap: 8px;
+  }
+
+  .variantBtn {
+    padding: 7px 12px;
+    border-radius: 10px;
+  }
+
+  .variantName {
+    font-size: 14px;
+  }
+
+  .variantMeta {
+    font-size: 11px;
+  }
+}

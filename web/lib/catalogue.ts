@@ -300,7 +300,7 @@ function linva(o: LinvaInput): Product {
     slug: slugify(o.name),
     cat: "inverter-battery",
     solar,
-    series: solar ? "LINVASOL Series" : "LINVA Series",
+    series: solar ? "LINVASOL" : "LINVA",
     positioning: solar
       ? "Inbuilt Lithium Battery Solar PCU"
       : "Inbuilt Lithium Battery PCU",
@@ -481,6 +481,50 @@ export const CATEGORY_LABELS: Record<CategoryKey, string> = {
 };
 
 export const byCat = (key: CategoryKey): Product[] => PRODUCTS.filter((p) => p.cat === key);
+
+/**
+ * A family shown as one product on the listing, with its variants chosen on
+ * the detail page. The listing entry is the series; the URL is still a
+ * variant's, so every model keeps its own page, its own SEO and a shareable
+ * link — the selector navigates between siblings rather than holding state.
+ */
+export type Series = {
+  key: string;
+  label: string;
+  positioning: string;
+  benefit: string;
+  solar: boolean;
+  /** In catalogue order — the first is what the series card opens. */
+  items: Product[];
+};
+
+export const seriesOf = (p: Product): string | undefined => p.series;
+
+export function seriesInCat(key: CategoryKey): Series[] {
+  const out: Series[] = [];
+  for (const p of byCat(key)) {
+    if (!p.series) continue;
+    const found = out.find((s) => s.label === p.series);
+    if (found) {
+      found.items.push(p);
+      continue;
+    }
+    out.push({
+      key: slugify(p.series),
+      label: p.series,
+      positioning: p.positioning || p.type,
+      benefit: p.benefit || "",
+      solar: p.solar === true,
+      items: [p],
+    });
+  }
+  return out;
+}
+
+/** The sibling variants of a product, in catalogue order. Empty if it is not
+    part of a series. */
+export const variantsOf = (p: Product): Product[] =>
+  p.series ? byCat(p.cat).filter((q) => q.series === p.series) : [];
 
 export const findProduct = (slug: string): Product | undefined =>
   PRODUCTS.find((p) => p.slug === slug);

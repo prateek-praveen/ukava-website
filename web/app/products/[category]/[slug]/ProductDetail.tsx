@@ -12,6 +12,7 @@ import {
   byCat,
   categoryHref,
   productHref,
+  variantsOf,
   type Product,
 } from "@/lib/catalogue";
 import { productCopy } from "@/lib/productCopy";
@@ -33,6 +34,10 @@ export default function ProductDetail({ product }: { product: Product }) {
   // Sections with nothing catalogue-backed to show are omitted entirely, so
   // the page closes the gap instead of rendering an empty module.
   const hasCallouts = product.module.length > 0;
+  // Siblings in the same family. Links rather than state, so every model
+  // keeps its own URL, its own prerendered page and a shareable address —
+  // and the selector still works with no JavaScript.
+  const variants = variantsOf(product);
   const features = product.features.slice(0, 6);
 
   return (
@@ -90,6 +95,34 @@ export default function ProductDetail({ product }: { product: Product }) {
                   </div>
                 ))}
               </div>
+
+              {variants.length > 1 ? (
+                <div className={styles.variants}>
+                  <span className={styles.variantsLabel}>
+                    {product.series} model
+                  </span>
+                  <div className={styles.variantRow}>
+                    {variants.map((v) => {
+                      const on = v.slug === product.slug;
+                      return (
+                        <Link
+                          key={v.slug}
+                          href={productHref(v)}
+                          aria-current={on ? "true" : undefined}
+                          className={`${styles.variantBtn} ${on ? styles.variantOn : ""}`}
+                        >
+                          <span className={styles.variantName}>
+                            {v.name.replace(`${product.series} `, "")}
+                          </span>
+                          <span className={styles.variantMeta}>
+                            {v.variant?.[1]?.value}
+                          </span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : null}
 
               {/* Dormant behind a switch, not removed — see lib/features.ts. */}
               {FEATURES.productColourVariants && product.colours.length ? (
