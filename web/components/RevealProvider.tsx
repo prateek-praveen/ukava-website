@@ -33,6 +33,34 @@ export default function RevealProvider() {
     // No observer, or motion turned down: leave the markup as it shipped.
     if (!("IntersectionObserver" in window) || reduced.matches) return;
 
+    const revealAll = () => {
+      for (const el of document.querySelectorAll<HTMLElement>("[data-reveal]")) {
+        el.dataset.revealState = "shown";
+      }
+    };
+
+    /**
+     * A viewport that already holds the whole document can never bring
+     * anything *into* view. That is not a hypothetical: it is what happens
+     * when the page is embedded in an iframe sized to its own content, with
+     * the host page doing the scrolling — every artifact-style embed works
+     * this way. The observer would stage the bottom of the page into `idle`
+     * and then never fire again, leaving that content invisible for good.
+     *
+     * The margin has to cover the observer's own `-6%` bottom inset as well:
+     * if the page can scroll less far than that inset, the last elements can
+     * never satisfy the threshold no matter how far the reader scrolls.
+     */
+    const unreachable = () =>
+      document.documentElement.scrollHeight <=
+      window.innerHeight * 1.06 + 4;
+
+    // Nothing can be staged in that situation, so nothing is hidden.
+    if (unreachable()) {
+      revealAll();
+      return;
+    }
+
     const io = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -59,6 +87,16 @@ export default function RevealProvider() {
       if (el.dataset.revealState !== "shown") io.observe(el);
     }
 
+    // The frame is often resized to its content *after* load, which is what
+    // turns a scrollable page into an unreachable one. Re-check, and give up
+    // staging rather than strand the content that is already hidden.
+    const onResize = () => {
+      if (!unreachable()) return;
+      io.disconnect();
+      revealAll();
+    };
+    window.addEventListener("resize", onResize);
+
     // Someone turning motion down mid-session gets the resting state, not a
     // page with content stuck in `idle`.
     const onReduced = (e: MediaQueryListEvent) => {
@@ -72,6 +110,7 @@ export default function RevealProvider() {
 
     return () => {
       io.disconnect();
+      window.removeEventListener("resize", onResize);
       reduced.removeEventListener("change", onReduced);
     };
     // Re-scan after a client-side navigation, which swaps the page's markup.
