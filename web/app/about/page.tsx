@@ -128,10 +128,15 @@ export default function AboutPage() {
                 {/* The "Our Story" eyebrow is gone: the banner above it has
                     already said where you are, and it was one more thing
                     between the top of the page and the first sentence. */}
-                <p className={styles.storyLead} {...reveal("heading")}>
+                {/* The page's h1. It was a <p>, which left /about with no
+                    top-level heading at all — this sentence is what the page
+                    is about, so it is the heading. Styling is unchanged: the
+                    class now pins the weight and line-height that the global
+                    h1 rule would otherwise have overridden. */}
+                <h1 className={styles.storyLead} {...reveal("heading")}>
                   UKAVA is an Indian energy and electric mobility company building solutions across
                   power backup, solar, lithium batteries and electric vehicles.
-                </p>
+                </h1>
                 <p className={styles.storyBody} {...reveal("text")}>
                   What began over 25 years ago with inverters and batteries has grown with
                   India’s changing energy needs. Today, we’re taking that experience forward —{" "}

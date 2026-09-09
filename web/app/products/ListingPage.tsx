@@ -40,9 +40,6 @@ export default function ListingPage({ active }: { active: CategoryKey }) {
 
         <section className={styles.gridSection}>
           <div className={styles.gridInner}>
-            <p className={styles.intro} {...reveal("text")}>
-              {category.intro}
-            </p>
             <div className={styles.grid}>
               {entries.map((e, i) =>
                 e.kind === "series" ? (

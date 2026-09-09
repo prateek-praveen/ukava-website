@@ -63,6 +63,9 @@
 
 .storyLead {
   margin: 0;
+  /* Now an <h1>; globals give every heading 800 weight and a 1.12 line
+     height, which this deliberately does not want. */
+  font-weight: 400;
   font-size: clamp(21px, 2vw, 30px);
   line-height: 1.36;
   letter-spacing: -0.015em;

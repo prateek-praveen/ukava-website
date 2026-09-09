@@ -140,11 +140,23 @@ export default function Hero() {
                       : `opacity 380ms cubic-bezier(.4,0,.2,1) ${on ? "90ms" : "0ms"}, transform 460ms cubic-bezier(.22,.61,.36,1) ${on ? "90ms" : "0ms"}`,
                   }}
                 >
-                  <h1 className={styles.headline}>
-                    {slide.headline}
-                    <br />
-                    <span>{slide.highlightedText}</span>
-                  </h1>
+                  {/* One h1 per page: the carousel had one per slide, so the
+                      home page shipped two. Only the slide on screen is the
+                      page's heading; the others are the same markup as a
+                      paragraph, styled identically. */}
+                  {on ? (
+                    <h1 className={styles.headline}>
+                      {slide.headline}
+                      <br />
+                      <span>{slide.highlightedText}</span>
+                    </h1>
+                  ) : (
+                    <p className={styles.headline} aria-hidden="true">
+                      {slide.headline}
+                      <br />
+                      <span>{slide.highlightedText}</span>
+                    </p>
+                  )}
                   <p className={styles.lede}>{slide.description}</p>
                   <div className={styles.actions}>
                     <Link
