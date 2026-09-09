@@ -129,10 +129,11 @@
     padding-block: 24px 48px;
   }
 
+  /* Hidden rather than deleted: the same string is the category page's meta
+     description, and on a phone the tabs already name the category, so the
+     sentence only pushed the products further down the screen. */
   .intro {
-    font-size: 14px;
-    line-height: 1.45;
-    margin-bottom: 16px;
+    display: none;
   }
 
   .grid {

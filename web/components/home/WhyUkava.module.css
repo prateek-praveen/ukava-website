@@ -62,12 +62,18 @@
   font-family: var(--font-heading);
 }
 
+/* Closed rows are quieter than the open one, but they are still buttons, so
+   they are dimmed by colour rather than by opacity. The old `opacity: .42`
+   put the title at 2.59:1 on white and the chevron at 2.43:1 — under the
+   3:1 floor for large text and icons, which is what made an available row
+   read as a disabled one. Neutral-700 lands at 6.52:1 and neutral-600 at
+   4.30:1, so the hierarchy survives while every row still looks pressable. */
 .num {
   flex: 0 0 auto;
   font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.1em;
-  color: rgba(0, 0, 0, 0.45);
+  color: var(--color-neutral-700);
   transition: color 0.3s ease;
 }
 
@@ -79,20 +85,33 @@
   font-size: 24px;
   font-weight: 500;
   letter-spacing: 0;
-  opacity: 0.42;
+  color: var(--color-neutral-700);
   transition:
-    opacity 0.3s ease,
+    color 0.3s ease,
     font-weight 0.3s ease;
 }
 
 .rowOn .rowTitle {
   font-weight: 700;
-  opacity: 1;
+  color: var(--color-text);
+}
+
+/* A row's bottom padding spaces it from the row below — but once it is open,
+   what sits below is its own copy, and 26px read as a gap between two
+   unrelated things rather than a heading and its paragraph. Cut back while
+   open, on the panel's own curve so the two move as one. */
+.row {
+  transition: padding-bottom 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.rowOn .row {
+  padding-bottom: clamp(8px, 0.9vw, 12px);
 }
 
 .chev {
   margin-left: auto;
   flex: 0 0 auto;
+  stroke: var(--color-neutral-600);
   transition:
     transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
     stroke 0.3s ease;
@@ -100,6 +119,28 @@
 
 .rowOn .chev {
   transform: rotate(180deg);
+  stroke: var(--color-accent);
+}
+
+/* Pointer-capable devices only: on touch a :hover sticks after the tap and
+   would leave one row permanently darkened. */
+@media (hover: hover) and (pointer: fine) {
+  .row:hover .num,
+  .row:hover .rowTitle {
+    color: var(--color-text);
+  }
+
+  .row:hover .chev {
+    stroke: var(--color-text);
+  }
+
+  .rowOn .row:hover .num {
+    color: var(--color-accent-700);
+  }
+
+  .rowOn .row:hover .chev {
+    stroke: var(--color-accent);
+  }
 }
 
 /* Height animates via grid-template-rows so the copy can size itself. */
@@ -139,9 +180,19 @@
   text-wrap: pretty;
 }
 
+/* The square is what made the picture tower over the list: its width tracks
+   the column while the list's height is content-driven and near-constant, so
+   the taller the screen got the worse it read — measured +44px over the list
+   at 1280, +131px at 1440, +242px at 1728. The cap holds the frame inside the
+   list's own height band (427–452px measured across the four stories), so the
+   image sits as a peer of the copy instead of dominating it, and it stays put
+   while hovering rather than resizing with whichever story is open. Height
+   only: the width still fills the column, and the photograph just crops a
+   little wider through `object-fit: cover`. */
 .visual {
   position: relative;
   aspect-ratio: 1 / 1;
+  max-height: 440px;
   width: min(100%, 62vh);
   justify-self: end;
   border-radius: 16px;
@@ -198,8 +249,11 @@
     border-top: 0;
   }
 
+  /* Stacked, the image is the full width of the column and nothing sits
+     beside it to be out-measured, so the desktop cap comes off. */
   .visual {
     width: 100%;
+    max-height: none;
     justify-self: stretch;
   }
 
