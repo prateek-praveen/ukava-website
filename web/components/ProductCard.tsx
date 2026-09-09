@@ -48,12 +48,7 @@ export default function ProductCard({
             <p className={styles.type}>{product.positioning}</p>
             <div className={styles.chips}>
               {product.variant!.map((s) => (
-                <span
-                  key={s.value}
-                  /* The solar chip carries no label and is the one value a
-                     buyer is scanning the series for, so it takes the accent. */
-                  className={s.label ? styles.chip : `${styles.chip} ${styles.chipSolar}`}
-                >
+                <span key={s.value} className={styles.chip}>
                   {s.value}
                 </span>
               ))}

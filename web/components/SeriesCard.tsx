@@ -38,15 +38,15 @@ export default function SeriesCard({
         <span className={styles.index} aria-hidden="true" />
         <h3 className={styles.name}>{series.label}</h3>
         <p className={styles.type}>{series.positioning}</p>
+        {/* Just the models. "Solar Ready" was on every LINVASOL card and on
+            none of the LINVA ones, which is exactly what the positioning line
+            above already says — the chip only repeated it. */}
         <div className={styles.chips}>
           {series.items.map((p) => (
             <span key={p.slug} className={styles.chip}>
               {p.variant?.[0]?.value ?? p.name}
             </span>
           ))}
-          {series.solar ? (
-            <span className={`${styles.chip} ${styles.chipSolar}`}>Solar Ready</span>
-          ) : null}
         </div>
         <p className={styles.benefit}>{series.benefit}</p>
         <span className={styles.more}>

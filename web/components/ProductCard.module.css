@@ -235,11 +235,6 @@
   white-space: nowrap;
 }
 
-.chipSolar {
-  background: var(--color-accent-100);
-  color: var(--color-accent-700);
-}
-
 .benefit {
   margin: 0 0 14px;
   font-size: 15px;

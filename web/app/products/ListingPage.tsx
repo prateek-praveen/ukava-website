@@ -7,7 +7,7 @@ import CategoryTabs from "@/components/CategoryTabs";
 import ProductCard from "@/components/ProductCard";
 import SeriesCard from "@/components/SeriesCard";
 import { reveal } from "@/lib/reveal";
-import { CATEGORIES, byCat, seriesInCat, type CategoryKey } from "@/lib/catalogue";
+import { CATEGORIES, listingEntries, type CategoryKey } from "@/lib/catalogue";
 
 /**
  * One listing shell for `/products` and `/products/[category]`. Discovery and
@@ -15,31 +15,8 @@ import { CATEGORIES, byCat, seriesInCat, type CategoryKey } from "@/lib/catalogu
  */
 export default function ListingPage({ active }: { active: CategoryKey }) {
   const category = CATEGORIES.find((c) => c.key === active)!;
-  const products = byCat(active);
 
-  /* One entry per thing a visitor is choosing between. A family is a single
-     entry — LINVA appears once, not three times — and its models are picked
-     on the detail page, where they can be compared. Products with no series
-     are entries in their own right, so a category without series renders
-     exactly the grid it always did. */
-  const seriesList = seriesInCat(active);
-  const entries = (() => {
-    const seen = new Set<string>();
-    const out: Array<
-      { kind: "product"; item: (typeof products)[number] } | { kind: "series"; item: (typeof seriesList)[number] }
-    > = [];
-    for (const p of products) {
-      if (!p.series) {
-        out.push({ kind: "product", item: p });
-        continue;
-      }
-      if (seen.has(p.series)) continue;
-      seen.add(p.series);
-      const s = seriesList.find((x) => x.label === p.series);
-      if (s) out.push({ kind: "series", item: s });
-    }
-    return out;
-  })();
+  const entries = listingEntries(active);
 
   return (
     <>
@@ -69,9 +46,9 @@ export default function ListingPage({ active }: { active: CategoryKey }) {
             <div className={styles.grid}>
               {entries.map((e, i) =>
                 e.kind === "series" ? (
-                  <SeriesCard key={e.item.key} series={e.item} index={i} />
+                  <SeriesCard key={e.key} series={e.item} index={i} />
                 ) : (
-                  <ProductCard key={e.item.slug} product={e.item} index={i} />
+                  <ProductCard key={e.key} product={e.item} index={i} />
                 ),
               )}
             </div>

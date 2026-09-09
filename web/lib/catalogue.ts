@@ -318,7 +318,6 @@ function linva(o: LinvaInput): Product {
     variant: [
       { value: o.power, label: "Power" },
       { value: voltage, label: "System Voltage" },
-      ...(solar ? [{ value: "Solar Ready", label: "" }] : []),
     ],
     primary: solar
       ? [
@@ -493,7 +492,6 @@ export type Series = {
   label: string;
   positioning: string;
   benefit: string;
-  solar: boolean;
   /** In catalogue order — the first is what the series card opens. */
   items: Product[];
 };
@@ -514,7 +512,6 @@ export function seriesInCat(key: CategoryKey): Series[] {
       label: p.series,
       positioning: p.positioning || p.type,
       benefit: p.benefit || "",
-      solar: p.solar === true,
       items: [p],
     });
   }
@@ -534,6 +531,39 @@ export const isCategoryKey = (v: string): v is CategoryKey =>
 
 /** The six models each category leads with on the homepage. */
 export const featuredByCat = (key: CategoryKey): Product[] => byCat(key).slice(0, 6);
+
+/**
+ * What a grid of this category shows: one entry per thing a visitor is
+ * choosing between. A family is a single entry — LINVA appears once, not
+ * three times — and its models are picked on the detail page.
+ *
+ * Shared by the listing and the home page's featured grid rather than
+ * rebuilt in each, so the two cannot disagree about what a category holds.
+ */
+export type ListingEntry =
+  | { kind: "product"; key: string; item: Product }
+  | { kind: "series"; key: string; item: Series };
+
+export function listingEntries(key: CategoryKey): ListingEntry[] {
+  const families = seriesInCat(key);
+  const seen = new Set<string>();
+  const out: ListingEntry[] = [];
+  for (const p of byCat(key)) {
+    if (!p.series) {
+      out.push({ kind: "product", key: p.slug, item: p });
+      continue;
+    }
+    if (seen.has(p.series)) continue;
+    seen.add(p.series);
+    const family = families.find((f) => f.label === p.series);
+    if (family) out.push({ kind: "series", key: family.key, item: family });
+  }
+  return out;
+}
+
+/** The same entries, capped for the home page's grid. */
+export const featuredEntries = (key: CategoryKey): ListingEntry[] =>
+  listingEntries(key).slice(0, 6);
 
 export const productHref = (p: Product): string => `/products/${p.cat}/${p.slug}`;
 export const categoryHref = (key: CategoryKey): string => `/products/${key}`;
