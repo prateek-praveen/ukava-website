@@ -1,37 +1,55 @@
 {
- "ukava-dealer-1": {
+ "ukava-about-build-electric-mobility": {
   "s": 1,
-  "src": "/img/slots/ukava-dealer-1.webp",
+  "src": "/img/slots/ukava-about-build-electric-mobility.webp",
   "x": 0,
   "y": 0
  },
- "ukava-dealer-2": {
-  "s": 1.4004633195748624,
-  "src": "/img/slots/ukava-dealer-2.webp",
-  "x": 69.76862511253248,
-  "y": 20.02316597874313
- },
- "ukava-dealer-3": {
+ "ukava-about-build-lithium-technology": {
   "s": 1,
-  "src": "/img/slots/ukava-dealer-3.webp",
+  "src": "/img/slots/ukava-about-build-lithium-technology.webp",
   "x": 0,
   "y": 0
  },
- "ukava-dealer-4": {
+ "ukava-about-build-power-backup": {
   "s": 1,
-  "src": "/img/slots/ukava-dealer-4.webp",
+  "src": "/img/slots/ukava-about-build-power-backup.webp",
   "x": 0,
   "y": 0
  },
- "ukava-dealer-5": {
+ "ukava-about-build-solar-solutions": {
   "s": 1,
-  "src": "/img/slots/ukava-dealer-5.webp",
+  "src": "/img/slots/ukava-about-build-solar-solutions.webp",
   "x": 0,
   "y": 0
  },
- "ukava-dealer-6": {
+ "ukava-about-work-battery-assembly": {
   "s": 1,
-  "src": "/img/slots/ukava-dealer-6.webp",
+  "src": "/img/slots/ukava-about-work-battery-assembly.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-about-work-product-range": {
+  "s": 1,
+  "src": "/img/slots/ukava-about-work-product-range.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-about-work-product-testing": {
+  "s": 1,
+  "src": "/img/slots/ukava-about-work-product-testing.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-about-work-production-line": {
+  "s": 1,
+  "src": "/img/slots/ukava-about-work-production-line.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-about-work-team": {
+  "s": 1,
+  "src": "/img/slots/ukava-about-work-team.webp",
   "x": 0,
   "y": 0
  },
@@ -71,6 +89,54 @@
   "x": 0,
   "y": 0
  },
+ "ukava-p-electric-two-wheeler-lithium-battery-0": {
+  "s": 1,
+  "src": "/img/slots/ukava-p-electric-two-wheeler-lithium-battery-0.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-p-ess-energy-storage-system-0": {
+  "s": 1,
+  "src": "/img/slots/ukava-p-ess-energy-storage-system-0.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-p-linva-1000-0": {
+  "s": 1,
+  "src": "/img/slots/ukava-p-linva-1000-0.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-p-linva-1500-0": {
+  "s": 1,
+  "src": "/img/slots/ukava-p-linva-1500-0.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-p-linva-2500-0": {
+  "s": 1,
+  "src": "/img/slots/ukava-p-linva-2500-0.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-p-linvasol-1050-0": {
+  "s": 1,
+  "src": "/img/slots/ukava-p-linvasol-1050-0.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-p-linvasol-1550-0": {
+  "s": 1,
+  "src": "/img/slots/ukava-p-linvasol-1550-0.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-p-linvasol-2550-0": {
+  "s": 1,
+  "src": "/img/slots/ukava-p-linvasol-2550-0.webp",
+  "x": 0,
+  "y": 0
+ },
  "ukava-p-lithium-inverter-batteries-0": {
   "s": 1,
   "src": "/img/slots/ukava-p-lithium-inverter-batteries-0.webp",
@@ -83,18 +149,6 @@
   "x": 0,
   "y": 0
  },
- "ukava-p-rapid": {
-  "s": 1,
-  "src": "/img/slots/ukava-p-rapid.webp",
-  "x": 0,
-  "y": 0
- },
- "ukava-p-raya": {
-  "s": 1,
-  "src": "/img/slots/ukava-p-raya.webp",
-  "x": 0,
-  "y": 0
- },
  "ukava-p-rechargeable-lfp-battery-0": {
   "s": 1,
   "src": "/img/slots/ukava-p-rechargeable-lfp-battery-0.webp",
@@ -104,24 +158,6 @@
  "ukava-p-rechargeable-lfp-battery-1": {
   "s": 1,
   "src": "/img/slots/ukava-p-rechargeable-lfp-battery-1.webp",
-  "x": 0,
-  "y": 0
- },
- "ukava-p-royal": {
-  "s": 1,
-  "src": "/img/slots/ukava-p-royal.webp",
-  "x": 0,
-  "y": 0
- },
- "ukava-p-storm": {
-  "s": 1,
-  "src": "/img/slots/ukava-p-storm.webp",
-  "x": 0,
-  "y": 0
- },
- "ukava-p-strom": {
-  "s": 1,
-  "src": "/img/slots/ukava-p-strom.webp",
   "x": 0,
   "y": 0
  },
@@ -155,12 +191,6 @@
   "x": 0,
   "y": 0
  },
- "ukava-p-ukava-aura-detail": {
-  "s": 1,
-  "src": "/img/slots/ukava-p-ukava-aura-detail.webp",
-  "x": 0,
-  "y": 0
- },
  "ukava-p-ukava-cargo-0": {
   "s": 1,
   "src": "/img/slots/ukava-p-ukava-cargo-0.webp",
@@ -185,6 +215,12 @@
   "x": 0,
   "y": 0
  },
+ "ukava-p-ukava-cargo-4": {
+  "s": 1,
+  "src": "/img/slots/ukava-p-ukava-cargo-4.webp",
+  "x": 0,
+  "y": 0
+ },
  "ukava-p-ukava-rapid-0": {
   "s": 1,
   "src": "/img/slots/ukava-p-ukava-rapid-0.webp",
@@ -197,9 +233,9 @@
   "x": 0,
   "y": 0
  },
- "ukava-p-ukava-rapid-detail": {
+ "ukava-p-ukava-rapid-2": {
   "s": 1,
-  "src": "/img/slots/ukava-p-ukava-rapid-detail.webp",
+  "src": "/img/slots/ukava-p-ukava-rapid-2.webp",
   "x": 0,
   "y": 0
  },
@@ -245,9 +281,27 @@
   "x": 0,
   "y": 0
  },
+ "ukava-p-ukava-storm-3": {
+  "s": 1,
+  "src": "/img/slots/ukava-p-ukava-storm-3.webp",
+  "x": 0,
+  "y": 0
+ },
  "ukava-p-ukava-torra-0": {
   "s": 1,
   "src": "/img/slots/ukava-p-ukava-torra-0.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-p-ukava-torra-1": {
+  "s": 1,
+  "src": "/img/slots/ukava-p-ukava-torra-1.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-p-ukava-torra-2": {
+  "s": 1,
+  "src": "/img/slots/ukava-p-ukava-torra-2.webp",
   "x": 0,
   "y": 0
  },
@@ -260,6 +314,18 @@
  "ukava-p-ukava-trivolt-1": {
   "s": 1,
   "src": "/img/slots/ukava-p-ukava-trivolt-1.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-p-ukava-trivolt-2": {
+  "s": 1,
+  "src": "/img/slots/ukava-p-ukava-trivolt-2.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-p-ukava-trivolt-3": {
+  "s": 1,
+  "src": "/img/slots/ukava-p-ukava-trivolt-3.webp",
   "x": 0,
   "y": 0
  },
@@ -284,12 +350,6 @@
  "ukava-p-ukava-vega-3": {
   "s": 1,
   "src": "/img/slots/ukava-p-ukava-vega-3.webp",
-  "x": 0,
-  "y": 0
- },
- "ukava-p-ukava-vega-detail": {
-  "s": 1,
-  "src": "/img/slots/ukava-p-ukava-vega-detail.webp",
   "x": 0,
   "y": 0
  },
@@ -323,15 +383,69 @@
   "x": 0,
   "y": 0
  },
- "ukava-p-vega": {
+ "ukava-partner-evara": {
   "s": 1,
-  "src": "/img/slots/ukava-p-vega.webp",
+  "src": "/img/slots/ukava-partner-evara.webp",
   "x": 0,
-  "y": 3.680542076766308
+  "y": 0
+ },
+ "ukava-partner-gridline": {
+  "s": 1,
+  "src": "/img/slots/ukava-partner-gridline.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-partner-motive": {
+  "s": 1,
+  "src": "/img/slots/ukava-partner-motive.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-partner-northstar": {
+  "s": 1,
+  "src": "/img/slots/ukava-partner-northstar.webp",
+  "x": 0,
+  "y": 0
  },
  "ukava-partner-store": {
   "s": 1,
   "src": "/img/slots/ukava-partner-store.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-partner-suncrest": {
+  "s": 1,
+  "src": "/img/slots/ukava-partner-suncrest.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-partner-voltway": {
+  "s": 1,
+  "src": "/img/slots/ukava-partner-voltway.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-why-1": {
+  "s": 1,
+  "src": "/img/slots/ukava-why-1.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-why-2": {
+  "s": 1,
+  "src": "/img/slots/ukava-why-2.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-why-3": {
+  "s": 1,
+  "src": "/img/slots/ukava-why-3.webp",
+  "x": 0,
+  "y": 0
+ },
+ "ukava-why-4": {
+  "s": 1,
+  "src": "/img/slots/ukava-why-4.webp",
   "x": 0,
   "y": 0
  }

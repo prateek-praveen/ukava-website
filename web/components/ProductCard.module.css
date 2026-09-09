@@ -208,3 +208,80 @@
     padding: 10px 10px 12px;
   }
 }
+
+/* ── series variants (LINVA / LINVASOL) ───────────────────────────────
+   A variant card leads on the two or three values that separate it from
+   its siblings, instead of reprinting a spec sheet the whole series
+   shares. Built from the same tokens as the rest of the card system —
+   no new type scale, no new radii, no new colours. */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--color-neutral-100);
+  color: var(--color-neutral-800);
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.benefit {
+  margin: 0 0 14px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-neutral-700);
+  text-wrap: pretty;
+}
+
+.panels {
+  margin: 0 0 26px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--color-neutral-700);
+}
+
+.panels span {
+  font-weight: 700;
+  color: var(--color-neutral-800);
+}
+
+/* ── mobile: the same card, kept to what fits a two-up column ──────── */
+@media (max-width: 768px) {
+  .chips {
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+
+  .chip {
+    padding: 3px 8px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* The sentence is the first thing to go: the chips already carry the
+     difference, and a two-up card has no room for prose. */
+  .benefit {
+    display: none;
+  }
+
+  .panels {
+    margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  /* "Recommended" is a desktop nicety; the panel spec is the information. */
+  .panels span {
+    display: none;
+  }
+}

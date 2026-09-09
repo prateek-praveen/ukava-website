@@ -17,28 +17,55 @@
 }
 
 /* ── our story ───────────────────────────────────────────────────── */
+/* Tighter than the other sections on purpose: the banner already occupies
+   the top of the page, and this padding decides whether the story is on the
+   first screen or under it. */
 .story {
   background: #fff;
-  padding-block: clamp(48px, 5.5vw, 96px) clamp(40px, 4.5vw, 76px);
+  padding-block: clamp(28px, 2.6vw, 44px) clamp(40px, 4.5vw, 76px);
 }
 
-.storyGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: clamp(36px, 5vw, 104px);
-  align-items: start;
-}
-
-.portrait {
+/* Full-bleed, so deliberately outside the page gutter the rest sits inside.
+   12/5 is just wider than the 2:1 artwork; the cap then decides how tall the
+   band actually gets, and it is set so the story clears the fold on a laptop
+   rather than to flatter the photograph. Anchored bottom in both cuts: each
+   fades to white at its base and that fade dissolves the band into the page,
+   so what the cap crops is sky, which costs nothing. */
+.banner {
   position: relative;
-  aspect-ratio: 4 / 5;
-  border-radius: 16px;
+  width: 100%;
+  aspect-ratio: 12 / 5;
+  max-height: 470px;
   overflow: hidden;
   background: var(--color-neutral-200);
 }
 
+.banner picture {
+  display: contents;
+}
+
+.banner img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  /* Wide, but not the full 1680: a line that long is genuinely hard to track
+     back from at this type size. This lands around 80 characters. */
+  max-width: 1100px;
+}
+
 .storyLead {
   margin: 0;
+  /* Now an <h1>; globals give every heading 800 weight and a 1.12 line
+     height, which this deliberately does not want. */
+  font-weight: 400;
   font-size: clamp(21px, 2vw, 30px);
   line-height: 1.36;
   letter-spacing: -0.015em;
@@ -47,7 +74,7 @@
 }
 
 .storyBody {
-  margin: clamp(40px, 4vw, 72px) 0 0;
+  margin: clamp(22px, 2.2vw, 34px) 0 0;
   font-size: clamp(18px, 1.7vw, 26px);
   line-height: 1.5;
   letter-spacing: -0.01em;
@@ -137,6 +164,27 @@
   /* Stands in for the photograph until one is supplied; a real image
      covers the card entirely. */
   background: linear-gradient(120deg, #1e1c1b 0%, #46423f 45%, #a9a39d 100%);
+}
+
+/* The title is white and sits straight on the photograph. All four supplied
+   images are bright where it lands — measured at 1.0:1, which is white on
+   white — so it needs something behind it. A gradient off the top edge does
+   that without putting a slab over the picture: it is heaviest exactly where
+   the two lines of type are and gone by the halfway mark. */
+.buildCard::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 66%;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 16, 15, 0.72) 0%,
+    rgba(18, 16, 15, 0.52) 38%,
+    rgba(18, 16, 15, 0.22) 70%,
+    rgba(18, 16, 15, 0) 100%
+  );
 }
 
 .buildCardHead {
@@ -235,13 +283,8 @@
 }
 
 @media (max-width: 1119px) {
-  .storyGrid,
   .buildGrid {
     grid-template-columns: 1fr;
-  }
-
-  .portrait {
-    max-width: 460px;
   }
 
   .buildTitle {
@@ -300,15 +343,14 @@
     padding-block: 32px 24px;
   }
 
-  .storyGrid {
-    gap: 20px;
-  }
-
-  /* Landscape on a portrait viewport keeps the portrait from eating the
-     first screen before any copy is reached. */
-  .portrait {
-    max-width: none;
-    aspect-ratio: 4 / 3;
+  /* The phone cut is upright, 2:3, so the frame is too and it shows whole:
+     585px on a 390px screen, hero scale and deliberately so. The cap is
+     what stops that ratio running away at the top of this range — 2:3 of a
+     768px tablet would be 1152px, more than a screen — and past about 480px
+     it starts trimming sky off the top instead. */
+  .banner {
+    aspect-ratio: 2 / 3;
+    max-height: 660px;
   }
 
   .storyLead {
@@ -316,10 +358,12 @@
     line-height: 1.35;
   }
 
+  /* Same size as the lead: two sizes this close read as an accident rather
+     than a hierarchy at phone scale. */
   .storyBody {
     margin-top: 16px;
-    font-size: 14px;
-    line-height: 1.45;
+    font-size: 18px;
+    line-height: 1.35;
   }
 
   .proofCell {

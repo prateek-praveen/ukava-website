@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./WhyUkava.module.css";
 import ImageSlot from "@/components/ImageSlot";
+import { reveal } from "@/lib/reveal";
 
 const STORIES = [
   {
@@ -31,14 +32,43 @@ const STORIES = [
   },
 ];
 
+// Hover-to-expand is for the desktop layout only, and it is gated on three
+// things at once. `hover: hover` and `pointer: fine` keep it away from touch,
+// where a :hover sticks after the tap and would leave a row stuck open. The
+// width keeps it to the two-column layout: stacked, the picture sits *between*
+// the rows, so previewing on hover would shove the list around under the
+// cursor every time the pointer crossed a row.
+const HOVER_QUERY = "(min-width: 1080px) and (hover: hover) and (pointer: fine)";
+
 export default function WhyUkava() {
   const [open, setOpen] = useState(0);
   // The visual keeps showing the last opened story even when every row is
   // collapsed, so the frame is never blank.
   const [shown, setShown] = useState(0);
+  const [hoverable, setHoverable] = useState(false);
+  const [hovered, setHovered] = useState(-1);
+
+  // False on the server and on the first client render, so hydration matches;
+  // hover cannot have happened before then anyway.
+  useEffect(() => {
+    const mq = window.matchMedia(HOVER_QUERY);
+    const sync = () => setHoverable(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  // Hover only previews a story. Whatever was clicked stays pinned underneath
+  // and comes back the moment the pointer leaves.
+  const previewing = hoverable && hovered >= 0;
+  const active = previewing ? hovered : open;
+  const picture = previewing ? hovered : shown;
 
   const pick = (i: number) => {
-    setOpen((cur) => (cur === i ? -1 : i));
+    // Where hover drives the panel, a click pins rather than toggles: closing
+    // a row the pointer is still sitting on would be undone immediately by
+    // that same hover, so the click would read as having done nothing.
+    setOpen((cur) => (!hoverable && cur === i ? -1 : i));
     setShown(i);
   };
 
@@ -46,20 +76,30 @@ export default function WhyUkava() {
     <section id="why" className={styles.section}>
       <div className={styles.inner}>
         <div className={styles.head}>
-          <p className={styles.kicker}>Why UKAVA</p>
-          <h2 className={styles.title}>
+          <p className={styles.kicker} {...reveal("heading")}>
+            Why UKAVA
+          </p>
+          <h2 className={styles.title} {...reveal("text")}>
             Built on experience.
             <br />
             Engineered for what’s next.
           </h2>
         </div>
 
-        <div className={styles.split}>
+        {/* Leaving is caught on the whole split, not the list: moving the
+            pointer from a row towards its picture should keep that story
+            previewed, not snap the panel shut halfway across. */}
+        <div className={styles.split} onMouseLeave={() => setHovered(-1)}>
           <div className={styles.list}>
             {STORIES.map((s, i) => {
-              const on = open === i;
+              const on = active === i;
               return (
-                <div key={s.title} className={`${styles.item} ${on ? styles.rowOn : ""}`}>
+                <div
+                  key={s.title}
+                  className={`${styles.item} ${on ? styles.rowOn : ""}`}
+                  onMouseEnter={() => setHovered(i)}
+                  {...reveal("item", i)}
+                >
                   <button
                     type="button"
                     onClick={() => pick(i)}
@@ -95,15 +135,19 @@ export default function WhyUkava() {
             })}
           </div>
 
-          <div className={styles.visual} style={{ order: shown * 2 + 3 }}>
+          <div
+            className={styles.visual}
+            style={{ order: picture * 2 + 3 }}
+            {...reveal("image")}
+          >
             {STORIES.map((s, i) => (
               <div
                 key={s.slot}
                 className={styles.layer}
                 style={{
-                  opacity: shown === i ? 1 : 0,
-                  zIndex: shown === i ? 2 : 1,
-                  pointerEvents: shown === i ? "auto" : "none",
+                  opacity: picture === i ? 1 : 0,
+                  zIndex: picture === i ? 2 : 1,
+                  pointerEvents: picture === i ? "auto" : "none",
                 }}
               >
                 <ImageSlot id={s.slot} placeholder={s.caption} alt={s.title} />

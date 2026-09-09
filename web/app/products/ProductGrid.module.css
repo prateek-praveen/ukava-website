@@ -72,14 +72,6 @@
   padding-inline: var(--page-pad);
 }
 
-.intro {
-  margin: 0 0 clamp(28px, 3vw, 40px);
-  max-width: 60ch;
-  font-size: clamp(16px, 1.25vw, 18px);
-  line-height: 1.6;
-  color: var(--color-neutral-800);
-}
-
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -129,15 +121,10 @@
     padding-block: 24px 48px;
   }
 
-  .intro {
-    font-size: 14px;
-    line-height: 1.45;
-    margin-bottom: 16px;
-  }
-
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
     counter-reset: ukavaProduct;
   }
 }
+

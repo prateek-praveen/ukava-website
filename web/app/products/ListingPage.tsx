@@ -5,7 +5,9 @@ import SiteFooter from "@/components/SiteFooter";
 import ClosingCta from "@/components/ClosingCta";
 import CategoryTabs from "@/components/CategoryTabs";
 import ProductCard from "@/components/ProductCard";
-import { CATEGORIES, byCat, type CategoryKey } from "@/lib/catalogue";
+import SeriesCard from "@/components/SeriesCard";
+import { reveal } from "@/lib/reveal";
+import { CATEGORIES, listingEntries, type CategoryKey } from "@/lib/catalogue";
 
 /**
  * One listing shell for `/products` and `/products/[category]`. Discovery and
@@ -13,7 +15,8 @@ import { CATEGORIES, byCat, type CategoryKey } from "@/lib/catalogue";
  */
 export default function ListingPage({ active }: { active: CategoryKey }) {
   const category = CATEGORIES.find((c) => c.key === active)!;
-  const products = byCat(active);
+
+  const entries = listingEntries(active);
 
   return (
     <>
@@ -37,11 +40,14 @@ export default function ListingPage({ active }: { active: CategoryKey }) {
 
         <section className={styles.gridSection}>
           <div className={styles.gridInner}>
-            <p className={styles.intro}>{category.intro}</p>
             <div className={styles.grid}>
-              {products.map((p) => (
-                <ProductCard key={p.slug} product={p} />
-              ))}
+              {entries.map((e, i) =>
+                e.kind === "series" ? (
+                  <SeriesCard key={e.key} series={e.item} index={i} />
+                ) : (
+                  <ProductCard key={e.key} product={e.item} index={i} />
+                ),
+              )}
             </div>
           </div>
         </section>

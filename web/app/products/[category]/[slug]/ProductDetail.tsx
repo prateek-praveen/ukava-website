@@ -4,16 +4,19 @@ import Link from "next/link";
 import { useState } from "react";
 import styles from "./ProductDetail.module.css";
 import ImageSlot from "@/components/ImageSlot";
-import LeadModal, { type LeadRequest } from "@/components/LeadModal";
+import { reveal } from "@/lib/reveal";
+import { ContactCta } from "@/components/ContactAction";
+import { FEATURES } from "@/lib/features";
 import {
   CATEGORY_LABELS,
   byCat,
   categoryHref,
   productHref,
+  variantsOf,
   type Product,
 } from "@/lib/catalogue";
 import { productCopy } from "@/lib/productCopy";
-import { productDetailShotId, productShotId, productShots } from "@/lib/slots";
+import { productShotId, productShots } from "@/lib/slots";
 
 const SHOT_LABELS = ["Main angle", "Side profile", "Front", "Rear three-quarter", "Detail shot"];
 
@@ -21,7 +24,6 @@ export default function ProductDetail({ product }: { product: Product }) {
   const [shot, setShot] = useState(0);
   const [colour, setColour] = useState(0);
   const [openGroup, setOpenGroup] = useState(0);
-  const [request, setRequest] = useState<LeadRequest | null>(null);
 
   const copy = productCopy(product);
   const shots = productShots(product.slug);
@@ -29,12 +31,13 @@ export default function ProductDetail({ product }: { product: Product }) {
     .filter((q) => q.slug !== product.slug)
     .slice(0, 3);
 
-  const openEnquiry = () =>
-    setRequest({ kind: "product", product: product.name, source: "product-detail" });
-
   // Sections with nothing catalogue-backed to show are omitted entirely, so
   // the page closes the gap instead of rendering an empty module.
   const hasCallouts = product.module.length > 0;
+  // Siblings in the same family. Links rather than state, so every model
+  // keeps its own URL, its own prerendered page and a shareable address —
+  // and the selector still works with no JavaScript.
+  const variants = variantsOf(product);
   const features = product.features.slice(0, 6);
 
   return (
@@ -93,7 +96,36 @@ export default function ProductDetail({ product }: { product: Product }) {
                 ))}
               </div>
 
-              {product.colours.length ? (
+              {variants.length > 1 ? (
+                <div className={styles.variants}>
+                  <span className={styles.variantsLabel}>
+                    {product.series} model
+                  </span>
+                  <div className={styles.variantRow}>
+                    {variants.map((v) => {
+                      const on = v.slug === product.slug;
+                      return (
+                        <Link
+                          key={v.slug}
+                          href={productHref(v)}
+                          aria-current={on ? "true" : undefined}
+                          className={`${styles.variantBtn} ${on ? styles.variantOn : ""}`}
+                        >
+                          <span className={styles.variantName}>
+                            {v.name.replace(`${product.series} `, "")}
+                          </span>
+                          <span className={styles.variantMeta}>
+                            {v.variant?.[1]?.value}
+                          </span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              ) : null}
+
+              {/* Dormant behind a switch, not removed — see lib/features.ts. */}
+              {FEATURES.productColourVariants && product.colours.length ? (
                 <div className={styles.colours}>
                   <span className={styles.coloursLabel}>Available colours</span>
                   <div className={styles.swatches}>
@@ -113,21 +145,15 @@ export default function ProductDetail({ product }: { product: Product }) {
                 </div>
               ) : null}
 
+              {/* One CTA, not two. "Enquire Now" and "Request a Callback"
+                  both opened the same form; with no checkout or enquiry
+                  flow behind them they now both mean "talk to us", and two
+                  buttons doing the identical thing is just a choice the
+                  customer has to make for nothing. */}
               <div className={styles.actions}>
-                <button
-                  type="button"
-                  onClick={openEnquiry}
-                  className={`btn btn-primary ${styles.primaryCta}`}
-                >
-                  Enquire Now &nbsp;→
-                </button>
-                <button
-                  type="button"
-                  onClick={openEnquiry}
-                  className={`btn ${styles.secondaryCta}`}
-                >
-                  Request a Callback
-                </button>
+                <ContactCta className={`btn btn-primary ${styles.primaryCta}`}>
+                  Contact Us &nbsp;→
+                </ContactCta>
               </div>
 
               <div className={styles.trust}>
@@ -148,10 +174,10 @@ export default function ProductDetail({ product }: { product: Product }) {
           <div className={styles.sectionHead}>
             <div className={styles.sectionHeadLeft}>
               <span className={styles.stepNum}>01</span>
-              <h2 className={styles.sectionTitle}>{copy.whyHeading}</h2>
+              <h2 className={styles.sectionTitle} {...reveal("heading")}>{copy.whyHeading}</h2>
             </div>
           </div>
-          <div className={styles.benefits}>
+          <div className={styles.benefits} {...reveal("text")}>
             {copy.benefits.map((b) => (
               <div key={b.title} className={styles.benefit}>
                 <h3>{b.title}</h3>
@@ -168,10 +194,10 @@ export default function ProductDetail({ product }: { product: Product }) {
             <div className={styles.sectionHead}>
               <div className={styles.sectionHeadLeft}>
                 <span className={styles.stepNum}>02</span>
-                <h2 className={styles.sectionTitle}>{copy.featuresHeading}</h2>
+                <h2 className={styles.sectionTitle} {...reveal("heading")}>{copy.featuresHeading}</h2>
               </div>
             </div>
-            <div className={styles.features}>
+            <div className={styles.features} {...reveal("text")}>
               {features.map((f) => (
                 <div key={f.name} className={styles.feature}>
                   <h3>{f.name}</h3>
@@ -189,17 +215,10 @@ export default function ProductDetail({ product }: { product: Product }) {
             <div className={styles.sectionHead}>
               <div className={styles.sectionHeadLeft}>
                 <span className={styles.stepNum}>03</span>
-                <h2 className={styles.sectionTitle}>{product.moduleTitle}</h2>
+                <h2 className={styles.sectionTitle} {...reveal("heading")}>{product.moduleTitle}</h2>
               </div>
             </div>
-            <div className={styles.callout}>
-              <div className={styles.calloutArt}>
-                <ImageSlot
-                  id={productDetailShotId(product.slug)}
-                  placeholder={`${product.name} — detail / lifestyle shot`}
-                  alt={`${product.name} detail`}
-                />
-              </div>
+            <div className={styles.callout} {...reveal("text")}>
               <div className={styles.calloutRows}>
                 {product.module.map((c) => (
                   <div key={c.label} className={styles.calloutRow}>
@@ -218,7 +237,7 @@ export default function ProductDetail({ product }: { product: Product }) {
           <div className={styles.sectionHead}>
             <div className={styles.sectionHeadLeft}>
               <span className={styles.stepNum}>04</span>
-              <h2 className={styles.sectionTitle}>Complete specifications</h2>
+              <h2 className={styles.sectionTitle} {...reveal("heading")}>Complete specifications</h2>
             </div>
             {product.pdf ? (
               <a href={product.pdf} download className={styles.viewAll}>
@@ -226,7 +245,7 @@ export default function ProductDetail({ product }: { product: Product }) {
               </a>
             ) : null}
           </div>
-          <div className={styles.specs}>
+          <div className={styles.specs} {...reveal("text")}>
             {product.groups.map((g, i) => {
               const on = openGroup === i;
               return (
@@ -268,15 +287,20 @@ export default function ProductDetail({ product }: { product: Product }) {
             <div className={styles.sectionHead}>
               <div className={styles.sectionHeadLeft}>
                 <span className={styles.stepNum}>05</span>
-                <h2 className={styles.sectionTitle}>Explore similar products</h2>
+                <h2 className={styles.sectionTitle} {...reveal("heading")}>Explore similar products</h2>
               </div>
               <Link href={categoryHref(product.cat)} className={styles.viewAll}>
                 View all {CATEGORY_LABELS[product.cat]} <span aria-hidden="true">→</span>
               </Link>
             </div>
             <div className={styles.similar}>
-              {similar.map((q) => (
-                <Link key={q.slug} href={productHref(q)} className={styles.similarCard}>
+              {similar.map((q, i) => (
+                <Link
+                  key={q.slug}
+                  href={productHref(q)}
+                  className={styles.similarCard}
+                  {...reveal("item", i)}
+                >
                   <div className={styles.similarArt}>
                     <div className={styles.similarZoom}>
                       <ImageSlot
@@ -306,7 +330,6 @@ export default function ProductDetail({ product }: { product: Product }) {
         </section>
       ) : null}
 
-      <LeadModal request={request} onClose={() => setRequest(null)} />
     </>
   );
 }

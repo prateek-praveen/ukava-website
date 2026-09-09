@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { reveal } from "@/lib/reveal";
 import styles from "./about.module.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -58,16 +59,19 @@ const BUILDS = [
   { title: "Solar Solutions", slot: "ukava-about-build-solar-solutions", caption: "Solar solutions photo" },
 ];
 
+/* Five photographs rather than the six the layout was drafted for, and the
+   captions name what is actually in each frame — they are the alt text, so
+   an invented one would describe a picture nobody is looking at. The rows
+   repeat their run four times, so an uneven split still drifts evenly. */
 const WORK_TOP = [
-  { slot: "ukava-about-work-battery-assembly", caption: "Battery assembly" },
-  { slot: "ukava-about-work-hands-on-components", caption: "Hands on components" },
-  { slot: "ukava-about-work-product-testing", caption: "Product testing" },
+  { slot: "ukava-about-work-battery-assembly", caption: "Assembling a battery pack" },
+  { slot: "ukava-about-work-product-testing", caption: "Testing a pack before it ships" },
+  { slot: "ukava-about-work-production-line", caption: "Scooters ready for dispatch" },
 ];
 
 const WORK_BOTTOM = [
-  { slot: "ukava-about-work-production-line", caption: "Production line" },
-  { slot: "ukava-about-work-assembly-detail", caption: "Assembly detail" },
-  { slot: "ukava-about-work-quality-inspection", caption: "Quality inspection" },
+  { slot: "ukava-about-work-product-range", caption: "The full product range" },
+  { slot: "ukava-about-work-team", caption: "The UKAVA team" },
 ];
 
 /** Doubled so each drifting row wraps seamlessly at -50%. */
@@ -97,29 +101,46 @@ export default function AboutPage() {
     <>
       <SiteHeader active="about" />
       <main>
+        {/* Full-bleed plant exterior, replacing the founder portrait that used
+            to sit beside the copy: the company, not a person.
+
+            A <picture> rather than an ImageSlot, which carries one asset per
+            slot. The two cuts are far apart — 2:1 across on a desktop, 2:3
+            upright on a phone — and either one forced into the other frame
+            would lose about a third of itself. The browser picks before it
+            fetches, so a phone never downloads the wide file. */}
+        <div className={styles.banner}>
+          <picture>
+            <source media="(max-width: 768px)" srcSet="/img/about-banner-mobile.webp" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/img/about-banner.webp"
+              alt="The UKAVA manufacturing plant"
+              fetchPriority="high"
+            />
+          </picture>
+        </div>
+
         <section className={styles.story}>
           <div className={styles.inner}>
             <div className={styles.storyGrid}>
-              <div className={styles.portrait}>
-                <ImageSlot
-                  id="ukava-about-founder"
-                  placeholder="Founder portrait · 4:5"
-                  alt="UKAVA founder"
-                />
-              </div>
               <div>
-                <p className={styles.eyebrow}>Our Story</p>
-                <p className={styles.storyLead}>
+                {/* The "Our Story" eyebrow is gone: the banner above it has
+                    already said where you are, and it was one more thing
+                    between the top of the page and the first sentence. */}
+                {/* The page's h1. It was a <p>, which left /about with no
+                    top-level heading at all — this sentence is what the page
+                    is about, so it is the heading. Styling is unchanged: the
+                    class now pins the weight and line-height that the global
+                    h1 rule would otherwise have overridden. */}
+                <h1 className={styles.storyLead} {...reveal("heading")}>
                   UKAVA is an Indian energy and electric mobility company building solutions across
-                  power backup, solar energy, lithium batteries and electric vehicles.
-                </p>
-                <p className={styles.storyBody}>
-                  Our journey started over 25 years ago with inverters and batteries as people&apos;s
-                  use of energy changed.
-                  <br />
-                  Through all these years, one thing has stayed the same — our focus on building
-                  dependable energy solutions that move with changing needs. With decades of
-                  experience behind us, we&apos;re now taking that journey forward —{" "}
+                  power backup, solar, lithium batteries and electric vehicles.
+                </h1>
+                <p className={styles.storyBody} {...reveal("text")}>
+                  What began over 25 years ago with inverters and batteries has grown with
+                  India’s changing energy needs. Today, we’re taking that experience forward —{" "}
+                  {/* The closing clause keeps the weight the design gave it. */}
                   <strong>
                     from powering homes and businesses to powering everyday journeys.
                   </strong>
@@ -130,8 +151,8 @@ export default function AboutPage() {
         </section>
 
         <div className={styles.proof}>
-          {PROOF.map((p) => (
-            <div key={p.title} className={styles.proofCell}>
+          {PROOF.map((p, i) => (
+            <div key={p.title} className={styles.proofCell} {...reveal("item", i)}>
               <svg
                 width="32"
                 height="32"
@@ -157,16 +178,18 @@ export default function AboutPage() {
           <div className={styles.inner}>
             <div className={styles.buildGrid}>
               <div>
-                <p className={styles.eyebrow}>What we build</p>
-                <h2 className={styles.buildTitle}>
+                <p className={styles.eyebrow} {...reveal("heading")}>
+                  What we build
+                </p>
+                <h2 className={styles.buildTitle} {...reveal("text")}>
                   One energy partner.
                   <br />
                   Many solutions.
                 </h2>
               </div>
               <div className={styles.buildCards}>
-                {BUILDS.map((b) => (
-                  <div key={b.slot} className={styles.buildCard}>
+                {BUILDS.map((b, i) => (
+                  <div key={b.slot} className={styles.buildCard} {...reveal("item", i)}>
                     <ImageSlot id={b.slot} placeholder={b.caption} alt={b.title} />
                     <div className={styles.buildCardHead}>
                       <h3>{b.title}</h3>
@@ -181,7 +204,9 @@ export default function AboutPage() {
 
         <section className={styles.work}>
           <div className={styles.inner}>
-            <h2 className={styles.workTitle}>The work behind what we build.</h2>
+            <h2 className={styles.workTitle} {...reveal("heading")}>
+              The work behind what we build.
+            </h2>
           </div>
           <div className={styles.workRows}>
             <WorkRow items={WORK_TOP} direction="left" />

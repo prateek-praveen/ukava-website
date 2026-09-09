@@ -23,18 +23,18 @@ type Slide = {
 const SLIDES: Slide[] = [
   {
     image: "/img/hero-scooters.webp",
-    // mobileImage: "/img/hero-scooters-mobile.webp",
+    mobileImage: "/img/hero-scooters-mobile.webp",
     alt: "UKAVA electric scooters parked at a home charging point",
     headline: "Powering everyday life.",
     highlightedText: "Moving India forward.",
     description:
-      "From electric scooters and lithium batteries to solar and power backup \u2014 dependable energy solutions for homes and businesses.",
+      "Electric mobility and dependable energy solutions, built for homes, businesses and everyday journeys.",
     primaryLink: "/products/electric-scooters",
     secondaryCTA: "Contact Us",
   },
   {
-    image: "/img/hero-batteries.png",
-    // mobileImage: "/img/hero-batteries-mobile.webp",
+    image: "/img/hero-batteries.webp",
+    mobileImage: "/img/hero-batteries-mobile.webp",
     alt: "UKAVA lithium battery stack and inverter outside a modern home",
     headline: "Power that lasts.",
     highlightedText: "Built for everyday use.",
@@ -47,8 +47,16 @@ const SLIDES: Slide[] = [
 
 const INTERVAL = 5000;
 
-/** Must stay in step with the ≤768px block in Hero.module.css. */
-const MOBILE_QUERY = "(max-width: 768px)";
+/**
+ * Where the portrait banners take over. Not the 768px mobile breakpoint: the
+ * artwork is 0.563:1, so a frame wider than that crops it top and bottom, and
+ * past ~620px the crop starts eating the product — the scooters' wheels go
+ * first. At 600px they are still fully in frame. Above this the slide falls
+ * back to the desktop banner and its existing reframing, unchanged.
+ *
+ * Must stay in step with the ≤600px block in Hero.module.css.
+ */
+const MOBILE_QUERY = "(max-width: 600px)";
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
@@ -132,11 +140,23 @@ export default function Hero() {
                       : `opacity 380ms cubic-bezier(.4,0,.2,1) ${on ? "90ms" : "0ms"}, transform 460ms cubic-bezier(.22,.61,.36,1) ${on ? "90ms" : "0ms"}`,
                   }}
                 >
-                  <h1 className={styles.headline}>
-                    {slide.headline}
-                    <br />
-                    <span>{slide.highlightedText}</span>
-                  </h1>
+                  {/* One h1 per page: the carousel had one per slide, so the
+                      home page shipped two. Only the slide on screen is the
+                      page's heading; the others are the same markup as a
+                      paragraph, styled identically. */}
+                  {on ? (
+                    <h1 className={styles.headline}>
+                      {slide.headline}
+                      <br />
+                      <span>{slide.highlightedText}</span>
+                    </h1>
+                  ) : (
+                    <p className={styles.headline} aria-hidden="true">
+                      {slide.headline}
+                      <br />
+                      <span>{slide.highlightedText}</span>
+                    </p>
+                  )}
                   <p className={styles.lede}>{slide.description}</p>
                   <div className={styles.actions}>
                     <Link

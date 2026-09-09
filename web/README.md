@@ -64,32 +64,75 @@ All 29 pages prerender at build time.
 6. **The `../project/` bundle is a frozen snapshot from the handoff export.** Design changes made
    in Claude Design since then do not reach this repo; re-export ("Send to Claude Code Web") to
    pick them up.
-7. **Mobile hero banners.** The hero can carry a separate, mobile-only banner per slide —
-   the plumbing is in, the artwork is not. Drop the file in `public/img/` and uncomment the
-   `mobileImage` line on that slide in `components/home/Hero.tsx`:
+7. **Mobile hero banners.** Each hero slide carries its own portrait banner for ≤600px,
+   set by the `mobileImage` key in `components/home/Hero.tsx`:
 
-   ```ts
-   { image: "/img/hero-scooters.webp",          // desktop, unchanged
-     mobileImage: "/img/hero-scooters-mobile.webp", ... }
-   ```
+   | Slide | Desktop | Mobile (≤768px) |
+   | --- | --- | --- |
+   | Scooters | `hero-scooters.webp` | `hero-scooters-mobile.webp` — 941×1672, 109KB |
+   | Batteries | `hero-batteries.png` | `hero-batteries-mobile.webp` — 941×1672, 102KB |
 
-   `<source media="(max-width: 768px)">` does the switch, so a phone never downloads the
-   desktop file and a desktop never downloads the mobile one. A slide with a `mobileImage`
-   also drops the ≤768px reframing (the desktop crop is currently pinned to the lower 64% of
-   the stage) and lets the artwork fill the frame instead — see `.hasMobileArt` in
-   `Hero.module.css`. What the artwork needs: **portrait, about 3:4** (e.g. 900×1200,
-   ≥828px wide for 3× screens), product low in the frame, top third quiet — the white scrim
-   runs down to roughly 45% of the stage and the headline sits over it. WebP, ideally under
-   250KB. Per slide: `hero-scooters-mobile` and `hero-batteries-mobile`.
-8. **The desktop testimonial marquee is inert and awaiting a decision.**
-   `components/home/PartnerStories.module.css` declares
-   `animation: ukavaMarquee 64s linear infinite` on `.track`, but CSS Modules scope the
-   identifier used in `animation`, and no `@keyframes ukavaMarquee` exists in that module — so
-   the name never resolves and the desktop rail has always rendered static. The mobile rail was
-   given its own in-module `ukavaMarqueeMobile` and now drifts. Enabling it on desktop is a
-   one-line change, but it alters the approved desktop, so it is left off pending sign-off.
-   Note the desktop track carries a `padding-inline` gutter, which offsets the -50% loop point;
-   that padding has to come off at the same time or the loop will visibly jump.
+   `<source media="(max-width: 600px)">` does the switch, so a phone never downloads the
+   desktop file and a desktop never downloads the mobile one; the breakpoint is exact at
+   600/601.
+
+   **600px, not the 768px mobile breakpoint**, because the artwork is 0.563:1 and a frame
+   wider than that crops it top and bottom instead of at the sides. The crop reaches the
+   product at about 620px — the scooters' wheels go first — so 601–768px keeps the desktop
+   banner and the reframing it already had. `MOBILE_QUERY` in `Hero.tsx` and the ≤600px
+   block in `Hero.module.css` have to move together.
+
+   A slide with a `mobileImage` also gets `.hasMobileArt`, which below 600px drops that
+   reframing — the desktop crop has to be pinned to the right of the frame to keep the
+   product in shot — and centres the artwork instead. In a 390×660 stage that leaves a 4.7%
+   crop, taken off empty sky and empty floor.
+
+   `.hasMobileArt .scrim` also replaces the white wash. The heavy one (down to 97%) exists
+   because the reframed desktop banner puts a dark treeline behind the headline; artwork cut
+   for this frame does not, and measured across the band the copy occupies the darkest pixel
+   gives the text 9:1 unaided. The lighter scrim renders at 14–16:1 at every width from 320
+   to 600 while leaving the photograph visible.
+
+   To replace either banner: **portrait, roughly 0.56:1**, ≥900px wide, product in the lower
+   half (and above ~0.80 of the height, or it will clip near the 600px edge), top third
+   quiet. WebP, under 250KB.
+8. **The desktop testimonial marquee runs.** It did not for a long time: `animation` takes a
+   *scoped* identifier under CSS Modules, and `@keyframes ukavaMarquee` was never declared in
+   `PartnerStories.module.css`, so the name resolved to nothing and the rail rendered static
+   with no error anywhere. Both keyframes now live in that file.
+
+   The `padding-inline` gutter on `.track` came off at the same time, and has to stay off: the
+   loop translates `-50%`, which equals exactly one run only while the track is exactly two
+   runs wide. With a gutter it was two runs *plus two gutters*, so every cycle jumped sideways
+   by a gutter. It bought nothing either — a rail that never stops moving has no resting
+   position to align to. 769–1079px is a thumb scroller by design and stays static, as does
+   `prefers-reduced-motion`.
+
+## Scroll reveal
+
+Sections fade and rise as they enter the viewport, once each. The whole system is
+`components/RevealProvider.tsx` (one IntersectionObserver for the document, mounted in the root
+layout), the `[data-reveal]` rules in `app/globals.css`, and the `reveal()` helper in
+`lib/reveal.ts`.
+
+Markup opts in by spreading `reveal()` onto an element that **already exists** —
+`<h2 {...reveal("heading")}>`, `<div {...reveal("item", i)}>`. Nothing is wrapped, so nothing is
+added to the DOM and the animation cannot move the layout. Verified: 2393 rendered elements
+across four pages at 1024 and 1440 are identical with the system in place.
+
+Two things about it are deliberate and worth not undoing:
+
+- **The resting state is the default; only `idle` hides anything, and only script sets it.**
+  With no JavaScript — or a bundle that fails to execute — nothing is ever hidden and the page
+  reads exactly as it shipped. An element is only put into `idle` after the observer confirms
+  it is off screen, so that transition is never visible either.
+- **Markup sets a position in a sequence, not a duration.** `--reveal-index` is an integer;
+  `--reveal-step` is a CSS decision and halves on mobile, so every stagger on the site shortens
+  at once rather than each component doing its own arithmetic.
+
+Variants: `heading` (16px rise, 580ms), `text` (the same, one step behind), `image` (8px rise
+plus a 0.985→1 scale, 700ms), `item` (14px rise, staggered by index, capped at five steps).
+Only `opacity` and `transform` animate. `prefers-reduced-motion` skips the observer entirely.
 
 ## Contact CTAs
 

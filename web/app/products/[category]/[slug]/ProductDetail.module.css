@@ -318,23 +318,20 @@
 
 .callout {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  grid-template-columns: 1fr;
   gap: clamp(28px, 3.4vw, 60px);
   align-items: center;
 }
 
-.calloutArt {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  border-radius: 20px;
-  overflow: hidden;
-  background: #faf9f7;
-}
-
+/* The lifestyle shot that used to sit beside these rows is gone, so a single
+   column of five would leave most of the width empty. Two columns keep the
+   measure close to what it was when the image took the other half. */
 .calloutRows {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(18px, 1.8vw, 26px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(28px, 3.4vw, 60px);
+  row-gap: clamp(18px, 1.8vw, 26px);
+  align-content: start;
 }
 
 .calloutRow {
@@ -519,8 +516,7 @@
 }
 
 @media (max-width: 1119px) {
-  .heroGrid,
-  .callout {
+  .heroGrid {
     grid-template-columns: 1fr;
   }
 
@@ -549,6 +545,12 @@
   .benefits,
   .features,
   .similar {
+    grid-template-columns: 1fr;
+  }
+
+  /* Two columns of label-over-value would leave each about 170px wide on a
+     phone, so the pairs stack instead. */
+  .calloutRows {
     grid-template-columns: 1fr;
   }
 
@@ -763,5 +765,107 @@
   .viewAll {
     font-size: 14px;
     padding: 10px 0;
+  }
+}
+
+/* ── variant selector ─────────────────────────────────────────────────
+   Picking a model inside a family. Links, not buttons: each variant is a
+   real prerendered page, so the choice is shareable, indexable and works
+   with scripting off. Built from the same tokens as the spec chips above
+   it — no new type scale, radii or colours. */
+.variants {
+  /* The spec block above ends in a wrapped label, so without a gap of its
+     own the selector's caption reads as part of that spec rather than as a
+     new control. */
+  margin-top: clamp(22px, 2.2vw, 30px);
+  margin-bottom: clamp(24px, 2.4vw, 32px);
+}
+
+.variantsLabel {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-neutral-700);
+}
+
+.variantRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.variantBtn {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: 1.5px solid var(--color-neutral-300);
+  background: #fff;
+  color: var(--color-neutral-800);
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.variantName {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.variantMeta {
+  font-size: 12px;
+  color: var(--color-neutral-600);
+}
+
+.variantOn {
+  border-color: var(--color-accent);
+  background: var(--color-accent-100);
+  color: var(--color-accent-700);
+}
+
+.variantOn .variantMeta {
+  color: var(--color-accent-700);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .variantBtn:hover {
+    border-color: var(--color-accent);
+  }
+}
+
+@media (max-width: 768px) {
+  .variants {
+    margin-top: 18px;
+    margin-bottom: 20px;
+  }
+
+  .variantsLabel {
+    margin-bottom: 8px;
+    font-size: 11px;
+  }
+
+  .variantRow {
+    gap: 8px;
+  }
+
+  .variantBtn {
+    padding: 7px 12px;
+    border-radius: 10px;
+  }
+
+  .variantName {
+    font-size: 14px;
+  }
+
+  .variantMeta {
+    font-size: 11px;
   }
 }

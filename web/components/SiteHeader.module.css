@@ -163,40 +163,59 @@
 
 /* ── mobile (≤768px) ──────────────────────────────────────────────── */
 @media (max-width: 768px) {
+  /* A 52px bar rather than the 40-50px an app bar usually gets: the call
+     and menu controls are 44px touch targets, so 44 plus 4 above and below
+     is the floor. They are invisible at that size — only their glyphs
+     paint — so the bar still reads as a thin one. */
   .bar {
-    gap: 12px;
-    height: 76px;
+    gap: 10px;
+    height: 52px;
   }
 
-  /* The crop window scales with the wordmark so the bar fits a 320px
-     viewport alongside the call and menu buttons. */
+  /* 70% of the previous 168x40. Every crop offset is the same 0.59 of the
+     desktop window (200x48 / 288 / -44 / -118), so the wordmark lands in
+     the same place — these four numbers only ever move together. */
   .logoWindow {
-    width: 168px;
-    height: 40px;
+    width: 118px;
+    height: 28px;
   }
 
   .logoWindow img {
-    left: -37px;
-    top: -99px;
-    width: 242px;
+    left: -25.9px;
+    top: -69.6px;
+    width: 169.9px;
+  }
+
+  /* Menu moves to the left, beside the logo. Ordering rather than moving
+     the node keeps the 769-1079px header exactly as it was. */
+  .burger {
+    order: -1;
+  }
+
+  /* Both controls drop their chrome and keep only the 44px box, which now
+     exists purely as the touch target. The negative margins pull each
+     glyph out to the page gutter: the box centres a 20px bar stack and a
+     24px icon, which would otherwise sit 12px and 10px inside it. */
+  .burger {
+    border: 0;
+    margin-left: -12px;
+  }
+
+  .callButton {
+    background: transparent;
+    color: var(--color-accent);
+    border-radius: 0;
+    margin-right: -10px;
+  }
+
+  .callButton svg {
+    width: 24px;
+    height: 24px;
   }
 
   .callButton,
   .burger {
     width: 44px;
     height: 44px;
-  }
-}
-
-@media (max-width: 359px) {
-  .logoWindow {
-    width: 140px;
-    height: 34px;
-  }
-
-  .logoWindow img {
-    left: -31px;
-    top: -83px;
-    width: 202px;
   }
 }
