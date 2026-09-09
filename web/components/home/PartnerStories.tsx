@@ -7,46 +7,56 @@ import { ContactCta } from "@/components/ContactAction";
 import { reveal } from "@/lib/reveal";
 
 /**
- * PLACEHOLDER CONTENT — these six dealer identities and quotes were invented
- * for layout only and must be replaced with real, signed-off partner stories
- * (name, business, city, quote, photograph) before launch.
+ * NOT YET SIGNED OFF — these six partner names, cities and quotes were
+ * supplied for layout and have not been confirmed as real, attributable
+ * testimonials from named businesses. A testimonial presented as a customer's
+ * words has to be one; publishing an invented quote against a company name is
+ * a misleading commercial claim, not a design placeholder. Get each partner's
+ * written sign-off, or replace the section with copy that does not attribute
+ * anything to anyone, before this goes to production.
  */
 const STORIES = [
   {
-    slot: "ukava-dealer-1",
-    quote: "UKAVA helped us expand our offering beyond batteries into electric mobility.",
-    name: "Rajesh Kumar",
-    business: "Kumar Auto & Batteries · Jaipur",
+    slot: "ukava-partner-voltway",
+    quote:
+      "We started with batteries and gradually added more products. Having a wider range from one company has made things easier for us.",
+    partner: "Voltway Energy",
+    location: "Jaipur",
   },
   {
-    slot: "ukava-dealer-2",
-    quote: "The wider portfolio helped us serve more customer needs from one brand.",
-    name: "Meena Iyer",
-    business: "Iyer Power Solutions · Coimbatore",
+    slot: "ukava-partner-gridline",
+    quote:
+      "The team is easy to reach whenever we need product details or help with an order. That makes a real difference in day-to-day business.",
+    partner: "Gridline Power Solutions",
+    location: "Coimbatore",
   },
   {
-    slot: "ukava-dealer-3",
-    quote: "Product support and quick responses made onboarding much easier.",
-    name: "Sandeep Verma",
-    business: "Verma E-Mobility · Lucknow",
+    slot: "ukava-partner-evara",
+    quote:
+      "We were new to electric mobility when we started. The product guidance and support helped us get comfortable with the category.",
+    partner: "Evara Mobility",
+    location: "Lucknow",
   },
   {
-    slot: "ukava-dealer-4",
-    quote: "A reliable business relationship that keeps our shelves moving.",
-    name: "Farhan Shaikh",
-    business: "Shaikh Energy Store · Pune",
+    slot: "ukava-partner-northstar",
+    quote:
+      "The products have worked well for the customers we serve, and communication with the team has always been straightforward.",
+    partner: "Northstar Batteries",
+    location: "Pune",
   },
   {
-    slot: "ukava-dealer-5",
-    quote: "Onboarding was quick and stock reaches us when promised.",
-    name: "Gurpreet Singh",
-    business: "Singh Battery House · Ludhiana",
+    slot: "ukava-partner-suncrest",
+    quote:
+      "Being able to offer solar, batteries and power backup gives us more options for different customer requirements.",
+    partner: "Suncrest Energy",
+    location: "Ahmedabad",
   },
   {
-    slot: "ukava-dealer-6",
-    quote: "Adding solar to our counter opened a second revenue line.",
-    name: "Anita Das",
-    business: "Das Solar & Power · Bhubaneswar",
+    slot: "ukava-partner-motive",
+    quote:
+      "What works for us is the product range and timely support. When we have a question, getting help is usually quick and straightforward.",
+    partner: "Motive Electric",
+    location: "Indore",
   },
 ];
 
@@ -61,12 +71,15 @@ function Card({ story, duplicate }: { story: (typeof STORIES)[number]; duplicate
       </span>
       <blockquote className={styles.quote}>{story.quote}</blockquote>
       <div className={styles.person}>
-        <div className={`grayscale ${styles.avatar}`}>
-          <ImageSlot id={story.slot} placeholder="Photo" alt="" />
+        {/* A company mark, not a face: square and contained rather than a
+            round crop, and left in colour — a logo greyscaled reads as
+            broken, where a photograph reads as styled. */}
+        <div className={styles.logo}>
+          <ImageSlot id={story.slot} placeholder={story.partner} alt="" />
         </div>
         <div className={styles.who}>
-          <strong>{story.name}</strong>
-          <span>{story.business}</span>
+          <strong>{story.partner}</strong>
+          <span>{story.location}</span>
         </div>
       </div>
     </figure>
