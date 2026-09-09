@@ -202,6 +202,17 @@
     width: 100%;
     justify-self: stretch;
   }
+
+  /* Stacked, the open row's copy is followed immediately by the image, so
+     this padding stops being the space before the next row and becomes a
+     second gap stacked on top of the grid's row-gap — 42px between a
+     paragraph and the picture it belongs to. Dropped to nothing, so the
+     image sits exactly one row-gap below its text, the same distance every
+     other row keeps from its neighbour. Above 1080px the two columns sit
+     side by side and the padding does its original job, so it stays. */
+  .panelBody {
+    padding-bottom: 0;
+  }
 }
 
 /* ── mobile (≤768px) ──────────────────────────────────────────────── */
@@ -239,8 +250,10 @@
     line-height: 1.2;
   }
 
+  /* Shorthand, so the bottom value has to be repeated here — this block
+     comes later in the file and would otherwise put the 20px back. */
   .panelBody {
-    padding: 0 0 20px 30px;
+    padding: 0 0 0 30px;
   }
 
   .panelBody p {
